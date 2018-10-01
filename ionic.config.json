@@ -1,0 +1,7 @@
+{
+  "name": "ThingComparer0",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
