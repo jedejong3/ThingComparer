@@ -13,14 +13,11 @@ import {NavParams} from "ionic-angular";
   templateUrl: 'results.html'
 })
 export class ResultsComponent {
-  public ThingOne;
-  public ThingTwo;
+  public winner;
+  public loser;
   constructor(navCtrl:NavController,navParams:NavParams) {
-    this.ThingOne = navParams.get('thing1');
-    this.ThingTwo = navParams.get('thing2');
-
-    console.log(this.ThingOne);
-    console.log(this.ThingTwo);
+    this.winner = navParams.get('win');
+    this.loser = navParams.get('loss');
   }
 
 }

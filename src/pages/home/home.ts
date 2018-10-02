@@ -19,19 +19,28 @@ export class HomePage {
 
 
   compareClick() {
+    var winner:String;
+    var loser:String;
+
     if (typeof this.ThingOne == "undefined") {
       this.ThingOne = "an empty void";
     }
     if (typeof this.ThingTwo == "undefined") {
       this.ThingTwo = "absolutely nothing";
     }
-    if (Math.random() <= 0.5) {
-      console.log("Obviously " + this.ThingOne.toString().toLowerCase() + " is better than " +
-        this.ThingTwo.toString().toLowerCase() + ", everyone knows that.")
+    if (Math.random()<=0.5) {
+      winner = this.ThingOne;
+      loser = this.ThingTwo;
     } else {
-      console.log("Obviously " + this.ThingTwo.toString().toLowerCase() + " is better than " +
-        this.ThingOne.toString().toLowerCase() + ", everyone knows that.")
+      winner = this.ThingTwo;
+      loser = this.ThingOne;
     }
-    this.navCtrl.push(ResultsComponent,{thing1:this.ThingOne,thing2:this.ThingTwo})
+
+    if (Math.random() <= 0.5) {
+      console.log("Obviously " + winner.toString().toLowerCase() + " is better than " +
+        loser.toString().toLowerCase() + ", everyone knows that.")
+    }
+
+    this.navCtrl.push(ResultsComponent,{win:winner,loss:loser})
   }
 }
