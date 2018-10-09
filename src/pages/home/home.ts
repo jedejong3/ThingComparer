@@ -51,7 +51,7 @@ export class HomePage {
       response = responses[getRandomInt(responses.length)];
 
       //a little extra fun thing
-    if(winner==='me'||loser==='me'){
+    if(winner.toLowerCase()==='me'||loser.toLowerCase()==='me'){
       response= 'Stop trying to compare yourself: you are valuable just as you are!!';
     }
 
