@@ -13,6 +13,7 @@ export class HomePage {
 
   public ThingTwo;
 
+
   constructor(public navCtrl: NavController) {
 
   }
@@ -21,6 +22,7 @@ export class HomePage {
   compareClick() {
     var winner:String;
     var loser:String;
+    var response:String;
 
     if (typeof this.ThingOne == "undefined") {
       this.ThingOne = "an empty void";
@@ -36,11 +38,13 @@ export class HomePage {
       loser = this.ThingOne;
     }
 
-    if (Math.random() <= 0.5) {
-      console.log("Obviously " + winner.toString().toLowerCase() + " is better than " +
-        loser.toString().toLowerCase() + ", everyone knows that.")
-    }
+    response="Obviously " + winner.toString().toLowerCase() + " is better than " +
+        loser.toString().toLowerCase() + ", everyone knows that.";
 
-    this.navCtrl.push(ResultsComponent,{win:winner,loss:loser})
+
+    this.navCtrl.push(ResultsComponent,{win:winner,loss:loser, respond:response})
   }
+
+
+
 }
