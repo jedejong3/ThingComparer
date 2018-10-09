@@ -38,8 +38,17 @@ export class HomePage {
       loser = this.ThingOne;
     }
 
-    response="Obviously " + winner.toString().toLowerCase() + " is better than " +
-        loser.toString().toLowerCase() + ", everyone knows that.";
+    //an array of the random responses
+    const responses = [
+      "Obviously " + winner.toString().toLowerCase() + " is better than " +
+    loser.toString().toLowerCase() + ", everyone knows that.",
+      "I like " + winner +  " better. Because I said so.",
+      "I like " + winner + " better! " + loser + " sucks!",
+      "Well, " + winner + " is mediocre, but I'll go with it anyway. I'm feeling spicy today."
+    ];
+
+    //picks a response from the array of responses
+      response = responses[getRandomInt(responses.length)];
 
 
     this.navCtrl.push(ResultsComponent,{win:winner,loss:loser, respond:response})
@@ -47,4 +56,7 @@ export class HomePage {
 
 
 
+}
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
