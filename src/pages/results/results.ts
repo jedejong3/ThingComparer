@@ -15,9 +15,12 @@ import {NavParams} from "ionic-angular";
 export class ResultsComponent {
   public winner;
   public loser;
+  public response;
+
   constructor(navCtrl:NavController,navParams:NavParams) {
     this.winner = navParams.get('win');
     this.loser = navParams.get('loss');
+    this.response = navParams.get('respond');
   }
 
 }
