@@ -1,3 +1,5 @@
-abstract class Abstract_comparer {
-  compare() {}
-}
+import {Thing} from "./thing";
+
+export abstract class AbstractComparer {
+  compare(one:Thing,two:Thing ){}}
+
