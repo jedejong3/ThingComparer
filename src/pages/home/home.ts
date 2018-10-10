@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ResultsComponent} from "../results/results";
+import {RandomComparer} from "../../backend/comparers/random_comparer";
+import {Thing} from "../../backend/thing";
 
 
 @Component({
@@ -20,9 +22,7 @@ export class HomePage {
 
 
   compareClick() {
-    var winner:String;
-    var loser:String;
-    var response:String;
+    let response:String;
 
     if (typeof this.ThingOne == "undefined") {
       this.ThingOne = "an empty void";
@@ -30,37 +30,14 @@ export class HomePage {
     if (typeof this.ThingTwo == "undefined") {
       this.ThingTwo = "absolutely nothing";
     }
-    if (Math.random()<=0.5) {
-      winner = this.ThingOne;
-      loser = this.ThingTwo;
-    } else {
-      winner = this.ThingTwo;
-      loser = this.ThingOne;
-    }
 
-    //an array of the random responses
-    const responses = [
-      "Obviously " + winner.toString().toLowerCase() + " is better than " +
-    loser.toString().toLowerCase() + ", everyone knows that.",
-      "I like " + winner +  " better. Because I said so.",
-      "I like " + winner + " better! " + loser + " sucks!",
-      "Well, " + winner + " is mediocre, but I'll go with it anyway. I'm feeling spicy today."
-    ];
+    let randomComparer = new RandomComparer();
+    response = randomComparer.compare(new Thing(this.ThingOne),new Thing(this.ThingTwo))
 
-    //picks a response from the array of responses
-      response = responses[getRandomInt(responses.length)];
-
-      //a little extra fun thing
-    if(winner.toLowerCase()==='me'||loser.toLowerCase()==='me'){
-      response= 'Stop trying to compare yourself: you are valuable just as you are!!';
-    }
-
-    this.navCtrl.push(ResultsComponent,{win:winner,loss:loser, respond:response})
+    this.navCtrl.push(ResultsComponent,{respond:response})
   }
 
 
 
 }
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+
