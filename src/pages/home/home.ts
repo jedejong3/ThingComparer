@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ResultsComponent} from "../results/results";
 import {RandomComparer} from "../../backend/comparers/random_comparer";
 import {Thing} from "../../backend/thing";
+import {VowelComparer} from "../../backend/comparers/vowel_comparer";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class HomePage {
 
 
   compareClick() {
-    let response:String;
+    let response: String;
 
     if (typeof this.ThingOne == "undefined") {
       this.ThingOne = "an empty void";
@@ -31,12 +32,13 @@ export class HomePage {
       this.ThingTwo = "absolutely nothing";
     }
 
+    console.log(this.ThingOne + this.ThingTwo);
+
     let randomComparer = new RandomComparer();
-    response = randomComparer.compare(new Thing(this.ThingOne),new Thing(this.ThingTwo))
+    response = randomComparer.compare(new Thing(this.ThingOne), new Thing(this.ThingTwo));
 
-    this.navCtrl.push(ResultsComponent,{respond:response})
+    this.navCtrl.push(ResultsComponent, {respond: response})
   }
-
 
 
 }

@@ -1,9 +1,15 @@
 import {Thing} from "./thing";
 
 export abstract class AbstractComparer {
-  private _winner:String;
-  private _loser:String;
-  compare(one:Thing,two:Thing ){}
+  private _winner: String;
+  private _loser: String;
+
+  compare(one: Thing, two: Thing) {
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 
   get winner(): String {
     return this._winner;
