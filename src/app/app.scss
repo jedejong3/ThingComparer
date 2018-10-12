@@ -1,5 +1,20 @@
 // http://ionicframework.com/docs/theming/
+* {
+  text-align: center;
+  font-family: "Ink Free";
 
+}
+ion-title{
+  background-color: #4f05bd;
+  color:white;
+
+}
+h1{
+  margin: 40px;
+  color:white;
+  font-weight: bolder;
+
+}
 
 // App Global Sass
 // --------------------------------------------------
