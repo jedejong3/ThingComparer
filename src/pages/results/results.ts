@@ -9,7 +9,7 @@ import {NavParams} from "ionic-angular";
  * Components.
  */
 @Component({
-  selector: 'results',
+  selector: 'page-results',
   templateUrl: 'results.html'
 })
 export class ResultsComponent {
@@ -17,10 +17,14 @@ export class ResultsComponent {
   public loser;
   public response;
 
-  constructor(navCtrl:NavController,navParams:NavParams) {
+  constructor(public navCtrl:NavController,navParams:NavParams) {
     this.winner = navParams.get('win');
     this.loser = navParams.get('loss');
     this.response = navParams.get('respond');
+  }
+
+  onBackButton() {
+    this.navCtrl.pop();
   }
 
 }
