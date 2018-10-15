@@ -1,22 +1,21 @@
 <ion-header>
-  <ion-navbar>
     <ion-title>
-      Apples to Oranges (ThingComparer)
+      <h1 class="apple">Apples to Oranges</h1><br />
+      <h3>A Thing Comparer</h3> <!-- What a great name! It sure is!! -->
     </ion-title>
-  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Thing 1</ion-label>
+    <ion-label floating class="apple">Thing 1</ion-label>
     <ion-input type="text" [(ngModel)]="ThingOne"></ion-input>
   </ion-item>
-
+<h2>VS</h2>
   <ion-item>
-    <ion-label floating>Thing 2</ion-label>
+    <ion-label class="orange" floating >Thing 2</ion-label>
     <ion-input type="text" [(ngModel)]="ThingTwo"></ion-input>
   </ion-item>
 
-  <button ion-button round (click)="compareClick()">Compare!</button>
+  <button (click)="compareClick()">Compare!</button>
 
 </ion-content>
