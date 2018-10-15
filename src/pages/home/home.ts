@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ResultsComponent} from "../results/results";
-import {RandomComparer} from "../../backend/comparers/random_comparer";
 import {Thing} from "../../backend/thing";
-import {VowelComparer} from "../../backend/comparers/vowel_comparer";
+import {Decider} from "../../backend/decider";
 
 
 @Component({
@@ -16,26 +15,30 @@ export class HomePage {
 
   public ThingTwo;
 
+  private decider;
+
 
   constructor(public navCtrl: NavController) {
-
+    this.decider = new Decider();
   }
 
 
   compareClick() {
     let response: String;
 
-    if (typeof this.ThingOne == "undefined") {
+    // If the inputs are empty or undefined, fill them
+    if (typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
       this.ThingOne = "an empty void";
     }
-    if (typeof this.ThingTwo == "undefined") {
+    if (typeof this.ThingTwo == "undefined" || /^\s*$/.test(this.ThingTwo)) {
       this.ThingTwo = "absolutely nothing";
     }
 
-    console.log(this.ThingOne + this.ThingTwo);
+    let thing1Object = new Thing(this.ThingOne);
+    let thing2Object = new Thing(this.ThingTwo);
 
-    let randomComparer = new RandomComparer();
-    response = randomComparer.compare(new Thing(this.ThingOne), new Thing(this.ThingTwo));
+    let comparer = this.decider.choseComparer(thing1Object, thing2Object);
+    response = comparer.compare(thing1Object, thing2Object);
 
     this.navCtrl.push(ResultsComponent, {respond: response})
   }
