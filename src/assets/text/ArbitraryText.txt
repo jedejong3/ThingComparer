@@ -1,0 +1,4 @@
+I like ${winner} better! ${loser} sucks.
+I like ${winner} better. Because I said so.
+Clearly, ${winner} is better. Everyone who's anyone knows that.
+Well, ${winner} is mediocre, but I'll go with it anyway. I'm feeling spicy today.
