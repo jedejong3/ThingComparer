@@ -8,10 +8,6 @@ export abstract class AbstractComparer {
     return "You should never see this";
   }
 
-  getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
   get winner(): String {
     return this._winner;
   }
@@ -28,4 +24,3 @@ export abstract class AbstractComparer {
     this._loser = value;
   }
 }
-
