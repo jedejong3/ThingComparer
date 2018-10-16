@@ -1,5 +1,6 @@
 import {AbstractComparer} from "../abstract_comparer";
 import {Thing} from "../thing";
+import {Utilities} from "../utilities";
 
 export class VowelComparer extends AbstractComparer {
 
@@ -40,6 +41,6 @@ export class VowelComparer extends AbstractComparer {
     // TODO: Add more responses
     let responses = [this.winner + " has more vowels, so it wins."];
 
-    return responses[this.getRandomInt(responses.length)];
+    return responses[Utilities.getRandomInt(responses.length)];
   }
 }

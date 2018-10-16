@@ -1,6 +1,5 @@
 import {AbstractComparer} from "../abstract_comparer"
 import {Thing} from "../thing";
-import {Reader} from "../reader";
 import {Utilities} from '../utilities';
 
 export class RandomComparer extends AbstractComparer {
@@ -28,10 +27,6 @@ export class RandomComparer extends AbstractComparer {
 
     //picks a response from the array of responses
     let response = responses[Utilities.getRandomInt(responses.length)];
-
-    // for now, overwrites that response with text that Reader gets from ArbitraryText.txt
-    let reader = new Reader('ArbitraryText.txt');
-    response = reader.getText(this.winner, this.loser);
 
     //a little extra fun thing
     if (this.winner.toLowerCase() === 'me' || this.loser.toLowerCase() === 'me') {
