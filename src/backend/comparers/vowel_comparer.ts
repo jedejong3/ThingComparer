@@ -33,9 +33,11 @@ export class VowelComparer extends AbstractComparer {
     if (thingOneVowels > thingTwoVowels) {
       this.winner = ThingOne.name;
       this.loser = ThingTwo.name;
-    } else {
+    } else if (thingTwoVowels > thingOneVowels) {
       this.winner = ThingTwo.name;
       this.loser = ThingOne.name;
+    } else {
+      return null;
     }
 
     // TODO: Add more responses

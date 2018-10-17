@@ -37,8 +37,7 @@ export class HomePage {
     let thing1Object = new Thing(this.ThingOne);
     let thing2Object = new Thing(this.ThingTwo);
 
-    let comparer = this.decider.choseComparer(thing1Object, thing2Object);
-    response = comparer.compare(thing1Object, thing2Object);
+    response = this.decider.choseComparer(thing1Object,thing2Object);
 
     this.navCtrl.push(ResultsComponent, {respond: response})
   }
