@@ -7,7 +7,7 @@ export class RandomComparer extends AbstractComparer {
     super()
   }
 
-  compare(ThingOne: Thing, ThingTwo: Thing): String {
+  compare(ThingOne: Thing, ThingTwo: Thing): string {
 
     if (Math.random() <= 0.5) {
       this.winner = ThingOne.name;
@@ -26,12 +26,8 @@ export class RandomComparer extends AbstractComparer {
     ];
 
     //picks a response from the array of responses
-    let response = responses[Utilities.getRandomInt(responses.length)];
+    return responses[Utilities.getRandomInt(responses.length)];
 
-    //a little extra fun thing
-    if (this.winner.toLowerCase() === 'me' || this.loser.toLowerCase() === 'me') {
-      response = 'Stop trying to compare yourself: you are valuable just as you are!!';
-    }
-    return response;
+
   }
 }

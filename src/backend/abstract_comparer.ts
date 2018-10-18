@@ -4,7 +4,7 @@ export abstract class AbstractComparer {
   private _winner: String;
   private _loser: String;
 
-  compare(one: Thing, two: Thing): String {
+  compare(one: Thing, two: Thing): string {
     return "You should never see this";
   }
 

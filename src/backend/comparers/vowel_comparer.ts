@@ -8,7 +8,7 @@ export class VowelComparer extends AbstractComparer {
     super();
   }
 
-  compare(ThingOne: Thing, ThingTwo: Thing) {
+  compare(ThingOne: Thing, ThingTwo: Thing): string {
 
     let vowels = ['a', 'e', 'i', 'o', 'u'];
 
