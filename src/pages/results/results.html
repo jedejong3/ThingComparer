@@ -5,11 +5,12 @@
     </ion-title>
 </ion-header>
 <ion-content>
-<img src="assets/imgs/logo.png">
-</ion-content>
-
-<ion-content class="back">
   <h2 [innerHTML]="response"></h2>
-  <button (click)="onBackButton()">Compare again!</button>
+</ion-content>
+<ion-content class="back">
+  <ion-footer>
+    <img src="assets/imgs/logo.png">
+    <button (click)="onBackButton()">Compare again!</button>
+  </ion-footer>
 </ion-content>
 
