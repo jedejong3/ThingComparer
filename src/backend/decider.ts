@@ -19,12 +19,12 @@ export class Decider {
     if (result != null) {
       return result;
     }
-
-    let vowelComparer = new VowelComparer();
-    result = vowelComparer.compare(thing1, thing2);
-    if (result != null) {
-      return result;
-    }
+    //
+    // let vowelComparer = new VowelComparer();
+    // result = vowelComparer.compare(thing1, thing2);
+    // if (result != null) {
+    //   return result;
+    // }
 
     let randomComparer = new RandomComparer();
     return randomComparer.compare(thing1, thing2).toString();
