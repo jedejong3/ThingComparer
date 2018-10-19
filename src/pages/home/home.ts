@@ -39,7 +39,9 @@ export class HomePage {
 
     response = this.decider.choseComparer(thing1Object,thing2Object);
 
-    this.navCtrl.push(ResultsComponent, {respond: response})
+    this.navCtrl.push(ResultsComponent, {respond: response});
+    this.ThingOne=null;
+    this.ThingTwo=null;
   }
 
 
