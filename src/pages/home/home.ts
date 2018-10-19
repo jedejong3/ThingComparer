@@ -27,10 +27,10 @@ export class HomePage {
     let response: String;
 
     // If the inputs are empty or undefined, fill them
-    if (typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
+    if (this.ThingOne == null || typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
       this.ThingOne = "an empty void";
     }
-    if (typeof this.ThingTwo == "undefined" || /^\s*$/.test(this.ThingTwo)) {
+    if (this.ThingTwo == null || typeof this.ThingTwo == "undefined" || /^\s*$/.test(this.ThingTwo)) {
       this.ThingTwo = "absolutely nothing";
     }
 
