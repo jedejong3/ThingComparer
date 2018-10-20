@@ -10,20 +10,20 @@ export class thingManager {
   }
 
 
-  set newThing(thing:Thing) {
+  add(thing:Thing) {
     this._things.push(thing);
     this._count ++;
   }
 
 
    inThings(name:String): Thing {
-    this._things.forEach(function(Thing, index, array){
-      if(Thing.name.toLowerCase()===name){
+    this._things.forEach(function(Thing){
+      if(Thing.name.toLowerCase()===name.toLowerCase()){
         Thing.iterateCount();
         return Thing;
       }
 
-     })
+     });
      return null;
   }
 

@@ -40,10 +40,13 @@ export class HomePage {
     let thing1Object=this.manager.inThings(this.ThingOne);
     if(thing1Object===null){
       thing1Object = new Thing(this.ThingOne);
+      this.manager.add(thing1Object);
+      console.log("new thing!");
     }
     let thing2Object=this.manager.inThings(this.ThingTwo);
     if(thing2Object===null){
-      thing2Object = new Thing(this.ThingOne);
+      thing2Object = new Thing(this.ThingTwo);
+      this.manager.add(thing2Object);
     }
 
     response = this.decider.choseComparer(thing1Object,thing2Object);

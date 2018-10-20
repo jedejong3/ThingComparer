@@ -22,6 +22,9 @@ export class Thing {
   get name(): String {
     return this._name;
   }
+  get count(): number{
+    return this._count;
+  }
 
   iterateCount(): void{
     this._count ++;
