@@ -39,7 +39,6 @@ export class HomePage {
 
     let thing1Object=this.manager.inThings(this.ThingOne);
 
-    console.log(thing1Object);
     if(thing1Object===null){
       thing1Object = new Thing(this.ThingOne);
       this.manager.add(thing1Object);

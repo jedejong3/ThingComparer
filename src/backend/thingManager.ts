@@ -17,16 +17,20 @@ export class thingManager {
 
 
    inThings(name:String): Thing {
-    var found =0;
-    this._things.forEach(function(Thing){
+    var found =null;
+    this._things.forEach(function(Thing, index, array){
       if(Thing.name.toLowerCase()===name.toLowerCase()){
+        found=Thing;
         console.log("i found a match!");
-        found =1;
-        return (Thing); //this is definitively the problem--it never returns thing
+        console.log(found);
+        return (found);
+
+        //this is definitively the problem--it never returns thing
       }
 
      });
-      return null;
+    console.log("no item found!")
+      return found;
 
   }
 
