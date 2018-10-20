@@ -17,17 +17,29 @@ export class thingManager {
 
 
    inThings(name:String): Thing {
+    var found =0;
     this._things.forEach(function(Thing){
       if(Thing.name.toLowerCase()===name.toLowerCase()){
-        Thing.iterateCount();
-        return Thing;
+        console.log("i found a match!");
+        found =1;
+        return (Thing); //this is definitively the problem--it never returns thing
       }
 
      });
-     return null;
+      return null;
+
   }
 
   iterateCount(): void{
     this._count ++;
+  }
+  get count(): number{
+    return this._count;
+  }
+
+  printall():void{
+    this._things.forEach(function(Thing){
+      //console.log(Thing.name);
+    });
   }
 }
