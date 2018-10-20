@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ResultsComponent} from "../results/results";
 import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
+import {thingManager} from "../../backend/thingManager";
 
 
 @Component({
@@ -16,10 +17,12 @@ export class HomePage {
   public ThingTwo;
 
   private decider;
+  private manager;
 
 
   constructor(public navCtrl: NavController) {
     this.decider = new Decider();
+    this.manager = new thingManager();
   }
 
 
@@ -34,8 +37,14 @@ export class HomePage {
       this.ThingTwo = "absolutely nothing";
     }
 
-    let thing1Object = new Thing(this.ThingOne);
-    let thing2Object = new Thing(this.ThingTwo);
+    let thing1Object=this.manager.inThings(this.ThingOne);
+    if(thing1Object===null){
+      thing1Object = new Thing(this.ThingOne);
+    }
+    let thing2Object=this.manager.inThings(this.ThingTwo);
+    if(thing2Object===null){
+      thing2Object = new Thing(this.ThingOne);
+    }
 
     response = this.decider.choseComparer(thing1Object,thing2Object);
 

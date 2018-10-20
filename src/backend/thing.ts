@@ -2,9 +2,11 @@ export class Thing {
 
   private _attributes:Map<String,any>;
   private _name:String;
+  private _count:number;
 
   constructor(name:String) {
     this._name = name;
+    this._count = 0;
   }
 
 
@@ -19,5 +21,9 @@ export class Thing {
 
   get name(): String {
     return this._name;
+  }
+
+  iterateCount(): void{
+    this._count ++;
   }
 }
