@@ -12,6 +12,9 @@ export class EasterEggComparer extends AbstractComparer {
     if (this.hasEasterEgg("shilad", ThingOne, ThingTwo)) {
       return "Shilad is the best!"
     }
+    if(ThingOne.name.toLowerCase() == ThingTwo.name.toLowerCase()){
+      return "Y'know, I'm feeling conflicted on this one...its almost like they're the same thing"
+    }
 
     return null;
   }
