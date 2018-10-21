@@ -4,6 +4,7 @@ import {ResultsComponent} from "../results/results";
 import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
+import {Utilities} from "../../backend/utilities";
 
 
 @Component({
@@ -36,6 +37,9 @@ export class HomePage {
     if (this.ThingTwo == null || typeof this.ThingTwo == "undefined" || /^\s*$/.test(this.ThingTwo)) {
       this.ThingTwo = "absolutely nothing";
     }
+
+    this.ThingOne = Utilities.sanitize(this.ThingOne);
+    this.ThingTwo = Utilities.sanitize(this.ThingTwo);
 
     let thing1Object=this.manager.inThings(this.ThingOne);
 
