@@ -1,7 +1,6 @@
 import {AbstractComparer} from "../abstract_comparer"
 import {Thing} from "../thing";
 import {Utilities} from '../utilities';
-import {isPlural} from "pluralize";
 
 
 export class RandomComparer extends AbstractComparer {
@@ -20,11 +19,11 @@ export class RandomComparer extends AbstractComparer {
     }
 
     let responses = [
-      `Obviously ${this.winner} ${isPlural(this.winner) ? "are" : "is"} better than ${this.loser}, everyone knows that.`,
+      `Obviously ${this.winner} ${this.conjugate('is','are')} better than ${this.loser}, everyone knows that.`,
       `I like ${this.winner} better. Because I said so.`,
-      `I like ${this.winner} better! ${this.loser} ${isPlural(this.winner) ? "suck" : "sucks"}!`,
-      `Well, ${this.winner} ${isPlural(this.winner) ? "are" : "is"} mediocre, but I'll go with
-       ${isPlural(this.winner) ? "them" : "it"} anyway. I'm feeling spicy today.`
+      `I like ${this.winner} better! ${this.loser} ${this.conjugate('sucks','suck',this.loser)}!`,
+      `Well, ${this.winner} ${this.conjugate('is','are')} mediocre, but I'll go with
+       ${this.conjugate('it','them')} anyway. I'm feeling spicy today.`
     ];
 
     //picks a response from the array of responses

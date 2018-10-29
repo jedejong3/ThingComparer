@@ -9,6 +9,13 @@ export abstract class AbstractComparer {
     return "You should never see this";
   }
 
+  conjugate(singular: string, plural: string, word:string = this.winner): string {
+    if (isPlural(word)) {
+      return plural;
+    }
+    return  singular;
+  }
+
   get winner(): string {
     return this._winner;
   }
