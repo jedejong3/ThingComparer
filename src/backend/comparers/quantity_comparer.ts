@@ -12,10 +12,10 @@ export class QuantityComparer extends AbstractComparer {
     console.log(ThingOne.count);
     if (ThingOne.count> 5) {
 
-      return ("Don't you think you've tested " + ThingOne.name + " enough for now?");
+      return (`Don't you think you've tested ${ThingOne.name} enough for now?`);
     }
     if (ThingTwo.count > 5) {
-      return ("Don't you think you've tested " + ThingTwo.name + " enough for now?");
+      return (`Don't you think you've tested ${ThingTwo.name} enough for now?`);
     }
 
     return null;

@@ -41,7 +41,7 @@ export class VowelComparer extends AbstractComparer {
     }
 
     // TODO: Add more responses
-    let responses = [this.winner + " has more vowels, so it wins."];
+    let responses = [`Well, ${this.winner} has more vowels, so I choose that.`];
 
     return responses[Utilities.getRandomInt(responses.length)];
   }

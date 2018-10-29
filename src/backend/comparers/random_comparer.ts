@@ -18,11 +18,10 @@ export class RandomComparer extends AbstractComparer {
     }
 
     let responses = [
-      "Obviously " + this.winner.toString().toLowerCase() + " is better than " +
-      this.loser.toString().toLowerCase() + ", everyone knows that.",
-      "I like " + this.winner + " better. Because I said so.",
-      "I like " + this.winner + " better! " + this.loser + " sucks!",
-      "Well, " + this.winner + " is mediocre, but I'll go with it anyway. I'm feeling spicy today."
+      `Obviously ${this.winner} is better than ${this.loser},everyone knows that.`,
+      `I like ${this.winner} better. Because I said so.`,
+      `I like ${this.winner} better! ${this.loser} sucks!`,
+      `Well, ${this.winner} is mediocre, but I'll go with it anyway. I'm feeling spicy today.`
     ];
 
     //picks a response from the array of responses
