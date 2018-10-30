@@ -1,6 +1,7 @@
 import {AbstractComparer} from "../abstract_comparer"
 import {Thing} from "../thing";
 import {Utilities} from '../utilities';
+import {thingManager} from "../thingManager";
 
 export class RandomComparer extends AbstractComparer {
   constructor() {
@@ -9,7 +10,8 @@ export class RandomComparer extends AbstractComparer {
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
 
-    if (Math.random() <= 0.5) {
+
+    if (ThingOne.name<ThingTwo.name) {
       this.winner = ThingOne.name;
       this.loser = ThingTwo.name;
     } else {
