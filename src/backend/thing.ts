@@ -1,10 +1,10 @@
 export class Thing {
 
   private _attributes:Map<String,any>;
-  private _name:String;
+  private _name:string;
   private _count:number;
 
-  constructor(name:String) {
+  constructor(name:string) {
     this._name = name;
     this._count = 0;
   }
@@ -19,7 +19,7 @@ export class Thing {
   }
 
 
-  get name(): String {
+  get name(): string {
     return this._name;
   }
   get count(): number{

@@ -3,6 +3,7 @@ import {Thing} from "../thing";
 import {Utilities} from '../utilities';
 import {thingManager} from "../thingManager";
 
+
 export class RandomComparer extends AbstractComparer {
   constructor() {
     super()
@@ -20,10 +21,11 @@ export class RandomComparer extends AbstractComparer {
     }
 
     let responses = [
-      `Obviously ${this.winner} is better than ${this.loser},everyone knows that.`,
+      `Obviously ${this.winner} ${this.conjugate('is','are')} better than ${this.loser}, everyone knows that.`,
       `I like ${this.winner} better. Because I said so.`,
-      `I like ${this.winner} better! ${this.loser} sucks!`,
-      `Well, ${this.winner} is mediocre, but I'll go with it anyway. I'm feeling spicy today.`
+      `I like ${this.winner} better! ${this.loser} ${this.conjugate('sucks','suck',this.loser)}!`,
+      `Well, ${this.winner} ${this.conjugate('is','are')} mediocre, but I'll go with
+       ${this.conjugate('it','them')} anyway. I'm feeling spicy today.`
     ];
 
     //picks a response from the array of responses
