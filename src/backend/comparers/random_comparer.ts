@@ -1,6 +1,8 @@
 import {AbstractComparer} from "../abstract_comparer"
 import {Thing} from "../thing";
 import {Utilities} from '../utilities';
+import {thingManager} from "../thingManager";
+
 
 export class RandomComparer extends AbstractComparer {
   constructor() {
@@ -9,7 +11,8 @@ export class RandomComparer extends AbstractComparer {
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
 
-    if (Math.random() <= 0.5) {
+
+    if (ThingOne.name<ThingTwo.name) {
       this.winner = ThingOne.name;
       this.loser = ThingTwo.name;
     } else {
@@ -18,11 +21,11 @@ export class RandomComparer extends AbstractComparer {
     }
 
     let responses = [
-      "Obviously " + this.winner.toString().toLowerCase() + " is better than " +
-      this.loser.toString().toLowerCase() + ", everyone knows that.",
-      "I like " + this.winner + " better. Because I said so.",
-      "I like " + this.winner + " better! " + this.loser + " sucks!",
-      "Well, " + this.winner + " is mediocre, but I'll go with it anyway. I'm feeling spicy today."
+      `Obviously ${this.winner} ${this.conjugate('is','are')} better than ${this.loser}, everyone knows that.`,
+      `I like ${this.winner} better. Because I said so.`,
+      `I like ${this.winner} better! ${this.loser} ${this.conjugate('sucks','suck',this.loser)}!`,
+      `Well, ${this.winner} ${this.conjugate('is','are')} mediocre, but I'll go with
+       ${this.conjugate('it','them')} anyway. I'm feeling spicy today.`
     ];
 
     //picks a response from the array of responses
