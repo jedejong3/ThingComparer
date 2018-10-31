@@ -8,21 +8,21 @@ export class Thing {
   constructor(name:string) {
     this._name = name;
     this._count = 0;
-    this._qualIndex=name.charCodeAt(0)+name.length;
+    this._qualIndex=name.charCodeAt(0)+name.length%10;
     if(name.includes('a')){
-      this._qualIndex+=name.lastIndexOf('a')*3;
+      this._qualIndex+=name.lastIndexOf('a');
     }
     if(name.includes('e')){
       this._qualIndex*=name.indexOf('e')%3;
     }
     if(name.includes('i')){
-      this._qualIndex+=name.lastIndexOf('i')+5;
+      this._qualIndex+=name.lastIndexOf('i')-5;
     }
     if(name.includes('o')){
-      this._qualIndex%=name.indexOf('o')*2;
+      this._qualIndex-=name.indexOf('o')*2;
     }
     if(name.includes('s')){
-      this._qualIndex+=name.indexOf('s')*3;
+      this._qualIndex+=name.indexOf('s')-4;
     }
   }
 
