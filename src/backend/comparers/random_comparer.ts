@@ -12,7 +12,7 @@ export class RandomComparer extends AbstractComparer {
   compare(ThingOne: Thing, ThingTwo: Thing): string {
 
 
-    if (ThingOne.name<ThingTwo.name) {
+    if (ThingOne.qualIndex>ThingTwo.qualIndex) {
       this.winner = ThingOne.name;
       this.loser = ThingTwo.name;
     } else {
