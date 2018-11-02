@@ -23,7 +23,7 @@ export class Datamuse {
 
     // remove the first char of suffix so it doesn't have a leading &
     if (suffix.length > 1) {
-      suffix.substr(1);
+      suffix = suffix.substr(1);
     }
 
     endpoint += suffix;
@@ -33,8 +33,8 @@ export class Datamuse {
     request.open('GET', endpoint, true);
     request.onload = function () {
       // Begin accessing JSON data here
-      var data = JSON.parse(this.response);
-      console.log('parsed data', data);
+      // var data = JSON.parse(this.response);
+      // console.log('parsed data', data);
     }
     request.send();
   }
