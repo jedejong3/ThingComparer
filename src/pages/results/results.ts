@@ -16,11 +16,13 @@ export class ResultsComponent {
   public winner;
   public loser;
   public response;
+  public appleWins: boolean;
 
   constructor(public navCtrl:NavController,navParams:NavParams) {
     this.winner = navParams.get('win');
     this.loser = navParams.get('loss');
     this.response = navParams.get('respond');
+    this.appleWins = Math.random() < 0.5;
   }
 
   onBackButton() {

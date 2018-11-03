@@ -1,20 +1,5 @@
 page-home {
 
-  h3 {
-    margin-bottom: 5px;
-    color: white;
-  }
-
-  ion-item {
-    position: relative;
-    width: 50px;
-  }
-  ion-label {
-
-  }
-  ion-input {
-
-  }
   button {
     font-size: 20px;
     margin-top: 25px;
@@ -27,7 +12,8 @@ page-home {
     color: white;
     border-radius: 50px;
   }
-  .apple {
+
+  .apple_flag {
     color: #65e800;
     background: transparent url("../../assets/imgs/banner_apple.png");
     background-size: 100% 100%;
@@ -36,7 +22,8 @@ page-home {
     left: 10px;
     width: 92%;
   }
-  .orange {
+
+  .orange_flag {
     margin-top: 20px;
     color: #ff8700;
     background: transparent url("../../assets/imgs/banner_orange.png");
@@ -45,46 +32,50 @@ page-home {
     top: 42%;
     right: 10px;
     width: 92%;
-
   }
+
   .apple_land {
     position: absolute;
     bottom: 0;
-    left: 0%;
+    left: 0;
     width: 40%;
   }
+
   .orange_land {
     position: absolute;
     bottom: 0;
-    right: 0%;
+    right: 0;
     width: 40%;
   }
+
   .banana {
     position: relative;
     top: 0;
-    left: 0%;
+    left: 0;
+    width: 60%;
   }
+
   .flagpole_right {
     width: 10px;
     height: 55.4%;
     background: #4b2606;
     position: absolute;
     right: 5px;
-    bottom: 0px;
+    bottom: 0;
   }
+
   .flagpole_left {
     width: 10px;
     height: 62%;
     background: #4B2606;
     position: absolute;
     left: 5px;
-    bottom: 0px;
+    bottom: 0;
   }
+
   .logo {
     width: 100%;
   }
-  img {
-    width: 60%;
-  }
+
 }
 

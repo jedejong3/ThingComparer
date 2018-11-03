@@ -1,11 +1,19 @@
 <!-- Generated template for the ResultsComponent component -->
 <ion-content>
+
+  <img class="pedestal" src="../../assets/imgs/pedestal.png">
+  <img *ngIf="appleWins" class="fruit" src="../../assets/imgs/apple_happy.png">
+  <img *ngIf="!appleWins" class="fruit" src="../../assets/imgs/orange_happy.png">
+  <img class= "spotlight" src="../../assets/imgs/spotlight.png">
+  <img class = "banana" src="../../assets/imgs/banana.png">
+
+  <img *ngIf="appleWins" id="green_grass" class="grass" src="../../assets/imgs/grass_green.png">
+  <img  *ngIf="!appleWins" id="orange_grass" class="grass" src="../../assets/imgs/grass_orange.png">
+  
   <h2 [innerHTML]="response"></h2>
+  <button (click)="onBackButton()">Petition again!</button>
 </ion-content>
-<ion-content class="back">
-  <ion-footer>
-    <img src="assets/imgs/logo.png">
-    <button (click)="onBackButton()">Compare again!</button>
-  </ion-footer>
-</ion-content>
+
+
+
 
