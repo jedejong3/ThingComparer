@@ -35,7 +35,15 @@ page-results {
     top: 1%;
     left: 20%;
     width: 60%;
+    animation: banana_results 2s infinite;
   }
+
+  @keyframes banana_results {
+    0% {top: 1%}
+    50% {top: 3%}
+    100% {top: 1%}
+  }
+
 
   .spotlight {
     position: relative;

@@ -50,9 +50,19 @@ page-home {
 
   .banana {
     position: relative;
-    top: 0;
+    top: 14%;
     left: 0;
-    width: 60%;
+    height: 18%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    animation: banana 5s infinite;
+  }
+
+  @keyframes banana {
+      0% {top: 14%}
+      50% {top: 16%}
+      100% {top: 14%}
   }
 
   .flagpole_right {
@@ -75,6 +85,9 @@ page-home {
 
   .logo {
     width: 100%;
+    position: absolute;
+    top: 1%;
+    left: 0;
   }
 
 }
