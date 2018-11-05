@@ -26,7 +26,7 @@ export class RandomComparer extends AbstractComparer {
       `I like ${this.winner} better! ${this.loser} ${this.conjugate('sucks','suck',this.loser)}!`,
       `Well, ${this.winner} ${this.conjugate('is','are')} mediocre, but I'll go with
        ${this.conjugate('it','them')} anyway. I'm feeling spicy today.`,
-      `Honestly, ${this.winner} just brings me more joy.`,
+      `Honestly, ${this.winner} just ${this.conjugate('brings', 'bring', this.winner)} me more joy.`,
       `When considering the cosmic value of ${this.winner} and ${this.loser}, its clear to see that ${this.winner} 
       ${this.conjugate('is', 'are', this.winner)} far more important`,
       `Just as water flows through a river, so to ${this.conjugate('does','do', this.winner)} ${this.winner} 
@@ -37,7 +37,7 @@ export class RandomComparer extends AbstractComparer {
       `From my perch here on this cloud, its easy to see the superior merit of ${this.winner}.`,
       `When push comes to shove, I have to go with ${this.winner}`,
       `When you can achieve a true peace of mind, the answer will become clear`,
-      
+
 
     ];
 
