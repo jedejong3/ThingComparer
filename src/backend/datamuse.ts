@@ -11,7 +11,7 @@ export class Datamuse {
     maxResults:number, includePartsOfSpeech:boolean, includeFrequency:boolean) {
 
     // build endpoint URL
-    var endpoint = "https://api.datamuse.com/words/";
+    var endpoint = "https://api.datamuse.com/words?";
     var suffix = '';
     if (means) {
       suffix += '&ml=' + means;
@@ -31,10 +31,11 @@ export class Datamuse {
 
     var request = new XMLHttpRequest();
     request.open('GET', endpoint, true);
-    request.onload = function () {
+    request.onload = function (data) {
+      console.log('data', data);
       // Begin accessing JSON data here
-      // var data = JSON.parse(this.response);
-      // console.log('parsed data', data);
+      var data = JSON.parse(this.response);
+      console.log('parsed data', data);
     }
     request.send();
   }
