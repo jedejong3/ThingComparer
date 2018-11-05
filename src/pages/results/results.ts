@@ -26,7 +26,6 @@ export class ResultsComponent {
   }
 
   onBackButton() {
-    //perhaps put in a way to clear out the previous text
     this.navCtrl.pop();
   }
 

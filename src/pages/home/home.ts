@@ -6,6 +6,7 @@ import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
 import {Datamuse} from "../../backend/datamuse";
+import {AboutPage} from "../about/about";
 
 
 @Component({
@@ -27,7 +28,9 @@ export class HomePage {
     this.manager = new thingManager();
   }
 
-
+  aboutPage() {
+    this.navCtrl.push(AboutPage);
+  }
   compareClick() {
     let response: String;
 
@@ -71,6 +74,7 @@ export class HomePage {
     this.ThingOne="";
     this.ThingTwo="";
   }
+
 
 
 }
