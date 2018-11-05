@@ -22,7 +22,8 @@ export class ResultsComponent {
     this.winner = navParams.get('win');
     this.loser = navParams.get('loss');
     this.response = navParams.get('respond');
-    this.appleWins = Math.random() < 0.5;
+    this.appleWins = navParams.get('aw');
+
   }
 
   onBackButton() {

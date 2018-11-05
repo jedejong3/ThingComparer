@@ -70,7 +70,8 @@ export class HomePage {
     this.manager.printall();
 
     response = this.decider.choseComparer(thing1Object,thing2Object);
-    this.navCtrl.push(ResultsComponent, {respond: response});
+    var applewins=thing1Object.qualIndex>thing2Object.qualIndex
+    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins});
     this.ThingOne="";
     this.ThingTwo="";
   }
