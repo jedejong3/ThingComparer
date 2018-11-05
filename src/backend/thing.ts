@@ -1,3 +1,5 @@
+import {getLocaleDateFormat} from "@angular/common";
+
 export class Thing {
 
   private _attributes:Map<String,any>;
@@ -8,7 +10,12 @@ export class Thing {
   constructor(name:string) {
     this._name = name;
     this._count = 0;
+    var day= new Date().getDay();
     this._qualIndex=name.charCodeAt(0)+name.length%10;
+    console.log(day);
+    if(day%2==0){
+      this._qualIndex -= 3*name.charCodeAt(0)/2;
+    }
     if(name.includes('a')){
       this._qualIndex+=name.lastIndexOf('a');
     }
