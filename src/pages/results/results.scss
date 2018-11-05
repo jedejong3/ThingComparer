@@ -1,17 +1,69 @@
 page-results {
+  h2 {
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    bottom: 14%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
   button {
-    font-size:20px;
+    font-size: 20px;
     width: 100%;
-    height: 100px;
+    height: 14%;
     background-color: #4f05bd;
-    position: relative;
-    color:white;
+    color: white;
     border-radius: 50px;
-    margin-top: 0px;
-    margin-bottom:50px;
-      }
-  img{
-    height: 10%;
+    margin-top: 0;
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+  }
+
+  .grass{
+    position: absolute;
+    bottom: 0;
+    height: 40%;
+    width: 100%;
+    left: 0;
+  }
+
+  .banana {
+    position: absolute;
+    top: 1%;
+    left: 20%;
+    width: 60%;
+    animation: banana_results 2s infinite;
+  }
+
+  @keyframes banana_results {
+    0% {top: 1%}
+    50% {top: 3%}
+    100% {top: 1%}
+  }
+
+
+  .spotlight {
+    position: relative;
+    top: 15%;
+    height: 25%;
+  }
+
+  .pedestal {
+    position: absolute;
+    bottom: 39%;
+    height: 25%;
+    width: 40%;
+    left: 30%;
+  }
+
+  .fruit {
+    position: absolute;
+    bottom: 60%;
+    width: 20%;
+    left: 40%;
   }
 
 }

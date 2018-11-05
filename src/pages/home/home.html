@@ -1,21 +1,24 @@
-<ion-header>
-    <ion-title>
-      <img src="assets/imgs/title.png">
-      <h3>A Thing Comparer</h3><!-- What a great name! It sure is!! -->
-    </ion-title>
-</ion-header>
+<!--<ion-header>-->
+<!--<ion-title>-->
+
+<!--<h3>A Thing Comparer</h3>&lt;!&ndash; What a great name! It sure is!! &ndash;&gt;-->
+<!--</ion-title>-->
+<!--</ion-header>-->
 
 <ion-content padding>
-  <ion-item>
-    <ion-label floating class="apple">Thing 1</ion-label>
-    <ion-input type="text" [(ngModel)]="ThingOne"></ion-input>
-  </ion-item>
-<h2>VS</h2>
-  <ion-item>
-    <ion-label class="orange" floating >Thing 2</ion-label>
-    <ion-input type="text" [(ngModel)]="ThingTwo"></ion-input>
-  </ion-item>
+  <button class="info" (click)="aboutPage()">About</button>
+  <img class="logo" src="assets/imgs/title.png">
+  <img class="banana" src="assets/imgs/banana.png">
 
-  <button (click)="compareClick()">Compare!</button>
+  <ion-input maxlength="20" type="text" class="apple_flag" placeholder="Thing 1" [(ngModel)]="ThingOne"></ion-input>
+  <ion-input maxlength="20" type="text" class="orange_flag" placeholder="Thing 2" [(ngModel)]="ThingTwo"></ion-input>
+  <div class="flagpole_right"></div>
+  <div class="flagpole_left"></div>
+
+  <img class="apple_land" src="assets/imgs/apple_land.png">
+  <img class="orange_land" src="assets/imgs/orange_land.png">
+
+  <button (click)="compareClick()">Petition the Celestial Banana</button>
+
 
 </ion-content>
