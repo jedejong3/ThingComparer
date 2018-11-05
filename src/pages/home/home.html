@@ -6,8 +6,11 @@
 <!--</ion-header>-->
 
 <ion-content padding>
-  <button class="info" (click)="aboutPage()">About</button>
-  <img class="logo" src="assets/imgs/title.png">
+  <div class="logo_about">
+    <img class="logo" src="assets/imgs/title.png">
+    <button class="info" (click)="aboutPage()">?</button>
+    </div>
+
   <img class="banana" src="assets/imgs/banana.png">
 
   <ion-input maxlength="20" type="text" class="apple_flag" placeholder="Thing 1" [(ngModel)]="ThingOne"></ion-input>
