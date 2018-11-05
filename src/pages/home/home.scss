@@ -83,21 +83,30 @@ page-home {
   }
 
   .logo {
-    height: 14%;
+    width: 85%;
+    position: static;
+    display: inline-block;
+    margin-bottom: 0;
+    float: left;
+  }
+  .info{
+    font-size: 25px;
+    width: 15%;
+    position: static;
+    display: inline-block;
+    float: right;
+  }
+  .logo_about {
+    display: inline;
     position: absolute;
-    top: 1%;
-    display: block;
     left: 0;
     right: 0;
     margin: 0 auto;
+    width: 100%;
+
   }
-  .info{
-    height: 15px;
-    font-size: 10px;
-    width: 60px;
-    position: absolute;
-    top: 0;
-    left: 0;
+  .scroll-bar-indicator {
+    display: none;
   }
 
 }
