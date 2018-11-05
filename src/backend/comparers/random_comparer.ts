@@ -29,7 +29,7 @@ export class RandomComparer extends AbstractComparer {
       `Honestly, ${this.winner} just ${this.conjugate('brings', 'bring', this.winner)} me more joy.`,
       `When considering the cosmic value of ${this.winner} and ${this.loser}, its clear to see that ${this.winner} 
       ${this.conjugate('is', 'are', this.winner)} far more important`,
-      `Just as water flows through a river, so to ${this.conjugate('does','do', this.winner)} ${this.winner} 
+      `Just as water flows through a river, so too ${this.conjugate('does','do', this.winner)} ${this.winner} 
       ${this.conjugate('flow', 'flows', this.winner)} through the lives of all of us`,
       `You foolish fool! Who could possibly think that ${this.loser} could even compare to ${this.winner}!`,
       `I find ${this.winner} to be more ap-peel-ing`,
