@@ -1,40 +1,96 @@
 page-home {
 
-
-  h3{
-    margin-bottom:5px;
-    color:white;
+  button {
+    font-size: 20px;
+    margin-top: 25px;
+    width: 100%;
+    height: 14%;
+    background-color: #4f05bd;
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+    color: white;
+    border-radius: 50px;
   }
 
-    ion-item{
-      position: relative;
-      width: 50px;
-
-    }
-    ion-label{
-
-    }
-    ion-input{
-
-    }
-    button {
-      font-size:20px;
-      margin-top: 50px;
-      width: 100%;
-      height: 100px;
-      background-color: #4f05bd;
-      position: relative;
-      color:white;
-      border-radius: 50px;
-    }
-  .apple{
+  .apple_flag {
     color: #65e800;
+    background: transparent url("../../assets/imgs/banner_apple.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: 38%;
+    left: 10px;
+    width: 92%;
   }
-  .orange{
+
+  .orange_flag {
+    margin-top: 20px;
     color: #ff8700;
+    background: transparent url("../../assets/imgs/banner_orange.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top: 42%;
+    right: 10px;
+    width: 92%;
   }
-  img{
-    width:60%;
+
+  .apple_land {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 35%;
   }
+
+  .orange_land {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 35%;
   }
+
+  .banana {
+    position: absolute;
+    top: 14%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 18%;
+    animation: banana 5s infinite;
+  }
+
+  @keyframes banana {
+      0% {top: 14%}
+      50% {top: 16%}
+      100% {top: 14%}
+  }
+
+  .flagpole_right {
+    width: 10px;
+    height: 55.4%;
+    background: #4b2606;
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+  }
+
+  .flagpole_left {
+    width: 10px;
+    height: 62%;
+    background: #4B2606;
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+  }
+
+  .logo {
+    height: 14%;
+    position: absolute;
+    top: 1%;
+    display: block;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+}
 

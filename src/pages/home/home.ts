@@ -5,6 +5,7 @@ import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
+import {Datamuse} from "../../backend/datamuse";
 
 
 @Component({
@@ -29,6 +30,10 @@ export class HomePage {
 
   compareClick() {
     let response: String;
+
+    // TODO these lines are only for testing the datamuse class
+    var datamuse = new Datamuse();
+    datamuse.request('kitten', null, null);
 
     // If the inputs are empty or undefined, fill them
     if (this.ThingOne == null || typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
@@ -69,4 +74,3 @@ export class HomePage {
 
 
 }
-
