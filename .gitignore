@@ -33,3 +33,7 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+package.json
+package-lock.json
+config.xml
