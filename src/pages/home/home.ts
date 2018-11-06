@@ -34,10 +34,6 @@ export class HomePage {
   compareClick() {
     let response: String;
 
-    // TODO these lines are only for testing the datamuse class
-    var datamuse = new Datamuse();
-    datamuse.request('kitten', null, null);
-
     // If the inputs are empty or undefined, fill them
     if (this.ThingOne == null || typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
       this.ThingOne = "an empty void";
@@ -46,9 +42,11 @@ export class HomePage {
       this.ThingTwo = "absolutely nothing";
     }
 
+    // sanitize
     this.ThingOne = Utilities.sanitize(this.ThingOne);
     this.ThingTwo = Utilities.sanitize(this.ThingTwo);
 
+    // add objects to list of previous objects, or update count if exists
     let thing1Object=this.manager.inThings(this.ThingOne);
 
     if(thing1Object===null){
@@ -56,9 +54,6 @@ export class HomePage {
       this.manager.add(thing1Object);
     }
     thing1Object.iterateCount();
-
-
-
 
     let thing2Object=this.manager.inThings(this.ThingTwo);
 
@@ -69,8 +64,14 @@ export class HomePage {
     thing2Object.iterateCount();
     this.manager.printall();
 
+    // create and give response
     response = this.decider.choseComparer(thing1Object,thing2Object);
-    var applewins=thing1Object.qualIndex>thing2Object.qualIndex
+    var applewins=thing1Object.qualIndex>thing2Object.qualIndex;
+
+    // TODO these lines are only for testing the datamuse class
+    var datamuse = new Datamuse();
+    datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
+
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins});
     this.ThingOne="";
     this.ThingTwo="";
