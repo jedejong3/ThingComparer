@@ -11,13 +11,16 @@ export class Datamuse {
     maxResults:number, includePartsOfSpeech:boolean, includeFrequency:boolean) {
 
     // build endpoint URL
-    var endpoint = "https://api.datamuse.com/words/";
+    var endpoint = "https://api.datamuse.com/words?";
     var suffix = '';
     if (means) {
       suffix += '&ml=' + means;
     }
     if (relatedCode && related) {
-      suffix += '&rel_' + relatedCode + '=' + related;
+      // check that relatedCode is a valid code contained in the RelatedCode enum
+      if ((<any>Object).values(Code.RelatedCode).includes(relatedCode)) {
+        suffix += '&rel_' + relatedCode + '=' + related;
+      }
     }
     // TODO add options to the endpoint URL
 
@@ -31,13 +34,32 @@ export class Datamuse {
 
     var request = new XMLHttpRequest();
     request.open('GET', endpoint, true);
-    request.onload = function () {
-      // Begin accessing JSON data here
-      // var data = JSON.parse(this.response);
-      // console.log('parsed data', data);
+    request.onload = function () { // deleted data arg
+      var data = JSON.parse(this.response);
+      console.log('parsed data', data);
     }
     request.send();
   }
 
 
+}
+
+module Code {
+  export enum RelatedCode {
+    NounsModifiedBy = 'jja',
+    AdjectivesThatModify = 'jjb',
+    Synonyms = 'syn',
+    StatisticallyAssociated = 'trg',
+    Antonyms = 'ant',
+    KindOf = 'spc',
+    MoreGeneralThan = 'gen',
+    Comprises = 'com',
+    PartOf = 'par',
+    FrequentFollowers = 'bga',
+    FrequentPredecessors = 'bgb',
+    Rhymes = 'rhy',
+    AlmostRhymes = 'nry',
+    Homophones = 'hom',
+    ConsonantMatch = 'cns'
+  }
 }
