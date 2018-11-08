@@ -72,7 +72,8 @@ export class HomePage {
     var datamuse = new Datamuse();
     datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
 
-    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins});
+    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
+      win:applewins ? this.ThingOne:this.ThingTwo});
     this.ThingOne="";
     this.ThingTwo="";
   }

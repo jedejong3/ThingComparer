@@ -64,7 +64,7 @@ page-home {
       100% {top: 14%}
   }
 
-  .flagpole_right {
+  .flagpole {
     width: 10px;
     height: 55.4%;
     background: #4b2606;
@@ -73,13 +73,13 @@ page-home {
     bottom: 0;
   }
 
-  .flagpole_left {
-    width: 10px;
-    height: 62%;
-    background: #4B2606;
-    position: absolute;
+  .flagpole.left {
     left: 5px;
-    bottom: 0;
+    height: 62%;
+  }
+
+  .flagpole.right {
+    right: 5px;
   }
 
   .logo {
