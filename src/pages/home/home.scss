@@ -15,7 +15,6 @@ page-home {
 
   .banner {
     position: absolute;
-    left: 10px;
     width: 92%;
     height: 10%;
     max-height: 100px;
@@ -23,6 +22,7 @@ page-home {
 
   .banner.orange {
     top: 48%;
+    right: 10px;
     color: #d66500;
     background: transparent url("../../assets/imgs/banner_orange.svg");
     background-size: 100% 100%;
@@ -30,6 +30,7 @@ page-home {
 
   .banner.apple {
     top: 38%;
+    left: 10px;
     color: #327c00;
     background: transparent url("../../assets/imgs/banner_apple.svg");
     background-size: 100% 100%;
@@ -41,7 +42,7 @@ page-home {
     position: relative;
     top: 10%;
     margin: 0 0 0 0;
-    font-size: 150%;
+    font-size: 140%;
   }
 
   .apple_land {
@@ -76,20 +77,19 @@ page-home {
 
   .flagpole {
     width: 10px;
-    height: 55.4%;
     background: #4b2606;
     position: absolute;
-    right: 5px;
     bottom: 0;
   }
 
   .flagpole.left {
-    left: 5px;
+    left: 10px;
     height: 62%;
   }
 
   .flagpole.right {
-    right: 5px;
+    right: 10px;
+    height: 52%;
   }
 
   .logo {
