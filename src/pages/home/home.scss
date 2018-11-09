@@ -13,7 +13,7 @@ page-home {
     border-radius: 50px;
   }
 
-  .flag {
+  .banner {
     position: absolute;
     left: 10px;
     width: 92%;
@@ -21,21 +21,21 @@ page-home {
     max-height: 100px;
   }
 
-  .flag.orange {
+  .banner.orange {
     top: 48%;
     color: #d66500;
     background: transparent url("../../assets/imgs/banner_orange.svg");
     background-size: 100% 100%;
   }
 
-  .flag.apple {
+  .banner.apple {
     top: 38%;
     color: #327c00;
     background: transparent url("../../assets/imgs/banner_apple.svg");
     background-size: 100% 100%;
   }
 
-  .flag input {
+  .banner input {
     height: 70%;
     max-height: 100px;
     position: relative;
