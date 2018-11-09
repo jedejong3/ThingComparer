@@ -22,7 +22,7 @@ page-results {
     left: 0;
   }
 
-  .grass{
+  .grass {
     position: absolute;
     bottom: 0;
     height: 40%;
@@ -39,21 +39,26 @@ page-results {
   }
 
   @keyframes banana_results {
-    0% {top: 1%}
-    50% {top: 3%}
-    100% {top: 1%}
+    0% {
+      top: 1%
+    }
+    50% {
+      top: 3%
+    }
+    100% {
+      top: 1%
+    }
   }
-
 
   .spotlight {
     position: relative;
     top: 15%;
-    height: 25%;
+    height: 32%;
   }
 
   .pedestal {
     position: absolute;
-    bottom: 39%;
+    bottom: 32%;
     height: 25%;
     width: 40%;
     left: 30%;
@@ -61,13 +66,50 @@ page-results {
 
   .fruit {
     position: absolute;
-    bottom: 60%;
+    bottom: 53%;
     width: 20%;
     left: 40%;
   }
+
+  .banner{
+    width: 95%;
+    height: 7%;
+    position: absolute;
+    bottom: 68%;
+    left: 2.5%;
+    font-size: 100%;
+  }
+
+  .banner.orange {
+    background: transparent url("../../assets/imgs/banner_orange.svg");
+    background-size: 100% 100%;
+    color: #d66500;
+  }
+
+  .banner.apple {
+    background: transparent url("../../assets/imgs/banner_apple.svg");
+    background-size: 100% 100%;
+    color: #327c00;
+  }
+
+  .flagpole {
+    width: 10px;
+    height: 75%;
+    background: #4b2606;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .flagpole.orange {
+    right: 5px;
+  }
+
+  .flagpole.apple {
+    left: 5px;
+  }
+
   .scroll-bar-indicator {
     display: none;
   }
-
 
 }
