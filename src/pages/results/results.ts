@@ -20,10 +20,11 @@ export class ResultsComponent {
 
   constructor(public navCtrl:NavController,navParams:NavParams) {
     this.winner = navParams.get('win');
-    this.loser = navParams.get('loss');
+    this.loser = navParams.get('loss'); // Not currently used
     this.response = navParams.get('respond');
     this.appleWins = navParams.get('aw');
 
+    console.log(this.winner);
   }
 
   onBackButton() {
