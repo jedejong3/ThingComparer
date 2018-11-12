@@ -2,8 +2,9 @@ page-home {
 
   button {
     font-size: 20px;
+    margin: 10px;
     margin-top: 25px;
-    width: 100%;
+    width: 90%;
     height: 14%;
     background-color: #4f05bd;
     position: absolute;
@@ -16,6 +17,7 @@ page-home {
   .banner {
     position: absolute;
     width: 92%;
+    max-width: 600px;
     height: 10%;
     max-height: 100px;
   }
@@ -93,7 +95,8 @@ page-home {
   }
 
   .logo {
-    width: 85%;
+    width: 80%;
+    max-width: 400px;
     position: static;
     display: inline-block;
     margin-bottom: 0;
@@ -102,6 +105,8 @@ page-home {
   .info{
     font-size: 25px;
     width: 15%;
+    max-width: 50px;
+    margin-left: 6px;
     position: static;
     display: inline-block;
     float: right;
@@ -120,4 +125,3 @@ page-home {
   }
 
 }
-
