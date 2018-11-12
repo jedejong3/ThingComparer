@@ -10,29 +10,34 @@ export class Thing {
   constructor(name:string) {
     this._name = name;
     this._count = 0;
-    var day= new Date().getDay();
-    this._qualIndex=name.charCodeAt(0)+name.length%10;
-    console.log(day);
-    if(day%2==0){
-      this._qualIndex -= 3*name.charCodeAt(0)/2;
-    }
-    if(name.includes('a')){
-      this._qualIndex+=name.lastIndexOf('a');
-    }
-    if(name.includes('e')){
-      this._qualIndex*=name.indexOf('e')%3;
-    }
-    if(name.includes('i')){
-      this._qualIndex+=name.lastIndexOf('i')-5;
-    }
-    if(name.includes('o')){
-      this._qualIndex-=name.indexOf('o')*2;
-    }
-    if(name.includes('s')){
-      this._qualIndex+=name.indexOf('s')-4;
-    }
+
+    this.setQualIndex();
   }
 
+  setQualIndex():void{
+    var day= new Date().getDay();
+
+    this._qualIndex=this._name.charCodeAt(0)+this._name.length%10;
+    console.log(day);
+    if(day%2==0){
+      this._qualIndex -= 3*this._name.charCodeAt(0)/2;
+    }
+    if(this._name.includes('a')){
+      this._qualIndex+=this._name.lastIndexOf('a');
+    }
+    if(this._name.includes('e')){
+      this._qualIndex*=this._name.indexOf('e')%3;
+    }
+    if(this._name.includes('i')){
+      this._qualIndex+=this._name.lastIndexOf('i')-5;
+    }
+    if(this._name.includes('o')){
+      this._qualIndex-=this._name.indexOf('o')*2;
+    }
+    if(this._name.includes('s')){
+      this._qualIndex+=this._name.indexOf('s')-4;
+    }
+  }
 
   get attributes(): Map<String, any> {
     return this._attributes;
@@ -41,6 +46,8 @@ export class Thing {
   set attributes(value: Map<String, any>) {
     this._attributes = value;
   }
+
+
 
 
   get name(): string {
