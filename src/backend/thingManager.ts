@@ -21,11 +21,8 @@ export class thingManager {
     this._things.forEach(function(Thing, index, array){
       if(Thing.name.toLowerCase()===name.toLowerCase()){
         found=Thing;
-        console.log("i found a match!");
-        console.log(found);
         return (found);
 
-        //this is definitively the problem--it never returns thing
       }
 
      });

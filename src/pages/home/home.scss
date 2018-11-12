@@ -2,8 +2,9 @@ page-home {
 
   button {
     font-size: 20px;
+    margin: 10px;
     margin-top: 25px;
-    width: 100%;
+    width: 90%;
     height: 14%;
     background-color: #4f05bd;
     position: absolute;
@@ -13,35 +14,37 @@ page-home {
     border-radius: 50px;
   }
 
-  .flag {
+  .banner {
     position: absolute;
-    left: 10px;
     width: 92%;
+    max-width: 600px;
     height: 10%;
     max-height: 100px;
   }
 
-  .flag.orange {
+  .banner.orange {
     top: 48%;
+    right: 10px;
     color: #d66500;
     background: transparent url("../../assets/imgs/banner_orange.svg");
     background-size: 100% 100%;
   }
 
-  .flag.apple {
+  .banner.apple {
     top: 38%;
+    left: 10px;
     color: #327c00;
     background: transparent url("../../assets/imgs/banner_apple.svg");
     background-size: 100% 100%;
   }
 
-  .flag input {
+  .banner input {
     height: 70%;
     max-height: 100px;
     position: relative;
     top: 10%;
     margin: 0 0 0 0;
-    font-size: 150%;
+    font-size: 140%;
   }
 
   .apple_land {
@@ -76,24 +79,24 @@ page-home {
 
   .flagpole {
     width: 10px;
-    height: 55.4%;
     background: #4b2606;
     position: absolute;
-    right: 5px;
     bottom: 0;
   }
 
   .flagpole.left {
-    left: 5px;
+    left: 10px;
     height: 62%;
   }
 
   .flagpole.right {
-    right: 5px;
+    right: 10px;
+    height: 52%;
   }
 
   .logo {
-    width: 85%;
+    width: 80%;
+    max-width: 400px;
     position: static;
     display: inline-block;
     margin-bottom: 0;
@@ -102,6 +105,8 @@ page-home {
   .info{
     font-size: 25px;
     width: 15%;
+    max-width: 50px;
+    margin-left: 6px;
     position: static;
     display: inline-block;
     float: right;
@@ -120,4 +125,3 @@ page-home {
   }
 
 }
-

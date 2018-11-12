@@ -24,6 +24,7 @@ export class Datamuse {
     }
     // TODO add options to the endpoint URL
 
+
     // remove the first char of suffix so it doesn't have a leading &
     if (suffix.length > 1) {
       suffix = suffix.substr(1);
