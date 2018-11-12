@@ -4,7 +4,6 @@ import {Thing} from "./thing";
 import {VowelComparer} from "./comparers/vowel_comparer";
 import {EasterEggComparer} from "./comparers/easter_egg_comparer";
 import {QuantityComparer} from "./comparers/quantity_comparer";
-import {Wikipedia} from "./wikipedia";
 
 export class Decider {
   constructor() {
@@ -13,8 +12,6 @@ export class Decider {
 
   // Gather info about the Things and choose an appropriate comparison method
   choseComparer(thing1: Thing, thing2: Thing): string {
-
-    let Wikitest= new Wikipedia;
 
 
     let result: string;
