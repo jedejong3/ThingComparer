@@ -16,11 +16,7 @@
 
   <div class="banner orange" *ngIf="!appleWins"><p [innerHTML]="winner"></p></div>
   <div class="banner apple" *ngIf="appleWins"><p [innerHTML]="winner"></p></div>
-  
+
   <h2 [innerHTML]="response"></h2>
   <button (click)="onBackButton()">Petition again!</button>
 </ion-content>
-
-
-
-
