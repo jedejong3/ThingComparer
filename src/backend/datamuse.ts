@@ -50,7 +50,6 @@ export class Datamuse {
     }
 
     // TODO add options to the endpoint URL
-    // vocabulary
     if ((<any>Object).values(Code.VocabCode).includes(params.vocab)) {
       suffix += '&v=' + params.vocab;
     }
@@ -63,12 +62,19 @@ export class Datamuse {
       // remove trailing comma
       suffix = suffix.substr(0, suffix.length-1);
     }
-    // left and right contexts
     if (params.leftContext != null) {
-      suffix != '&lc=' + params.leftContext;
+      suffix += '&lc=' + params.leftContext;
     }
     if(params.rightContext != null) {
       suffix += '&rc=' + params.rightContext;
+    }
+    if (params.maxResults != null && params.maxResults >= 0) {
+      suffix += '&max=' + params.maxResults;
+    }
+    var p = params.includePartsOfSpeech;
+    var f = params.includeFrequency;
+    if (p || f) {
+      suffix += '&md=' + (p ? 'p' : '') + (f ? 'f' : '');
     }
 
     // remove the first char of suffix so it doesn't have a leading &

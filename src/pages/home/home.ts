@@ -72,7 +72,7 @@ export class HomePage {
     var datamuse = new Datamuse();
     datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
     datamuse.requestWithOptions(applewins ? thing1Object.name : thing2Object.name,
-                                null, null,
+                                Code.RelatedCode.AlmostRhymes, 'soon',
                                 Code.VocabCode.EnglishWikipedia,
                                 ['noodle', 'paper'],
                                 'friendly',
