@@ -5,7 +5,7 @@ import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
-import {Datamuse} from "../../backend/datamuse";
+import {Datamuse, Code} from "../../backend/datamuse";
 import {AboutPage} from "../about/about";
 
 
@@ -71,6 +71,15 @@ export class HomePage {
     // TODO these lines are only for testing the datamuse class
     var datamuse = new Datamuse();
     datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
+    datamuse.requestWithOptions(applewins ? thing1Object.name : thing2Object.name,
+                                null, null,
+                                Code.VocabCode.EnglishWikipedia,
+                                ['noodle', 'paper'],
+                                'friendly',
+                                'going',
+                                20,
+                                true,
+                                true);
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
       win:applewins ? this.ThingOne:this.ThingTwo});
