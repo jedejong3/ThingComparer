@@ -1,4 +1,5 @@
 import {getLocaleDateFormat} from "@angular/common";
+import {Datamuse, Code} from "./datamuse";
 
 export class Thing {
 
@@ -6,12 +7,31 @@ export class Thing {
   private _name:string;
   private _count:number;
   private _qualIndex;
+  private _datamuseResponse;
 
   constructor(name:string) {
     this._name = name;
     this._count = 0;
 
     this.setQualIndex();
+
+    // store data from datamuse API
+    // TODO this call doesn't have very reasonable options passed in currently
+    var datamuse = new Datamuse();
+    var context = this;
+    const promise = datamuse.requestWithOptions(
+                                          context.name,
+                                          Code.RelatedCode.AlmostRhymes, 'soon',
+                                          Code.VocabCode.EnglishWikipedia,
+                                          ['noodle', 'paper'], 'friendly', 'going',
+                                          20, true, true);
+    promise.then(function whenOk(response) {
+      console.log('promise returned ok', response);
+      context.datamuseResponse = response;
+      return response;
+    }).catch(function notOk(err) {
+      console.error(err);
+    });
   }
 
   setQualIndex():void{
@@ -47,9 +67,6 @@ export class Thing {
     this._attributes = value;
   }
 
-
-
-
   get name(): string {
     return this._name;
   }
@@ -58,6 +75,13 @@ export class Thing {
   }
   get qualIndex():number{
     return this._qualIndex;
+  }
+
+  get datamuseResponse() {
+    return this._datamuseResponse;
+  }
+  set datamuseResponse(value) {
+    this._datamuseResponse = value;
   }
 
   iterateCount(): void{
