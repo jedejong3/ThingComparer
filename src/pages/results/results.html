@@ -2,10 +2,10 @@
 <ion-content>
 
   <img class="pedestal" src="../../assets/imgs/pedestal.png">
-  <img *ngIf="appleWins" class="fruit" src="../../assets/imgs/apple_happy.png">
-  <img *ngIf="!appleWins" class="fruit" src="../../assets/imgs/orange_happy.png">
+  <img *ngIf="appleWins" class="fruit" src="../../assets/imgs/soloHappyApple.png">
+  <img *ngIf="!appleWins" class="fruit" src="../../assets/imgs/soloHappyOrange.png">
   <img class= "spotlight" src="../../assets/imgs/spotlight.png">
-  <img class = "banana" src="../../assets/imgs/banana.png">
+  <img class = "banana" src="../../assets/imgs/celestialbanana.png">
 
   <div class="flagpole orange" *ngIf="!appleWins"></div>
   <div class="flagpole apple" *ngIf="appleWins"></div>
@@ -16,11 +16,7 @@
 
   <div class="banner orange" *ngIf="!appleWins"><p [innerHTML]="winner"></p></div>
   <div class="banner apple" *ngIf="appleWins"><p [innerHTML]="winner"></p></div>
-  
+
   <h2 [innerHTML]="response"></h2>
   <button (click)="onBackButton()">Petition again!</button>
 </ion-content>
-
-
-
-

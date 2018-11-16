@@ -5,8 +5,10 @@ import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
-import {Datamuse} from "../../backend/datamuse";
+import {Datamuse, Code} from "../../backend/datamuse";
 import {AboutPage} from "../about/about";
+import{SplashScreen} from "@ionic-native/splash-screen";
+import {BackStory} from "../backstory/backstory";
 
 
 @Component({
@@ -26,6 +28,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
     this.decider = new Decider();
     this.manager = new thingManager();
+    this.navCtrl.push(BackStory);
   }
 
   aboutPage() {
@@ -71,6 +74,15 @@ export class HomePage {
     // TODO these lines are only for testing the datamuse class
     var datamuse = new Datamuse();
     datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
+    datamuse.requestWithOptions(applewins ? thing1Object.name : thing2Object.name,
+                                Code.RelatedCode.AlmostRhymes, 'soon',
+                                Code.VocabCode.EnglishWikipedia,
+                                ['noodle', 'paper'],
+                                'friendly',
+                                'going',
+                                20,
+                                true,
+                                true);
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
       win:applewins ? this.ThingOne:this.ThingTwo});

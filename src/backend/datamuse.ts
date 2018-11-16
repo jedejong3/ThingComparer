@@ -10,42 +10,84 @@ export class Datamuse {
     vocab:string, topics:string[], leftContext:string, rightContext:string,
     maxResults:number, includePartsOfSpeech:boolean, includeFrequency:boolean) {
 
-    // build endpoint URL
-    var endpoint = "https://api.datamuse.com/words?";
-    var suffix = '';
-    if (means) {
-      suffix += '&ml=' + means;
+    var params = {
+      means: means,
+      relatedCode: relatedCode,
+      related: related,
+      vocab: vocab,
+      topics: topics,
+      leftContext: leftContext,
+      rightContext: rightContext,
+      maxResults: maxResults,
+      includePartsOfSpeech: includePartsOfSpeech,
+      includeFrequency: includeFrequency
+    };
+
+    var endpoint = "https://api.datamuse.com/words?" + this.createSuffix(params);
+    console.log('endpoint', endpoint);
+
+    var request = new XMLHttpRequest();
+    request.open('GET', endpoint, true);
+    request.onload = function () {
+      var data = JSON.parse(this.response);
+      console.log('parsed data', data);
+      // TODO store this data in the Thing object in thingManager
     }
-    if (relatedCode && related) {
+    request.send();
+  }
+
+  createSuffix(params): string {
+    var suffix = '';
+
+    if (params.means) {
+      suffix += '&ml=' + params.means;
+    }
+    if (params.relatedCode && params.related) {
       // check that relatedCode is a valid code contained in the RelatedCode enum
-      if ((<any>Object).values(Code.RelatedCode).includes(relatedCode)) {
-        suffix += '&rel_' + relatedCode + '=' + related;
+      if ((<any>Object).values(Code.RelatedCode).includes(params.relatedCode)) {
+        suffix += '&rel_' + params.relatedCode + '=' + params.related;
       }
     }
-    // TODO add options to the endpoint URL
 
+    // TODO add options to the endpoint URL
+    if ((<any>Object).values(Code.VocabCode).includes(params.vocab)) {
+      suffix += '&v=' + params.vocab;
+    }
+    // topics - at most 5
+    if (params.topics != null && params.topics.length >= 1 && params.topics.length <= 5) {
+      suffix += '&topics=';
+      params.topics.forEach(function(topic, index, array){
+        suffix += topic + ',';
+      });
+      // remove trailing comma
+      suffix = suffix.substr(0, suffix.length-1);
+    }
+    if (params.leftContext != null) {
+      suffix += '&lc=' + params.leftContext;
+    }
+    if(params.rightContext != null) {
+      suffix += '&rc=' + params.rightContext;
+    }
+    if (params.maxResults != null && params.maxResults >= 0) {
+      suffix += '&max=' + params.maxResults;
+    }
+    var p = params.includePartsOfSpeech;
+    var f = params.includeFrequency;
+    if (p || f) {
+      suffix += '&md=' + (p ? 'p' : '') + (f ? 'f' : '');
+    }
 
     // remove the first char of suffix so it doesn't have a leading &
     if (suffix.length > 1) {
       suffix = suffix.substr(1);
     }
 
-    endpoint += suffix;
-    console.log('endpoint', endpoint);
-
-    var request = new XMLHttpRequest();
-    request.open('GET', endpoint, true);
-    request.onload = function () { // deleted data arg
-      var data = JSON.parse(this.response);
-      console.log('parsed data', data);
-    }
-    request.send();
+    return suffix;
   }
-
 
 }
 
-module Code {
+export module Code {
   export enum RelatedCode {
     NounsModifiedBy = 'jja',
     AdjectivesThatModify = 'jjb',
@@ -62,5 +104,9 @@ module Code {
     AlmostRhymes = 'nry',
     Homophones = 'hom',
     ConsonantMatch = 'cns'
+  }
+  export enum VocabCode {
+    Espanol = 'es',
+    EnglishWikipedia = 'enwiki'
   }
 }
