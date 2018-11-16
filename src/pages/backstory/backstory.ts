@@ -33,15 +33,19 @@ export class BackStory {
       document.getElementById("txt2").style.display = "none";
       document.getElementById("txt3").style.display = "visible";
     }
+    if(this.clickCount==3){
+      this.clickCount=0;
+      this.resetPage();
+    }
 
 
   }
     resetPage()
     {
-      document.getElementById("image1").style.display = "visible";
+      document.getElementById("txt3").style.display = "none";
       document.getElementById("image2").style.display = "visible";
+      document.getElementById("image1").style.display = "visible";
       document.getElementById("txt1").style.display = "visible";
-      document.getElementById("txt2").style.display = "visible";
       this.clickCount=0;
 
     }
