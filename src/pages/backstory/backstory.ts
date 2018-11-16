@@ -16,13 +16,15 @@ export class BackStory {
 
    hide1() {
     var x = document.getElementById("image1");
-    console.log(x.title);
-      x.style.display = "none";
+    var y =document.getElementById("txt1");
+    y.style.display ="none";
+    x.style.display = "none";
 
   }
   hide2() {
     var x = document.getElementById("image2");
-    console.log(x.title);
+    var y =document.getElementById("txt2");
+    y.style.display ="none";
     x.style.display = "none";
 
   }
