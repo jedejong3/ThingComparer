@@ -7,6 +7,8 @@ import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
 import {Datamuse, Code} from "../../backend/datamuse";
 import {AboutPage} from "../about/about";
+import{SplashScreen} from "@ionic-native/splash-screen";
+import {BackStory} from "../backstory/backstory";
 
 
 @Component({
@@ -26,6 +28,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
     this.decider = new Decider();
     this.manager = new thingManager();
+    this.navCtrl.push(BackStory);
   }
 
   aboutPage() {
