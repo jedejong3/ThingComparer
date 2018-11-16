@@ -5,7 +5,7 @@ import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
-import {Datamuse, Code} from "../../backend/datamuse";
+import {Code, Datamuse} from "../../backend/datamuse";
 import {AboutPage} from "../about/about";
 
 
@@ -31,6 +31,7 @@ export class HomePage {
   aboutPage() {
     this.navCtrl.push(AboutPage);
   }
+
   compareClick() {
     let response: String;
 
@@ -47,17 +48,17 @@ export class HomePage {
     this.ThingTwo = Utilities.sanitize(this.ThingTwo);
 
     // add objects to list of previous objects, or update count if exists
-    let thing1Object=this.manager.inThings(this.ThingOne);
+    let thing1Object = this.manager.inThings(this.ThingOne);
 
-    if(thing1Object===null){
+    if (thing1Object === null) {
       thing1Object = new Thing(this.ThingOne);
       this.manager.add(thing1Object);
     }
     thing1Object.iterateCount();
 
-    let thing2Object=this.manager.inThings(this.ThingTwo);
+    let thing2Object = this.manager.inThings(this.ThingTwo);
 
-    if(thing2Object===null){
+    if (thing2Object === null) {
       thing2Object = new Thing(this.ThingTwo);
       this.manager.add(thing2Object);
     }
@@ -65,28 +66,37 @@ export class HomePage {
     this.manager.printall();
 
     // create and give response
-    response = this.decider.choseComparer(thing1Object,thing2Object);
-    var applewins=thing1Object.qualIndex>thing2Object.qualIndex;
+    response = this.decider.choseComparer(thing1Object, thing2Object);
+    var applewins = thing1Object.qualIndex > thing2Object.qualIndex;
 
     // TODO these lines are only for testing the datamuse class
     var datamuse = new Datamuse();
     datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
     datamuse.requestWithOptions(applewins ? thing1Object.name : thing2Object.name,
-                                Code.RelatedCode.AlmostRhymes, 'soon',
-                                Code.VocabCode.EnglishWikipedia,
-                                ['noodle', 'paper'],
-                                'friendly',
-                                'going',
-                                20,
-                                true,
-                                true);
+      Code.RelatedCode.AlmostRhymes, 'soon',
+      Code.VocabCode.EnglishWikipedia,
+      ['noodle', 'paper'],
+      'friendly',
+      'going',
+      20,
+      true,
+      true);
 
-    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
-      win:applewins ? this.ThingOne:this.ThingTwo});
-    this.ThingOne="";
-    this.ThingTwo="";
+    this.navCtrl.push(ResultsComponent, {
+      respond: response, aw: applewins,
+      win: applewins ? this.ThingOne : this.ThingTwo
+    });
+    this.ThingOne = "";
+    this.ThingTwo = "";
   }
 
-
+  buttonDisabled(): boolean {
+    if (typeof this.ThingOne == "undefined" || typeof this.ThingTwo == "undefined") {
+      return true;
+    } else if (this.ThingTwo.length == 0 || this.ThingOne.length == 0) {
+      return true;
+    }
+    return false;
+  }
 
 }
