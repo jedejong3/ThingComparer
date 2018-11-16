@@ -1,7 +1,7 @@
 backstory{
-  //.backstory{
-  //  background: url("../../assets/imgs/bs-happyfruit.png");
-  //}
+  .backstory{
+    background: white;
+  }
   .scroll-content {
     display: flex;
     justify-content: center;
@@ -20,12 +20,18 @@ backstory{
   }
   h1{
     position: absolute;
-    top: 24%;
+    top: 1%;
     left: 0;
     right: 0;
     margin: 0 auto;
     color:black;
+    font-size: 18px;
+    max-width: 40%;
 
+
+  }
+  .scroll-bar-indicator {
+    display: none;
   }
   img {
     display: block;
@@ -53,6 +59,7 @@ backstory{
       50% {top: 46%}
       100% {top: 44%}
     }
+
 
   }
 
