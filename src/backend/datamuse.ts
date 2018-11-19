@@ -35,7 +35,6 @@ export class Datamuse {
         request.open('GET', endpoint, true);
         request.onload = function () {
           var data = JSON.parse(this.response);
-          console.log('parsed data', data);
           resolve(data);
         }
         request.send();

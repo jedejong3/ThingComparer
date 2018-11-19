@@ -11,13 +11,13 @@ export class Decider {
   }
 
   // Gather info about the Things and choose an appropriate comparison method
-  choseComparer(thing1: Thing, thing2: Thing): string {
+  async choseComparer(thing1: Thing, thing2: Thing): string {
 
 
     let result: string;
 
     let quantity = new QuantityComparer();
-    result = quantity.compare (thing1, thing2);
+    result = await quantity.compare (thing1, thing2);
     if(result != null){
       return result;
     }

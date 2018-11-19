@@ -14,8 +14,10 @@ import {AboutPage} from "../about/about";
 })
 export class HomePage {
 
+  public ThingOneName;
   public ThingOne;
 
+  public ThingTwoName;
   public ThingTwo;
 
   private decider;
@@ -30,49 +32,62 @@ export class HomePage {
   aboutPage() {
     this.navCtrl.push(AboutPage);
   }
-  compareClick() {
-    let response: String;
+  async compareClick() {
 
     // If the inputs are empty or undefined, fill them
-    if (this.ThingOne == null || typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
+    if (this.ThingOneName == null || typeof this.ThingOneName == "undefined" || /^\s*$/.test(this.ThingOneName)) {
       this.ThingOne = "an empty void";
     }
-    if (this.ThingTwo == null || typeof this.ThingTwo == "undefined" || /^\s*$/.test(this.ThingTwo)) {
-      this.ThingTwo = "absolutely nothing";
+    if (this.ThingTwoName == null || typeof this.ThingTwoName == "undefined" || /^\s*$/.test(this.ThingTwoName)) {
+      this.ThingTwoName = "absolutely nothing";
     }
 
     // sanitize
-    this.ThingOne = Utilities.sanitize(this.ThingOne);
-    this.ThingTwo = Utilities.sanitize(this.ThingTwo);
+    this.ThingOneName = Utilities.sanitize(this.ThingOneName);
+    this.ThingTwoName = Utilities.sanitize(this.ThingTwoName);
 
     // add objects to list of previous objects, or update count if exists
-    let thing1Object=this.manager.inThings(this.ThingOne);
+    this.ThingOne = this.manager.inThings(this.ThingOneName);
+    this.ThingTwo = this.manager.inThings(this.ThingTwoName);
 
-    if(thing1Object===null){
-      thing1Object = new Thing(this.ThingOne);
-      this.manager.add(thing1Object);
-    }
-    thing1Object.iterateCount();
+    // manageThings() handles creating the Thing objects if needed,
+    // which is asynchronous because it involves calling datamuse API.
+    var context = this;
+    this.manageThings(this).then( function() {
+      // create and give response
+      let response = context.decider.choseComparer(context.ThingOne, context.ThingTwo);
+      var applewins = context.ThingOne.qualIndex>context.ThingTwo.qualIndex;
+      var winner = applewins ? context.ThingOne : context.ThingTwo;
+      console.log('winner', winner);
 
-    let thing2Object=this.manager.inThings(this.ThingTwo);
+      // TODO change this, it's kind of a hack to test the datamuse api
+      if (winner.datamuseResponse.length > 0) {
+        response = 'I like ' + winner.datamuseResponse[0].word + response;
+      }
 
-    if(thing2Object===null){
-      thing2Object = new Thing(this.ThingTwo);
-      this.manager.add(thing2Object);
-    }
-    thing2Object.iterateCount();
-    this.manager.printall();
+      context.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
+        win:applewins ? context.ThingOne : context.ThingTwo});
+      context.ThingOne="";
+      context.ThingTwo="";
+    }).catch( function(err) {
+      console.error(err);
+    });
 
-    // create and give response
-    response = this.decider.choseComparer(thing1Object,thing2Object);
-    var applewins=thing1Object.qualIndex>thing2Object.qualIndex;
 
-    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
-      win:applewins ? this.ThingOne:this.ThingTwo});
-    this.ThingOne="";
-    this.ThingTwo="";
   }
 
+  async manageThings(context) {
+    if(context.ThingOne === null){
+      context.ThingOne = await new Thing(context.ThingOneName);
+      context.manager.add(context.ThingOne);
+    }
+    context.ThingOne.iterateCount();
 
+    if(context.ThingTwo === null){
+      context.ThingTwo = await new Thing(context.ThingTwoName);
+      context.manager.add(context.ThingTwo);
+    }
+    context.ThingTwo.iterateCount();
+  }
 
 }

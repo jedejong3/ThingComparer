@@ -5,6 +5,7 @@ export abstract class AbstractComparer {
   private _winner: string;
   private _loser: string;
 
+  // TODO should all return Promises
   compare(one: Thing, two: Thing): string {
     return "You should never see this";
   }
