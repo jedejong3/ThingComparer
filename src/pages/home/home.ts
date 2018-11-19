@@ -5,7 +5,10 @@ import {Thing} from "../../backend/thing";
 import {Decider} from "../../backend/decider";
 import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
+import {Code, Datamuse} from "../../backend/datamuse";
 import {AboutPage} from "../about/about";
+import{SplashScreen} from "@ionic-native/splash-screen";
+import {BackStory} from "../backstory/backstory";
 
 
 @Component({
@@ -27,20 +30,16 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
     this.decider = new Decider();
     this.manager = new thingManager();
+    this.navCtrl.push(BackStory);
   }
 
   aboutPage() {
     this.navCtrl.push(AboutPage);
   }
+
   async compareClick() {
 
-    // If the inputs are empty or undefined, fill them
-    if (this.ThingOneName == null || typeof this.ThingOneName == "undefined" || /^\s*$/.test(this.ThingOneName)) {
-      this.ThingOne = "an empty void";
-    }
-    if (this.ThingTwoName == null || typeof this.ThingTwoName == "undefined" || /^\s*$/.test(this.ThingTwoName)) {
-      this.ThingTwoName = "absolutely nothing";
-    }
+    let response: string;
 
     // sanitize
     this.ThingOneName = Utilities.sanitize(this.ThingOneName);
@@ -55,7 +54,7 @@ export class HomePage {
     var context = this;
     this.manageThings(this).then( function() {
       // create and give response
-      let response = context.decider.choseComparer(context.ThingOne, context.ThingTwo);
+      let response = context.decider.chooseComparer(context.ThingOne, context.ThingTwo);
       var applewins = context.ThingOne.qualIndex>context.ThingTwo.qualIndex;
       var winner = applewins ? context.ThingOne : context.ThingTwo;
       console.log('winner', winner);
@@ -88,6 +87,15 @@ export class HomePage {
       context.manager.add(context.ThingTwo);
     }
     context.ThingTwo.iterateCount();
+  }
+
+  buttonDisabled(): boolean {
+    if (typeof this.ThingOneName == "undefined" || typeof this.ThingTwoName == "undefined") {
+      return true;
+    } else if (this.ThingTwoName.length == 0 || this.ThingOneName.length == 0) {
+      return true;
+    }
+    return false;
   }
 
 }

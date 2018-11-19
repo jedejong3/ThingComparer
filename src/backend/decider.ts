@@ -11,33 +11,25 @@ export class Decider {
   }
 
   // Gather info about the Things and choose an appropriate comparison method
-  async choseComparer(thing1: Thing, thing2: Thing): string {
+  async chooseComparer(thing1: Thing, thing2: Thing) {
 
+    return new Promise(async function(resolve, reject) {
+      let result: string;
 
-    let result: string;
+      let quantity = new QuantityComparer();
+      result = await quantity.compare(thing1, thing2);
+      if(result != null){
+        resolve(result);
+      }
+      let easterEgg = new EasterEggComparer();
+      result = easterEgg.compare (thing1, thing2);
+      if (result != null) {
+        resolve(result);
+      }
 
-    let quantity = new QuantityComparer();
-    result = await quantity.compare (thing1, thing2);
-    if(result != null){
-      return result;
-    }
-    let easterEgg = new EasterEggComparer();
-    result = easterEgg.compare (thing1, thing2);
-    if (result != null) {
-      return result;
-    }
-
-
-    //
-    // let vowelComparer = new VowelComparer();
-    // result = vowelComparer.compare(thing1, thing2);
-    // if (result != null) {
-    //   return result;
-    // }
-
-    let randomComparer = new RandomComparer();
-    return randomComparer.compare(thing1, thing2).toString();
-
+      let randomComparer = new RandomComparer();
+      resolve(randomComparer.compare(thing1, thing2).toString());
+    });
   }
 
 }
