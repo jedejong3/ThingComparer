@@ -29,7 +29,6 @@ export class Datamuse {
         };
 
         var endpoint = "https://api.datamuse.com/words?" + context.createSuffix(params);
-        console.log('endpoint', endpoint);
 
         var request = new XMLHttpRequest();
         request.open('GET', endpoint, true);

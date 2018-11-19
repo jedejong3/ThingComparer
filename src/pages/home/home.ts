@@ -72,7 +72,7 @@ export class HomePage {
 
     // TODO change this, it's kind of a hack to test the datamuse api
     if (winner.datamuseResponse.length > 0) {
-      response = 'I like ' + winner.datamuseResponse[0].word + response;
+      response = 'I like ' + winner.datamuseResponse[0].word + '. ' + response;
     }
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
