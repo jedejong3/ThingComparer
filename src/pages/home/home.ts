@@ -65,7 +65,9 @@ export class HomePage {
       }
 
       context.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
-        win:applewins ? context.ThingOne : context.ThingTwo});
+        win:applewins ? context.ThingOne : context.ThingTwo,
+        loss: applewins ? context.ThingTwo : context.ThingOne
+      });
       context.ThingOne="";
       context.ThingTwo="";
     }).catch( function(err) {
