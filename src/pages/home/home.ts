@@ -26,6 +26,8 @@ export class HomePage {
   private decider;
   private manager;
 
+  private alreadyClicked = false;
+
 
   constructor(public navCtrl: NavController) {
     this.decider = new Decider();
@@ -39,7 +41,8 @@ export class HomePage {
 
   async compareClick() {
 
-    // TODO might need to disable button and then reenable at end
+    // disable button while processing current click so user can't double compareClick
+    this.alreadyClicked = true;
 
     // sanitize
     this.ThingOneName = Utilities.sanitize(this.ThingOneName);
@@ -80,13 +83,16 @@ export class HomePage {
       loss: applewins ? this.ThingTwo : this.ThingOne
     });
 
-    // reset Thing text
+    // reset Thing text and reenable button
     this.ThingOneName = "";
     this.ThingTwoName = "";
+    this.alreadyClicked = false;
   }
 
   buttonDisabled(): boolean {
-    if (typeof this.ThingOneName == "undefined" || typeof this.ThingTwoName == "undefined") {
+    if (typeof this.ThingOneName == "undefined"
+        || typeof this.ThingTwoName == "undefined"
+        || this.alreadyClicked) {
       return true;
     } else if (this.ThingTwoName.length == 0 || this.ThingOneName.length == 0) {
       return true;
