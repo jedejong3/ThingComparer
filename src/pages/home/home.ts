@@ -39,7 +39,7 @@ export class HomePage {
 
   async compareClick() {
 
-    let response: string;
+    // TODO might need to disable button and then reenable at end
 
     // sanitize
     this.ThingOneName = Utilities.sanitize(this.ThingOneName);
@@ -49,46 +49,40 @@ export class HomePage {
     this.ThingOne = this.manager.inThings(this.ThingOneName);
     this.ThingTwo = this.manager.inThings(this.ThingTwoName);
 
-    // manageThings() handles creating the Thing objects if needed,
-    // which is asynchronous because it involves calling datamuse API.
-    var context = this;
-    this.manageThings(this).then( function() {
-      // create and give response
-      let response = context.decider.chooseComparer(context.ThingOne, context.ThingTwo);
-      var applewins = context.ThingOne.qualIndex>context.ThingTwo.qualIndex;
-      var winner = applewins ? context.ThingOne : context.ThingTwo;
-      console.log('winner', winner);
+    var datamuse = new Datamuse();
+    if(this.ThingOne === null){
+      this.ThingOne = new Thing(this.ThingOneName);
+      this.ThingOne.datamuseResponse = await datamuse.request(this.ThingOne.name, null, null);
+      this.manager.add(this.ThingOne);
+    }
+    this.ThingOne.iterateCount();
 
-      // TODO change this, it's kind of a hack to test the datamuse api
-      if (winner.datamuseResponse.length > 0) {
-        response = 'I like ' + winner.datamuseResponse[0].word + response;
-      }
+    if(this.ThingTwo === null){
+      this.ThingTwo = new Thing(this.ThingTwoName);
+      this.ThingTwo.datamuseResponse = await datamuse.request(this.ThingTwo.name, null, null);
+      this.manager.add(this.ThingTwo);
+    }
+    this.ThingTwo.iterateCount();
 
-      context.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
-        win:applewins ? context.ThingOne : context.ThingTwo,
-        loss: applewins ? context.ThingTwo : context.ThingOne
-      });
-      context.ThingOne="";
-      context.ThingTwo="";
-    }).catch( function(err) {
-      console.error(err);
+    // create and give response
+    let response = this.decider.chooseComparer(this.ThingOne, this.ThingTwo);
+    var applewins = this.ThingOne.qualIndex>this.ThingTwo.qualIndex;
+    var winner = applewins ? this.ThingOne : this.ThingTwo;
+    console.log('winner', winner);
+
+    // TODO change this, it's kind of a hack to test the datamuse api
+    if (winner.datamuseResponse.length > 0) {
+      response = 'I like ' + winner.datamuseResponse[0].word + response;
+    }
+
+    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
+      win:applewins ? this.ThingOne : this.ThingTwo,
+      loss: applewins ? this.ThingTwo : this.ThingOne
     });
 
-
-  }
-
-  async manageThings(context) {
-    if(context.ThingOne === null){
-      context.ThingOne = await new Thing(context.ThingOneName);
-      context.manager.add(context.ThingOne);
-    }
-    context.ThingOne.iterateCount();
-
-    if(context.ThingTwo === null){
-      context.ThingTwo = await new Thing(context.ThingTwoName);
-      context.manager.add(context.ThingTwo);
-    }
-    context.ThingTwo.iterateCount();
+    // reset Thing text
+    this.ThingOneName = "";
+    this.ThingTwoName = "";
   }
 
   buttonDisabled(): boolean {

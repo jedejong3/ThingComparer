@@ -1,5 +1,4 @@
 import {getLocaleDateFormat} from "@angular/common";
-import {Datamuse, Code} from "./datamuse";
 
 export class Thing {
 
@@ -14,20 +13,6 @@ export class Thing {
     this._count = 0;
 
     this.setQualIndex();
-
-    // store data from datamuse API
-    var datamuse = new Datamuse();
-    var context = this;
-    async function callDatamuse() {
-      const response = await datamuse.request(context.name, null, null);
-      context.datamuseResponse = response;
-      console.log(('datamuseResponse for ' + context.name), context.datamuseResponse);
-    }
-
-    callDatamuse().catch(function notOk(err) {
-      console.error(err);
-    });
-
   }
 
   setQualIndex():void{
