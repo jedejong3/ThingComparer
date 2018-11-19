@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController} from "ionic-angular";
+import {BackStory} from "../backstory/backstory";
 
 @Component({
   selector: 'page-about',
@@ -12,5 +13,11 @@ export class AboutPage {
   }
   backButton() {
     this.navCtrl.pop();
+  }
+
+  BS() {
+    this.navCtrl.pop();
+    this.navCtrl.push(BackStory);
+
   }
 }

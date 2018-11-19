@@ -20,18 +20,19 @@ export class BackStory {
   click(){
     this.clickCount++;
     if(this.clickCount==1) {
-      document.getElementById("image1").style.display = "none";
-      document.getElementById("image2").style.display = "visible";
-      document.getElementById("txt1").style.display = "none";
-      document.getElementById("txt2").style.display = "visible";
-      document.getElementById("txt3").style.display = "none";
+      document.getElementById("image1").style.visibility = "hidden";
+      document.getElementById("image2").style.visibility = "visible";
+      document.getElementById("txt1").style.visibility = "hidden";
+      document.getElementById("txt2").style.visibility = "visible";
+      document.getElementById("txt3").style.visibility = "hidden";
     }
     if(this.clickCount==2) {
-      document.getElementById("image1").style.display = "none";
-      document.getElementById("image2").style.display = "none";
-      document.getElementById("txt1").style.display = "none";
-      document.getElementById("txt2").style.display = "none";
-      document.getElementById("txt3").style.display = "visible";
+      document.getElementById("image1").style.visibility = "hidden";
+      document.getElementById("image2").style.visibility = "hidden";
+      document.getElementById("txt1").style.visibility = "hidden";
+      document.getElementById("txt2").style.visibility = "hidden";
+      document.getElementById("txt3").style.visibility = "visible";
+      document.getElementById("next").style.visibility = "hidden";
     }
     if(this.clickCount==3){
       this.clickCount=0;
@@ -42,10 +43,13 @@ export class BackStory {
   }
     resetPage()
     {
-      document.getElementById("txt3").style.display = "none";
-      document.getElementById("image2").style.display = "visible";
-      document.getElementById("image1").style.display = "visible";
-      document.getElementById("txt1").style.display = "visible";
+      console.log("i have reset the page");
+      document.getElementById("txt3").style.visibility = "hidden";
+      document.getElementById("image2").style.visibility = "hidden";
+      document.getElementById("image1").style.visibility = "visible";
+      document.getElementById("txt1").style.visibility = "visible";
+      document.getElementById("next").style.visibility = "visible";
+
       this.clickCount=0;
 
     }
