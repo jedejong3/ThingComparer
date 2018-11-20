@@ -46,23 +46,25 @@ backstory{
   }
   .next{
     width:20%;
-    bottom: 25%;
+    bottom: 16%;
     right: 0;
+    left: auto;
   }
     .banana {
       position: absolute;
-      bottom: 14%;
+      bottom: 30%;
       left: 0;
       right: 0;
       margin: 0 auto;
+      top:auto;
       height: 18%;
-      animation: banana 5s infinite;
+      //animation: banana 5s infinite;
     }
 
     @keyframes banana {
-      0% {top: 14%}
-      50% {top: 16%}
-      100% {top: 14%}
+      0% {bottom: 14%;top:auto;}
+      50% {bottom: 16%;top:auto;}
+      100% {bottom: 14%;top:auto;}
     }
 
 
