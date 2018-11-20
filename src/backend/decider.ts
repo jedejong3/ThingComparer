@@ -11,13 +11,11 @@ export class Decider {
   }
 
   // Gather info about the Things and choose an appropriate comparison method
-  choseComparer(thing1: Thing, thing2: Thing): string {
-
-
+  chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
 
     let quantity = new QuantityComparer();
-    result = quantity.compare (thing1, thing2);
+    result = quantity.compare(thing1, thing2);
     if(result != null){
       return result;
     }
@@ -27,17 +25,8 @@ export class Decider {
       return result;
     }
 
-
-    //
-    // let vowelComparer = new VowelComparer();
-    // result = vowelComparer.compare(thing1, thing2);
-    // if (result != null) {
-    //   return result;
-    // }
-
     let randomComparer = new RandomComparer();
     return randomComparer.compare(thing1, thing2).toString();
-
   }
 
 }

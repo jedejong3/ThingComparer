@@ -1,8 +1,10 @@
+import {Thing} from "./thing";
+
 export class Datamuse {
 
   // allows client to make a request without optional arguments
   request(means:string, relatedCode:string, related:string) {
-    this.requestWithOptions(means, relatedCode, related, null, null, null, null, 15, false, false);
+    return this.requestWithOptions(means, relatedCode, related, null, null, null, null, 15, false, false);
   }
 
   // request method with optional arguments
@@ -10,30 +12,34 @@ export class Datamuse {
     vocab:string, topics:string[], leftContext:string, rightContext:string,
     maxResults:number, includePartsOfSpeech:boolean, includeFrequency:boolean) {
 
-    var params = {
-      means: means,
-      relatedCode: relatedCode,
-      related: related,
-      vocab: vocab,
-      topics: topics,
-      leftContext: leftContext,
-      rightContext: rightContext,
-      maxResults: maxResults,
-      includePartsOfSpeech: includePartsOfSpeech,
-      includeFrequency: includeFrequency
-    };
+      var context = this;
 
-    var endpoint = "https://api.datamuse.com/words?" + this.createSuffix(params);
-    console.log('endpoint', endpoint);
+      return new Promise(function(resolve, reject) {
+        var params = {
+          means: means,
+          relatedCode: relatedCode,
+          related: related,
+          vocab: vocab,
+          topics: topics,
+          leftContext: leftContext,
+          rightContext: rightContext,
+          maxResults: maxResults,
+          includePartsOfSpeech: includePartsOfSpeech,
+          includeFrequency: includeFrequency
+        };
 
-    var request = new XMLHttpRequest();
-    request.open('GET', endpoint, true);
-    request.onload = function () {
-      var data = JSON.parse(this.response);
-      console.log('parsed data', data);
-      // TODO store this data in the Thing object in thingManager
-    }
-    request.send();
+        var endpoint = "https://api.datamuse.com/words?" + context.createSuffix(params);
+
+        var request = new XMLHttpRequest();
+        request.open('GET', endpoint, true);
+        request.onload = function () {
+          var data = JSON.parse(this.response);
+          resolve(data);
+        }
+        request.send();
+      });
+
+
   }
 
   createSuffix(params): string {

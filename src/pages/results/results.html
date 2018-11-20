@@ -16,8 +16,8 @@
   <img *ngIf="!appleWins" id="orange_grass" class="grass" src="../../assets/imgs/grass_orange.png">
 
 
-  <div class="banner orange" *ngIf="!appleWins"><p [innerHTML]="winner"></p></div>
-  <div class="banner apple" *ngIf="appleWins"><p [innerHTML]="winner"></p></div>
+  <div class="banner orange" *ngIf="!appleWins"><p [innerHTML]="winner.name"></p></div>
+  <div class="banner apple" *ngIf="appleWins"><p [innerHTML]="winner.name"></p></div>
 
   <h2 [innerHTML]="response"></h2>
   <button (click)="onBackButton()">Petition again!</button>

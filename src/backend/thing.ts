@@ -6,6 +6,7 @@ export class Thing {
   private _name:string;
   private _count:number;
   private _qualIndex;
+  private _datamuseResponse;
 
   constructor(name:string) {
     this._name = name;
@@ -47,9 +48,6 @@ export class Thing {
     this._attributes = value;
   }
 
-
-
-
   get name(): string {
     return this._name;
   }
@@ -58,6 +56,13 @@ export class Thing {
   }
   get qualIndex():number{
     return this._qualIndex;
+  }
+
+  get datamuseResponse() {
+    return this._datamuseResponse;
+  }
+  set datamuseResponse(value) {
+    this._datamuseResponse = value;
   }
 
   iterateCount(): void{

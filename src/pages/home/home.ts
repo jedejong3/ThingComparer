@@ -17,12 +17,16 @@ import {BackStory} from "../backstory/backstory";
 })
 export class HomePage {
 
+  public ThingOneName;
   public ThingOne;
 
+  public ThingTwoName;
   public ThingTwo;
 
   private decider;
   private manager;
+
+  private alreadyClicked = false;
 
 
   constructor(public navCtrl: NavController) {
@@ -35,68 +39,62 @@ export class HomePage {
     this.navCtrl.push(AboutPage);
   }
 
-  compareClick() {
-    let response: String;
+  async compareClick() {
 
-    // If the inputs are empty or undefined, fill them
-    if (this.ThingOne == null || typeof this.ThingOne == "undefined" || /^\s*$/.test(this.ThingOne)) {
-      this.ThingOne = "an empty void";
-    }
-    if (this.ThingTwo == null || typeof this.ThingTwo == "undefined" || /^\s*$/.test(this.ThingTwo)) {
-      this.ThingTwo = "absolutely nothing";
-    }
+    // disable button while processing current click so user can't double compareClick
+    this.alreadyClicked = true;
 
     // sanitize
-    this.ThingOne = Utilities.sanitize(this.ThingOne);
-    this.ThingTwo = Utilities.sanitize(this.ThingTwo);
+    this.ThingOneName = Utilities.sanitize(this.ThingOneName);
+    this.ThingTwoName = Utilities.sanitize(this.ThingTwoName);
 
     // add objects to list of previous objects, or update count if exists
-    let thing1Object = this.manager.inThings(this.ThingOne);
+    this.ThingOne = this.manager.inThings(this.ThingOneName);
+    this.ThingTwo = this.manager.inThings(this.ThingTwoName);
 
-    if (thing1Object === null) {
-      thing1Object = new Thing(this.ThingOne);
-      this.manager.add(thing1Object);
+    var datamuse = new Datamuse();
+    if(this.ThingOne === null){
+      this.ThingOne = new Thing(this.ThingOneName);
+      this.ThingOne.datamuseResponse = await datamuse.request(this.ThingOne.name, null, null);
+      this.manager.add(this.ThingOne);
     }
-    thing1Object.iterateCount();
+    this.ThingOne.iterateCount();
 
-    let thing2Object = this.manager.inThings(this.ThingTwo);
-
-    if (thing2Object === null) {
-      thing2Object = new Thing(this.ThingTwo);
-      this.manager.add(thing2Object);
+    if(this.ThingTwo === null){
+      this.ThingTwo = new Thing(this.ThingTwoName);
+      this.ThingTwo.datamuseResponse = await datamuse.request(this.ThingTwo.name, null, null);
+      this.manager.add(this.ThingTwo);
     }
-    thing2Object.iterateCount();
-    this.manager.printall();
+    this.ThingTwo.iterateCount();
 
     // create and give response
-    response = this.decider.choseComparer(thing1Object, thing2Object);
-    var applewins = thing1Object.qualIndex > thing2Object.qualIndex;
+    let response = this.decider.chooseComparer(this.ThingOne, this.ThingTwo);
+    var applewins = this.ThingOne.qualIndex>this.ThingTwo.qualIndex;
+    var winner = applewins ? this.ThingOne : this.ThingTwo;
+    console.log('winner', winner);
 
-    // TODO these lines are only for testing the datamuse class
-    var datamuse = new Datamuse();
-    datamuse.request(applewins ? thing1Object.name : thing2Object.name, null, null);
-    datamuse.requestWithOptions(applewins ? thing1Object.name : thing2Object.name,
-      Code.RelatedCode.AlmostRhymes, 'soon',
-      Code.VocabCode.EnglishWikipedia,
-      ['noodle', 'paper'],
-      'friendly',
-      'going',
-      20,
-      true,
-      true);
+    // TODO change this, it's kind of a hack to test the datamuse api
+    if (winner.datamuseResponse.length > 0) {
+      response = 'I like ' + winner.datamuseResponse[0].word + '. ' + response;
+    }
 
-    this.navCtrl.push(ResultsComponent, {
-      respond: response, aw: applewins,
-      win: applewins ? this.ThingOne : this.ThingTwo
+    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
+      win:applewins ? this.ThingOne : this.ThingTwo,
+      loss: applewins ? this.ThingTwo : this.ThingOne
     });
-    this.ThingOne = "";
-    this.ThingTwo = "";
+
+    // reset Thing text and reenable button
+    this.ThingOneName = "";
+    this.ThingTwoName = "";
+    this.alreadyClicked = false;
   }
 
   buttonDisabled(): boolean {
-    if (typeof this.ThingOne == "undefined" || typeof this.ThingTwo == "undefined") {
+    if (typeof this.ThingOneName == "undefined"
+        || typeof this.ThingTwoName == "undefined"
+        || this.alreadyClicked) {
       return true;
-    } else if (this.ThingTwo.length == 0 || this.ThingOne.length == 0) {
+    } else if (this.ThingTwoName.length == 0 || this.ThingOneName.length == 0) {
       return true;
     }
     return false;
