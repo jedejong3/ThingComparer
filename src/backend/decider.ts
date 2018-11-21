@@ -4,6 +4,7 @@ import {Thing} from "./thing";
 import {VowelComparer} from "./comparers/vowel_comparer";
 import {EasterEggComparer} from "./comparers/easter_egg_comparer";
 import {QuantityComparer} from "./comparers/quantity_comparer";
+import {SimilarMeaningComparer} from "./comparers/similar_meaning_comparer";
 
 export class Decider {
   constructor() {
@@ -14,6 +15,11 @@ export class Decider {
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
 
+    let similarMeaning = new SimilarMeaningComparer();
+    result=similarMeaning.compare(thing1,thing2);
+    if (result !=null){
+      return result;
+    }
     let quantity = new QuantityComparer();
     result = quantity.compare(thing1, thing2);
     if(result != null){
