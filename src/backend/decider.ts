@@ -20,6 +20,7 @@ export class Decider {
     if (result !=null){
       return result;
     }
+
     let quantity = new QuantityComparer();
     result = quantity.compare(thing1, thing2);
     if(result != null){

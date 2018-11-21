@@ -9,7 +9,7 @@ export class SimilarMeaningComparer extends AbstractComparer {
   }
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
-    var data;
+    let data;
     if(ThingOne.qualIndex>ThingTwo.qualIndex) {
       data = ThingOne.datamuseResponse;
 
@@ -17,15 +17,23 @@ export class SimilarMeaningComparer extends AbstractComparer {
       {
         data = ThingTwo.datamuseResponse;
       }
-      var response: string;
+      var response="";
 
-      data.forEach(function(Object){
-        if(Object.word!=undefined) {
-          response += Object.word + "...";
-        }
+    for(var i =0; i<15; i++){
+      if(data[i].word != null){
+        response+=data[i].word+" ... "
 
-    });
-      response+="all of these things just bring me joy";
+      }
+    }
+    //   data.forEach(function(Object){
+    //     if(Object.word.toString().prefix!='undefined') {
+    //       response += Object.word + "...";
+    //     }
+    //
+    // });
+    console.log(data[0].word);
+    console.log(response);
+      response+="the ideas of these things makes me happy!";
     return(response);
   }
 }
