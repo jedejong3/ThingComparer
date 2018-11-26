@@ -6,7 +6,8 @@ export class Thing {
   private _name:string;
   private _count:number;
   private _qualIndex;
-  private _datamuseResponse;
+  private _datamuseRelated;
+  private _datemuseModified;
 
   constructor(name:string) {
     this._name = name;
@@ -58,11 +59,17 @@ export class Thing {
     return this._qualIndex;
   }
 
-  get datamuseResponse() {
-    return this._datamuseResponse;
+  get datamuseRelated() {
+    return this._datamuseRelated;
   }
-  set datamuseResponse(value) {
-    this._datamuseResponse = value;
+  set datamuseRelated(value) {
+    this._datamuseRelated = value;
+  }
+  get datamuseModified(){
+    return this._datemuseModified
+  }
+  set datamuseModified(value){
+    this._datemuseModified=value;
   }
 
   iterateCount(): void{

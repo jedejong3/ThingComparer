@@ -55,14 +55,18 @@ export class HomePage {
     var datamuse = new Datamuse();
     if(this.ThingOne === null){
       this.ThingOne = new Thing(this.ThingOneName);
-      this.ThingOne.datamuseResponse = await datamuse.request(this.ThingOne.name, null, null);
+      this.ThingOne.datamuseRelated = await datamuse.request(this.ThingOne.name, null, null);
+      this.ThingOne.datamuseModified =await datamuse.requestWithOptions(null, null, null,
+        null, null, this.ThingOne.name,null,null,true,null);
       this.manager.add(this.ThingOne);
     }
     this.ThingOne.iterateCount();
 
     if(this.ThingTwo === null){
       this.ThingTwo = new Thing(this.ThingTwoName);
-      this.ThingTwo.datamuseResponse = await datamuse.request(this.ThingTwo.name, null, null);
+      this.ThingTwo.datamuseRelated = await datamuse.request(this.ThingTwo.name, null, null);
+      this.ThingTwo.datamuseModified =await datamuse.requestWithOptions(null, null, null,
+        null, null, this.ThingTwo.name,null,null,true,null);
       this.manager.add(this.ThingTwo);
     }
     this.ThingTwo.iterateCount();
@@ -74,8 +78,14 @@ export class HomePage {
     console.log('winner', winner);
 
     // TODO change this, it's kind of a hack to test the datamuse api
-    if (winner.datamuseResponse.length > 0) {
-      response = 'I like ' + winner.datamuseResponse[0].word + '. ' + response;
+    if (winner.datamuseModified.length > 0) {
+      for(var i =0; i<winner.datamuseModified.length; i++){
+        if((winner.datamuseModified[i].tags=="n")){
+          response = 'I like ' + winner.name +" "+winner.datamuseModified[i].word+'. ' + response;
+          break;
+        }
+      }
+    
     }
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,

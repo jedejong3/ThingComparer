@@ -2,7 +2,7 @@ import {AbstractComparer} from "../abstract_comparer";
 import {Thing} from "../thing";
 import {Utilities} from "../utilities";
 
-export class SimilarMeaningComparer extends AbstractComparer {
+export class Modiifier extends AbstractComparer {
 
   constructor() {
     super();
@@ -15,13 +15,13 @@ export class SimilarMeaningComparer extends AbstractComparer {
     if(ThingOne.qualIndex>ThingTwo.qualIndex) {
       data = ThingOne.datamuseRelated;
 
-      }else
-      {
-        data = ThingTwo.datamuseRelated;
-      }
-      var response="";
+    }else
+    {
+      data = ThingTwo.datamuseRelated;
+    }
+    var response="";
 
-  //prints only a few of the related words
+    //prints only a few of the related words
     for(var i =0; i<15; i+=4){
       if(data[i].word != null){
         response+=data[i].word+" ... "
@@ -30,7 +30,7 @@ export class SimilarMeaningComparer extends AbstractComparer {
     }
     console.log(data[0].word);
     console.log(response);
-      response+="the ideas of these things makes me happy!";
+    response+="the ideas of these things makes me happy!";
     return(response);
   }
 }
