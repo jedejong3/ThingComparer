@@ -79,13 +79,13 @@ export class HomePage {
 
     // TODO change this, it's kind of a hack to test the datamuse api
     if (winner.datamuseModified.length > 0) {
-      for(var i =0; i<winner.datamuseModified.length; i++){
+      for(var i =18 ; i<winner.datamuseModified.length; i++){
         if((winner.datamuseModified[i].tags=="n")){
           response = 'I like ' + winner.name +" "+winner.datamuseModified[i].word+'. ' + response;
           break;
         }
       }
-    
+
     }
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
