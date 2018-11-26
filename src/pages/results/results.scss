@@ -17,18 +17,31 @@ page-results {
     align-self: center;
   }
 
+  .banana_spotlight {
+    max-width: 200px;
+    position: relative;
+    top: 35%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 90%;
+  }
+
   .banana {
     position: relative;
-    animation: banana_results 2s infinite;
-    top: 25%;
+    max-width: 200px;
+    top: 10%;
+    height: 60%;
   }
 
   .spotlight {
     position: relative;
-    top: 20%;
+    max-width: 150px;
+    height: 130%;
   }
 
   .pedestal {
+    height: 30%;
     max-width: 200px;
     position: relative;
   }
@@ -36,7 +49,8 @@ page-results {
   .fruit {
     position: relative;
     max-width: 150px;
-    top: 5%;
+    top: 10%;
+    height: 30%;
   }
 
   @keyframes banana_results {
@@ -88,7 +102,7 @@ page-results {
     max-width: 600px;
     height: 7%;
     position: absolute;
-    bottom: 66%;
+    bottom: 68%;
     font-size: 100%;
     right: 15px;
     display: flex;
@@ -111,7 +125,7 @@ page-results {
 
   .flagpole {
     width: 10px;
-    height: 33%;
+    height: 35%;
     background: #4b2606;
     position: absolute;
     bottom: 40%;
