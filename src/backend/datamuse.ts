@@ -4,7 +4,7 @@ export class Datamuse {
 
   // allows client to make a request without optional arguments
   request(means:string, relatedCode:string, related:string) {
-    return this.requestWithOptions(means, relatedCode, related, null, null, null, null, 15, false, false);
+    return this.requestWithOptions(means, relatedCode, related, 'enwiki', null, null, null, 15, false, false);
   }
 
   // request method with optional arguments
