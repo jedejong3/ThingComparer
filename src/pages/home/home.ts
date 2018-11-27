@@ -56,7 +56,7 @@ export class HomePage {
     if(this.ThingOne === null){
       this.ThingOne = new Thing(this.ThingOneName);
       this.ThingOne.datamuseRelated = await datamuse.request(this.ThingOne.name, null, null);
-      this.ThingOne.datamuseModified =await datamuse.requestWithOptions(null, null, null,
+      this.ThingOne.datamuseModified = await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingOne.name,null,null,true,null);
       this.manager.add(this.ThingOne);
     }

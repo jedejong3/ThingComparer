@@ -22,7 +22,7 @@ export class AdjectiveComparer extends AbstractComparer {
     if (winner.datamuseModified.length > 0) {
       for(var i =18 ; i<winner.datamuseModified.length; i++){
         if((winner.datamuseModified[i].tags=="n")){
-          response = 'I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
+          response = 'I choose ' + winner.name + ' because I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
           break;
         }
       }
