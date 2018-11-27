@@ -24,7 +24,7 @@ export class AdjectiveComparer extends AbstractComparer {
 
     if (winner.datamuseModified.length > 0) {
       for(var i = 0 ; i<winner.datamuseModified.length; i++){
-        if((winner.datamuseModified[i].tags=="n")){
+        if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word.toLowerCase)!=-1){
           response = 'I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
           break;
         }
