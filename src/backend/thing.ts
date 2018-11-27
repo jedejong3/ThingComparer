@@ -8,6 +8,8 @@ export class Thing {
   private _qualIndex;
   private _datamuseRelated;
   private _datemuseModified;
+  private _datemuseModifies;
+
 
   constructor(name:string) {
     this._name = name;
@@ -71,7 +73,12 @@ export class Thing {
   set datamuseModified(value){
     this._datemuseModified=value;
   }
-
+  get datamuseModifies(){
+    return this._datemuseModifies
+  }
+  set datamuseModifies(value){
+    this._datemuseModifies=value;
+  }
   iterateCount(): void{
     this._count ++;
   }

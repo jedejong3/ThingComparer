@@ -6,6 +6,7 @@ import {EasterEggComparer} from "./comparers/easter_egg_comparer";
 import {QuantityComparer} from "./comparers/quantity_comparer";
 import {SimilarMeaningComparer} from "./comparers/similar_meaning_comparer";
 import {AdjectiveComparer} from "./comparers/adjective_comparer";
+import {ModifierComparer} from "./comparers/modifier_comparer";
 
 export class Decider {
   constructor() {
@@ -15,6 +16,12 @@ export class Decider {
   // Gather info about the Things and choose an appropriate comparison method
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
+
+    let modifies = new ModifierComparer();
+    result=modifies.compare(thing1,thing2);
+    if (result !=null){
+      return result;
+    }
 
     let adjective = new AdjectiveComparer();
     result=adjective.compare(thing1,thing2);

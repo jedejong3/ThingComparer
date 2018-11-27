@@ -58,6 +58,8 @@ export class HomePage {
       this.ThingOne.datamuseRelated = await datamuse.request(this.ThingOne.name, null, null);
       this.ThingOne.datamuseModified =await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingOne.name,null,null,true,null);
+      this.ThingOne.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
+        null, null,null,this.ThingOne.name,null,true,null);
       this.manager.add(this.ThingOne);
     }
     this.ThingOne.iterateCount();
@@ -67,6 +69,8 @@ export class HomePage {
       this.ThingTwo.datamuseRelated = await datamuse.request(this.ThingTwo.name, null, null);
       this.ThingTwo.datamuseModified =await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingTwo.name,null,null,true,null);
+      this.ThingTwo.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
+        null, null,null,this.ThingTwo.name,null,true,null);
       this.manager.add(this.ThingTwo);
     }
     this.ThingTwo.iterateCount();
