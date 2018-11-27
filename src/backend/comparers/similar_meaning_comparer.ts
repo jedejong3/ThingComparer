@@ -20,6 +20,9 @@ export class SimilarMeaningComparer extends AbstractComparer {
         data = ThingTwo.datamuseRelated;
       }
       var response="";
+    if(data[0]==null){
+      return null;
+    }
 
   //prints only a few of the related words
     for(var i =0; i<15; i+=4){
