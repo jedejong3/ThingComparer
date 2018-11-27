@@ -18,13 +18,15 @@ export class AdjectiveComparer extends AbstractComparer {
       winner=ThingTwo;
     }
     let response:string;
+    response=null;
     if(winner.datamuseModified[0]==null){
       return null;
     }
-
+    console.log(Utilities.stopwords.toString());
+    
     if (winner.datamuseModified.length > 0) {
       for(var i = 0 ; i<winner.datamuseModified.length; i++){
-        if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word.toLowerCase())==-1){
+        if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word)==-1){
           response = 'I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
           break;
         }
