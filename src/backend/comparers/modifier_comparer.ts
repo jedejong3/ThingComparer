@@ -1,8 +1,9 @@
 import {AbstractComparer} from "../abstract_comparer";
 import {Thing} from "../thing";
 import {Utilities} from "../utilities";
+import {plural} from 'pluralize'
 
-export class Modiifier extends AbstractComparer {
+export class ModifierComparer extends AbstractComparer {
 
   constructor() {
     super();
@@ -10,27 +11,26 @@ export class Modiifier extends AbstractComparer {
 
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
-    let data;
-    //sets data to be the datamuse data from the winning thing
-    if(ThingOne.qualIndex>ThingTwo.qualIndex) {
-      data = ThingOne.datamuseRelated;
-
-    }else
-    {
-      data = ThingTwo.datamuseRelated;
+    let winner;
+    if(ThingOne.qualIndex>ThingTwo.qualIndex){
+      winner=ThingOne;
+    }else{
+      winner=ThingTwo;
     }
-    var response="";
+    let response:string;
+    if(winner.datamuseModifies[0]==null){
+      return null;
+    }
 
-    //prints only a few of the related words
-    for(var i =0; i<15; i+=4){
-      if(data[i].word != null){
-        response+=data[i].word+" ... "
-
+    if (winner.datamuseModifies.length > 0) {
+      for(var i = 0 ; i<winner.datamuseModifies.length; i++){
+        if((winner.datamuseModifies[i].tags=="n")&&Utilities.stopwords.indexOf(winner.datamuseModifies[i])!=-1){
+          response = 'I like ' + winner.datamuseModifies[i].word+ " "+ plural(winner.name)+'. ';
+          break;
+        }
       }
+
     }
-    console.log(data[0].word);
-    console.log(response);
-    response+="the ideas of these things makes me happy!";
     return(response);
   }
 }

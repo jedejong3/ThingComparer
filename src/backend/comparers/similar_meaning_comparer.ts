@@ -21,10 +21,15 @@ export class SimilarMeaningComparer extends AbstractComparer {
       data = ThingTwo.datamuseRelated;
       winnerName = ThingTwo.name;
     }
+
+    if(data[0]==null){
+      return null;
+    }
+
     var response = "What " + this.conjugate('does', 'do', winnerName) + " " +
                     winnerName + " make me think of? ";
 
-  //prints only the related words with highest scores
+    //prints only the related words with highest scores
     var wordsFound = 0;
     for(var i =0; i<6; i++){
       if(data[i].score >= 30000){
