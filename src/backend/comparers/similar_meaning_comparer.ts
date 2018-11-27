@@ -22,7 +22,7 @@ export class SimilarMeaningComparer extends AbstractComparer {
       winnerName = ThingTwo.name;
     }
 
-    if(data[0]==null){
+    if(data.length==0){
       return null;
     }
 
