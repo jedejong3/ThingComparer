@@ -20,7 +20,7 @@ export class AdjectiveComparer extends AbstractComparer {
     let response:string;
 
     if (winner.datamuseModified.length > 0) {
-      for(var i =18 ; i<winner.datamuseModified.length; i++){
+      for(var i =0 ; i<winner.datamuseModified.length; i++){
         if((winner.datamuseModified[i].tags=="n")){
           response = 'I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
           break;
