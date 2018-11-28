@@ -20,4 +20,8 @@ export class Utilities {
   static set stopwords(value: string[]) {
     this._stopwords = value;
   }
+
+  static isStopWord(word: string):boolean {
+    return (this._stopwords.indexOf(word) == -1);
+  }
 }

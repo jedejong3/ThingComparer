@@ -1,7 +1,7 @@
-import {AbstractComparer} from "../abstract_comparer";
-import {Thing} from "../thing";
-import {Utilities} from "../utilities";
-import {plural} from 'pluralize'
+import { AbstractComparer } from "../abstract_comparer";
+import { Thing } from "../thing";
+import { Utilities } from "../utilities";
+import { plural } from 'pluralize'
 
 export class ModifierComparer extends AbstractComparer {
 
@@ -12,25 +12,25 @@ export class ModifierComparer extends AbstractComparer {
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
     let winner;
-    if(ThingOne.qualIndex>ThingTwo.qualIndex){
-      winner=ThingOne;
-    }else{
-      winner=ThingTwo;
+    if (ThingOne.qualIndex > ThingTwo.qualIndex) {
+      winner = ThingOne;
+    } else {
+      winner = ThingTwo;
     }
-    let response:string;
-    if(winner.datamuseModifies[0]==null){
+    let response: string;
+    if (winner.datamuseModifies[0] == null) {
       return null;
     }
 
     if (winner.datamuseModifies.length > 0) {
-      for(var i = 0 ; i<winner.datamuseModifies.length; i++){
-        if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word)==-1){
-          response = 'I like ' + winner.datamuseModifies[i].word+ " "+ plural(winner.name)+'. ';
+      for (var i = 0; i < winner.datamuseModifies.length; i++) {
+        if (Utilities.isStopWord(winner.datamuseModifies[i].word)) {
+          response = 'I like ' + winner.datamuseModifies[i].word + " " + plural(winner.name) + '. ';
           break;
         }
       }
 
     }
-    return(response);
+    return (response);
   }
 }
