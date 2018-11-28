@@ -23,7 +23,7 @@ export class AdjectiveComparer extends AbstractComparer {
       return null;
     }
     console.log(Utilities.stopwords.toString());
-    
+
     if (winner.datamuseModified.length > 0) {
       for(var i = 0 ; i<winner.datamuseModified.length; i++){
         if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word)==-1){
