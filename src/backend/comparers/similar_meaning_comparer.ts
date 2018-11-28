@@ -31,17 +31,13 @@ export class SimilarMeaningComparer extends AbstractComparer {
 
     //prints only the related words with highest scores
     var wordsFound = 0;
-    for(var i =0; i<6; i++){
+    for(var i =0; i<5; i++){
       if(data[i].score >= 30000){
         response+=data[i].word+" ... ";
         wordsFound++;
       }
     }
-    if (wordsFound == 1) {
-      response+="the idea of this thing makes me happy!";
-      return (response);
-    }
-    else if (wordsFound >= 2) {
+    if (wordsFound >= 2) {
       response+="the ideas of these things makes me happy!";
       return (response);
     }
