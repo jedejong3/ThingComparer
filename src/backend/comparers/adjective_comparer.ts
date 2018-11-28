@@ -12,27 +12,27 @@ export class AdjectiveComparer extends AbstractComparer {
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
     let winner;
-    if(ThingOne.qualIndex>ThingTwo.qualIndex){
-      winner=ThingOne;
-    }else{
-      winner=ThingTwo;
+    if (ThingOne.qualIndex > ThingTwo.qualIndex) {
+      winner = ThingOne;
+    } else {
+      winner = ThingTwo;
     }
-    let response:string;
-    response=null;
-    if(winner.datamuseModified[0]==null){
+    let response: string;
+    response = null;
+    if (winner.datamuseModified[0] == null) {
       return null;
     }
     console.log(Utilities.stopwords.toString());
 
     if (winner.datamuseModified.length > 0) {
-      for(var i = 0 ; i<winner.datamuseModified.length; i++){
-        if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word)==-1){
-          response = 'I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
+      for (var i = 0; i < winner.datamuseModified.length; i++) {
+        if (Utilities.stopwords.indexOf(winner.datamuseModifies[i].word) == -1 && winner.datamuseModifies[i].tags=='n') {
+          response = 'I like ' + winner.name + " " + plural(winner.datamuseModified[i].word) + '. ';
           break;
         }
       }
 
     }
-    return(response);
+    return (response);
   }
 }

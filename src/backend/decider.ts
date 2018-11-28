@@ -17,11 +17,11 @@ export class Decider {
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
 
-    let modifies = new ModifierComparer();
-    result=modifies.compare(thing1,thing2);
-    if (result !=null){
-      return result;
-    }
+    // let modifies = new ModifierComparer();
+    // result=modifies.compare(thing1,thing2);
+    // if (result !=null){
+    //   return result;
+    // }
 
     let adjective = new AdjectiveComparer();
     result=adjective.compare(thing1,thing2);
