@@ -32,7 +32,7 @@ export class SimilarMeaningComparer extends AbstractComparer {
     //prints only the related words with highest scores
     var wordsFound = 0;
     for (var i = 0; i < 5; i++) {
-      if (data[i].score >= 30000 && !Utilities.isStopWord(data[i].word)) {
+      if (data[i].score >= 30000) {
         response += data[i].word + " ... ";
         wordsFound++;
       }
