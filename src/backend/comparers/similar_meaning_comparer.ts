@@ -1,6 +1,6 @@
-import { AbstractComparer } from "../abstract_comparer";
-import { Thing } from "../thing";
-import { Utilities } from "../utilities";
+import {AbstractComparer} from "../abstract_comparer";
+import {Thing} from "../thing";
+import {Utilities} from "../utilities";
 
 export class SimilarMeaningComparer extends AbstractComparer {
 
@@ -31,10 +31,13 @@ export class SimilarMeaningComparer extends AbstractComparer {
 
     //prints only the related words with highest scores
     var wordsFound = 0;
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < data.length; i++) {
       if (data[i].score >= 30000) {
         response += data[i].word + " ... ";
         wordsFound++;
+      }
+      if (wordsFound > 4) {
+        break;
       }
     }
     if (wordsFound >= 2) {

@@ -24,7 +24,7 @@ export class AdjectiveComparer extends AbstractComparer {
 
     if (winner.datamuseModified.length > 0) {
       for (var i = 0; i < winner.datamuseModified.length; i++) {
-        if (winner.datamuseModified[i].score >= 30000) {
+        if (winner.datamuseModified[i].score >= 30000 && winner.datamuseModifies.tags == 'n') {
           response = 'I like ' + winner.name + " " + plural(winner.datamuseModified[i].word) + '. ';
           break;
         }
