@@ -29,13 +29,7 @@ export class Decider {
     if(result != null){
       return result;
     }
-
-    let similarMeaning = new SimilarMeaningComparer();
-    result = similarMeaning.compare(thing1,thing2);
-    if (result !=null){
-      return result;
-    }
-
+    
     let modifies = new ModifierComparer();
     result = modifies.compare(thing1,thing2);
     if (result !=null){
@@ -44,6 +38,12 @@ export class Decider {
 
     let adjective = new AdjectiveComparer();
     result = adjective.compare(thing1,thing2);
+    if (result !=null){
+      return result;
+    }
+
+    let similarMeaning = new SimilarMeaningComparer();
+    result = similarMeaning.compare(thing1,thing2);
     if (result !=null){
       return result;
     }

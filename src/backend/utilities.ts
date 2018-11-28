@@ -37,7 +37,7 @@ export class Utilities {
     this._stopwords = value;
   }
 
-  static isStopWord(word: string): boolean {
+  static notStopWord(word: string): boolean {
     return (this._stopwords.indexOf(word) == -1);
   }
 }

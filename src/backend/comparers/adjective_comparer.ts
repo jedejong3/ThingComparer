@@ -1,7 +1,7 @@
-import {AbstractComparer} from "../abstract_comparer";
-import {Thing} from "../thing";
-import {Utilities} from "../utilities";
-import {plural} from 'pluralize'
+import { AbstractComparer } from "../abstract_comparer";
+import { Thing } from "../thing";
+import { Utilities } from "../utilities";
+import { plural } from 'pluralize'
 
 export class AdjectiveComparer extends AbstractComparer {
 
@@ -21,11 +21,10 @@ export class AdjectiveComparer extends AbstractComparer {
     if (winner.datamuseModified[0] == null) {
       return null;
     }
-    console.log(Utilities.stopwords.toString());
 
     if (winner.datamuseModified.length > 0) {
       for (var i = 0; i < winner.datamuseModified.length; i++) {
-        if (Utilities.isStopWord(winner.datamuseModifies[i].word) && winner.datamuseModifies.tags == 'n') {
+        if (winner.datamuseModified[i].score >= 30000 && winner.datamuseModifies.tags == 'n') {
           response = 'I like ' + winner.name + " " + plural(winner.datamuseModified[i].word) + '. ';
           break;
         }
