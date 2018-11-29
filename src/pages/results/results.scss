@@ -15,12 +15,14 @@ page-results {
     height: 60%;
     max-width: 200px;
     align-self: center;
+    position: relative;
+    top: 5%;
   }
 
   .banana_spotlight {
     max-width: 200px;
     position: relative;
-    top: 35%;
+    top: 28%;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -30,14 +32,14 @@ page-results {
   .banana {
     position: relative;
     max-width: 200px;
-    top: 10%;
+    top: 8%;
     height: 60%;
   }
 
   .spotlight {
     position: relative;
     max-width: 150px;
-    height: 130%;
+    height: 100%;
   }
 
   .pedestal {
@@ -48,17 +50,17 @@ page-results {
 
   .fruit {
     position: relative;
-    max-width: 150px;
-    top: 10%;
+    max-width: 120px;
+    top: 5%;
     height: 30%;
   }
 
   @keyframes banana_results {
     0% {
-      top:25%
+      top: 25%
     }
     50% {
-      top:28%
+      top: 28%
     }
     100% {
       top: 25%;
