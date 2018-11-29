@@ -9,14 +9,14 @@ page-results {
 
   .column {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column-reverse;
     height: 60%;
     max-width: 200px;
     align-self: center;
     position: relative;
-    top: 5%;
+    bottom: 14%;
   }
 
   .banana_spotlight {
@@ -34,6 +34,7 @@ page-results {
     max-width: 200px;
     top: 8%;
     height: 60%;
+    animation: banana_results 2s infinite;
   }
 
   .spotlight {
@@ -57,13 +58,13 @@ page-results {
 
   @keyframes banana_results {
     0% {
-      top: 25%
+      top: 8%
     }
     50% {
-      top: 28%
+      top: 10%
     }
     100% {
-      top: 25%;
+      top: 8%;
     }
   }
 
@@ -96,7 +97,8 @@ page-results {
     height: 40%;
     width: 100%;
     order: 1;
-    align-self: flex-end;
+    position:absolute;
+    bottom: 0;
   }
 
   .banner {
@@ -104,7 +106,7 @@ page-results {
     max-width: 600px;
     height: 7%;
     position: absolute;
-    bottom: 68%;
+    bottom: 65%;
     font-size: 100%;
     right: 15px;
     display: flex;
@@ -127,10 +129,10 @@ page-results {
 
   .flagpole {
     width: 10px;
-    height: 35%;
+    height: 38%;
     background: #4b2606;
     position: absolute;
-    bottom: 40%;
+    bottom: 34%;
   }
 
   .flagpole.orange {
