@@ -78,6 +78,10 @@ page-results {
     text-align: center;
     align-self: center;
     word-wrap: normal;
+    background-image: radial-gradient(rgba(255,255,255,1),rgba(255,255,255,0.7));
+    border-radius: 30px;
+    padding-left:10px;
+    padding-right: 10px;
   }
 
   button {
