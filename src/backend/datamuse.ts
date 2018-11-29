@@ -1,4 +1,5 @@
 import {Thing} from "./thing";
+import { Utilities } from "./utilities";
 
 export class Datamuse {
 
@@ -34,12 +35,12 @@ export class Datamuse {
         request.open('GET', endpoint, true);
         request.onload = function () {
           var data = JSON.parse(this.response);
+          // filter removes anything that returns FALSE, so this removes stopwords
+          data = data.filter(context.entryIsNotStopWord);
           resolve(data);
         }
         request.send();
       });
-
-
   }
 
   createSuffix(params): string {
@@ -89,6 +90,10 @@ export class Datamuse {
     }
 
     return suffix;
+  }
+
+  entryIsNotStopWord(element, index, array) {
+    return Utilities.notStopWord(element.word);
   }
 
 }
