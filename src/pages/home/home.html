@@ -9,23 +9,24 @@
   <div class="logo_about">
     <img class="logo" src="assets/imgs/title.png">
     <button class="info" (click)="aboutPage()">?</button>
-    </div>
+  </div>
 
   <img class="banana" src="assets/imgs/celestialBanana.png">
 
-  <ion-input maxlength="20" type="text" class="banner apple" placeholder="Enter apples' word here" [(ngModel)]="ThingOneName"></ion-input>
-  <ion-input maxlength="20" type="text" class="banner orange" placeholder="Enter oranges' word here" [(ngModel)]="ThingTwoName"></ion-input>
+  <ion-input maxlength="20" type="text" class="banner apple" placeholder="Enter apples' word here"
+             [(ngModel)]="ThingOneName"></ion-input>
+  <ion-input maxlength="20" type="text" class="banner orange" placeholder="Enter oranges' word here"
+             [(ngModel)]="ThingTwoName"></ion-input>
 
   <div class="flagpole right"></div>
   <div class="flagpole left"></div>
 
-  <img class="apple_land" src="assets/imgs/apple_land.png">
-  <img class="orange_land" src="assets/imgs/orange_land.png">
+  <img class="apple_land" src="assets/imgs/green_cliff.png">
+  <img class="orange_land" src="assets/imgs/orange_cliff.png">
 
-  <div class = "button_container">
+  <div class="button_container">
     <button [disabled]="buttonDisabled()" (click)="compareClick()">Petition the Celestial Banana</button>
   </div>
-
 
 
 </ion-content>

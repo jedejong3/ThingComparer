@@ -1,8 +1,6 @@
-import { AbstractComparer } from "../abstract_comparer"
-import { Thing } from "../thing";
-import { Utilities } from '../utilities';
-import { thingManager } from "../thingManager";
-import { singular } from "pluralize";
+import {AbstractComparer} from "../abstract_comparer"
+import {Thing} from "../thing";
+import {Utilities} from '../utilities';
 
 let lastResponseIndex;
 
@@ -40,7 +38,7 @@ export class RandomComparer extends AbstractComparer {
       `Of the millions and millions of decisions I make every day, this has been the easiest one...by far.
       ${this.winner} ${this.conjugate('is', 'are')} better.`,
       `Hah, ${this.loser} ${this.conjugate('is', 'are')} a joke compared to ${this.winner}.`,
-      `Considering ${this.loser} doesn't exist in a lot of other multiverses, I'm going to have to go with ${this.winner}.`,
+      `Considering ${this.loser} ${this.conjugate("doesn't", "don't", this.loser)} exist in a lot of other multiverses, I'm going to have to go with ${this.winner}.`,
       `I'd rather be chopped up and put in fruit salad than allow you to believe that ${this.loser}
       ${this.conjugate('is', 'are')} of higher quality than ${this.winner}.`,
       `Can I ask you something? Are you mad questioning the superiority of ${this.winner}?`,
