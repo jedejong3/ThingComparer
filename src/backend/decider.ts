@@ -29,11 +29,11 @@ export class Decider {
             return result;
         }
 
-        let modifies = new ModifierComparer();
-        result = modifies.compare(thing1, thing2);
-        if (result != null) {
-            return result;
-        }
+        // let modifies = new ModifierComparer();
+        // result = modifies.compare(thing1, thing2);
+        // if (result != null) {
+        //     return result;
+        // }
 
         let adjective = new AdjectiveComparer();
         result = adjective.compare(thing1, thing2);
