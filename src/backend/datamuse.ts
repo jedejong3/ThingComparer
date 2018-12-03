@@ -38,7 +38,7 @@ export class Datamuse {
           // filter removes anything that returns FALSE, so this removes stopwords
           data = data.filter(context.entryIsNotStopWord);
           resolve(data);
-        }
+        };
         request.send();
       });
   }

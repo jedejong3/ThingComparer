@@ -60,6 +60,8 @@ export class HomePage {
         null, null, this.ThingOne.name,null,30,true,null);
       this.ThingOne.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
         null, null,null,this.ThingOne.name,30,true,null);
+      this.ThingOne.datamuseKindOf= await datamuse.request(null, 'spc', this.ThingOne.name);
+
       this.manager.add(this.ThingOne);
     }
     this.ThingOne.iterateCount();
@@ -71,9 +73,12 @@ export class HomePage {
         null, null, this.ThingTwo.name,null,30,true,null);
       this.ThingTwo.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
         null, null,null,this.ThingTwo.name,30,true,null);
+      this.ThingTwo.datamuseKindOf= await datamuse.request(null, 'spc', this.ThingTwo.name);
       this.manager.add(this.ThingTwo);
     }
     this.ThingTwo.iterateCount();
+
+
 
     // create and give response
     let response = this.decider.chooseComparer(this.ThingOne, this.ThingTwo);
@@ -82,15 +87,15 @@ export class HomePage {
     console.log('winner', winner);
 
     // TODO change this, it's kind of a hack to test the datamuse api
-    // if (winner.datamuseModified.length > 0) {
-    //   for(var i =18 ; i<winner.datamuseModified.length; i++){
-    //     if((winner.datamuseModified[i].tags=="n")){
-    //       response = 'I like ' + winner.name +" "+winner.datamuseModified[i].word+'. ' + response;
-    //       break;
-    //     }
-    //   }
-    //
-    // }
+    if (winner.datamuseKindOf.length > 0) {
+      for(var i =0 ; i<winner.datamuseModified.length; i++){
+        if((winner.datamuseModified[i].tags=="n")){
+          response =  winner.name +" is my favorite kind of "+winner.datamuseKindOf[i].word+'. ' + response;
+          break;
+        }
+      }
+
+    }
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
       win:applewins ? this.ThingOne : this.ThingTwo,
