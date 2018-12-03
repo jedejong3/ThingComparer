@@ -15,12 +15,19 @@ export class EasterEggComparer extends AbstractComparer {
     if (this.hasEasterEgg("shilad", ThingOne, ThingTwo)) {
       return "Shilad is the best!"
     }
-    if(ThingOne.name.toLowerCase() == ThingTwo.name.toLowerCase()){
+    if (ThingOne.name.toLowerCase() == ThingTwo.name.toLowerCase()) {
       return "Y'know, I'm feeling conflicted on this one...its almost like they're the same thing"
     }
 
-    if(badWords.indexOf(ThingOne.name.toLowerCase()) != -1 || badWords.indexOf(ThingTwo.name.toLowerCase()) != -1) {
+    if (badWords.indexOf(ThingOne.name.toLowerCase()) != -1 || badWords.indexOf(ThingTwo.name.toLowerCase()) != -1) {
       return "Chill with the words, homie."
+    }
+
+    if ((this.hasEasterEgg("apple", ThingOne, ThingTwo) || this.hasEasterEgg("apple", ThingOne, ThingTwo))
+      && (this.hasEasterEgg("oranges", ThingOne, ThingTwo) || this.hasEasterEgg("orange", ThingOne, ThingTwo))
+  )
+    {
+      return "Wow, aren't you original--who would ever have thought of comparing apples and oranges?";
     }
 
     return null;

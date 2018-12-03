@@ -78,9 +78,15 @@ page-home {
   }
 
   @keyframes banana {
-      0% {top: 14%}
-      50% {top: 16%}
-      100% {top: 14%}
+    0% {
+      top: 14%
+    }
+    50% {
+      top: 16%
+    }
+    100% {
+      top: 14%
+    }
   }
 
   .flagpole {
@@ -108,7 +114,7 @@ page-home {
     margin-bottom: 0;
     float: left;
   }
-  .info{
+  .info {
     font-size: 25px;
     width: 15%;
     max-width: 50px;

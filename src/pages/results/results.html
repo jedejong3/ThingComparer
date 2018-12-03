@@ -1,22 +1,21 @@
 <!-- Generated template for the ResultsComponent component -->
 <ion-content>
   <div class="column">
-    <img class="pedestal" src="../../assets/imgs/pedestal.png">
+    <img class="pedestal" src="../../assets/imgs/pedestal2.png">
     <img *ngIf="appleWins" class="fruit" src="../../assets/imgs/soloHappyApple.png">
     <img *ngIf="!appleWins" class="fruit" src="../../assets/imgs/soloHappyOrange.png">
     <div class="banana_spotlight">
       <img class="spotlight" src="../../assets/imgs/spotlight.png">
       <img class="banana" src="../../assets/imgs/celestialbanana.png">
     </div>
-
   </div>
 
 
   <div class="flagpole orange" *ngIf="!appleWins"></div>
   <div class="flagpole apple" *ngIf="appleWins"></div>
 
-  <img *ngIf="appleWins" id="green_grass" class="grass" src="../../assets/imgs/grass_green.png">
-  <img *ngIf="!appleWins" id="orange_grass" class="grass" src="../../assets/imgs/grass_orange.png">
+  <img *ngIf="appleWins" id="green_grass" class="grass" src="../../assets/imgs/green_grass.png">
+  <img *ngIf="!appleWins" id="orange_grass" class="grass" src="../../assets/imgs/orange_grass.png">
 
 
   <div class="banner orange" *ngIf="!appleWins"><p [innerHTML]="winner.name"></p></div>

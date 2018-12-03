@@ -41,6 +41,14 @@ export class Thing {
     if(this._name.includes('s')){
       this._qualIndex+=this._name.indexOf('s')-4;
     }
+
+    //allows for testing against guarantted wins and losses
+    if(this._name=="plzwin"){
+      this._qualIndex=562;
+    }
+    if(this._name=="plzlose"){
+      this._qualIndex=-10000;
+    }
   }
 
   get attributes(): Map<String, any> {

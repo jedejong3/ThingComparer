@@ -1,7 +1,7 @@
-import {AbstractComparer} from "../abstract_comparer";
-import {Thing} from "../thing";
-import {Utilities} from "../utilities";
-import {plural} from 'pluralize'
+import { AbstractComparer } from "../abstract_comparer";
+import { Thing } from "../thing";
+import { Utilities } from "../utilities";
+import { plural } from 'pluralize'
 
 export class AdjectiveComparer extends AbstractComparer {
 
@@ -9,28 +9,27 @@ export class AdjectiveComparer extends AbstractComparer {
     super();
   }
 
-
   compare(ThingOne: Thing, ThingTwo: Thing): string {
     let winner;
-    if(ThingOne.qualIndex>ThingTwo.qualIndex){
-      winner=ThingOne;
-    }else{
-      winner=ThingTwo;
+    if (ThingOne.qualIndex > ThingTwo.qualIndex) {
+      winner = ThingOne;
+    } else {
+      winner = ThingTwo;
     }
-    let response:string;
-    if(winner.datamuseModified[0]==null){
+    let response: string;
+    response = null;
+    if (winner.datamuseModified[0] == null) {
       return null;
     }
 
     if (winner.datamuseModified.length > 0) {
-      for(var i = 0 ; i<winner.datamuseModified.length; i++){
-        if(Utilities.stopwords.indexOf(winner.datamuseModifies[i].word.toLowerCase)==-1){
-          response = 'I like ' + winner.name +" "+plural(winner.datamuseModified[i].word)+'. ';
+      for (var i = 0; i < winner.datamuseModified.length; i++) {
+        if (winner.datamuseModified[i].score >= 15000 && winner.datamuseModified[i].tags.indexOf("n") !=-1) {
+          response = 'I like ' + winner.name + " " + plural(winner.datamuseModified[i].word) + '. ';
           break;
         }
       }
-
     }
-    return(response);
+    return (response);
   }
 }

@@ -1,6 +1,6 @@
-import {AbstractComparer} from "../abstract_comparer";
-import {Thing} from "../thing";
-import {Utilities} from "../utilities";
+import { AbstractComparer } from "../abstract_comparer";
+import { Thing } from "../thing";
+import { Utilities } from "../utilities";
 
 export class VowelComparer extends AbstractComparer {
 
