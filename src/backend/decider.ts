@@ -7,6 +7,7 @@ import {QuantityComparer} from "./comparers/quantity_comparer";
 import {SimilarMeaningComparer} from "./comparers/similar_meaning_comparer";
 import {AdjectiveComparer} from "./comparers/adjective_comparer";
 import {ModifierComparer} from "./comparers/modifier_comparer";
+import {Utilities} from "./utilities";
 
 export class Decider {
   constructor() {
@@ -16,7 +17,8 @@ export class Decider {
   // Gather info about the Things and choose an appropriate comparison method
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
-
+    let comparers = Utilities.shuffle([new QuantityComparer(),new ModifierComparer(),
+      new AdjectiveComparer(), new SimilarMeaningComparer()]);
 
     let easterEgg = new EasterEggComparer();
     result = easterEgg.compare (thing1, thing2);
@@ -24,28 +26,11 @@ export class Decider {
       return result;
     }
 
-    let quantity = new QuantityComparer();
-    result = quantity.compare(thing1, thing2);
-    if(result != null){
-      return result;
-    }
-    
-    let modifies = new ModifierComparer();
-    result = modifies.compare(thing1,thing2);
-    if (result !=null){
-      return result;
-    }
-
-    let adjective = new AdjectiveComparer();
-    result = adjective.compare(thing1,thing2);
-    if (result !=null){
-      return result;
-    }
-
-    let similarMeaning = new SimilarMeaningComparer();
-    result = similarMeaning.compare(thing1,thing2);
-    if (result !=null){
-      return result;
+    for (let i = comparers.length-1;i>=0;i--) {
+      result = comparers[i].compare(thing1,thing2);
+      if (result != null) {
+        return result;
+      }
     }
 
     let randomComparer = new RandomComparer();

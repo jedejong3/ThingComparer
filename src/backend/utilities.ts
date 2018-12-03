@@ -40,4 +40,12 @@ export class Utilities {
   static notStopWord(word: string): boolean {
     return (this._stopwords.indexOf(word) == -1);
   }
+
+  static shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
 }

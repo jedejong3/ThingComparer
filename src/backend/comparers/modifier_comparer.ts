@@ -24,7 +24,7 @@ export class ModifierComparer extends AbstractComparer {
 
     if (winner.datamuseModifies.length > 0) {
       for (var i = 0; i < winner.datamuseModifies.length; i++) {
-        if (winner.datamuseModifies[i].score >= 30000) {
+        if (winner.datamuseModifies[i].score >= 0) {
           response = 'I like ' + winner.datamuseModifies[i].word + " " + plural(winner.name) + '. ';
           break;
         }

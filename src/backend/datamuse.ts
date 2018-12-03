@@ -36,7 +36,9 @@ export class Datamuse {
         request.onload = function () {
           var data = JSON.parse(this.response);
           // filter removes anything that returns FALSE, so this removes stopwords
-          data = data.filter(context.entryIsNotStopWord);
+          if (data.length > 0) {
+            data = data.filter(context.entryIsNotStopWord);
+          }
           resolve(data);
         };
         request.send();
