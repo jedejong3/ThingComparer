@@ -40,7 +40,7 @@ export class Datamuse {
             data = data.filter(context.entryIsNotStopWord);
           }
           resolve(data);
-        }
+        };
         request.send();
       });
   }

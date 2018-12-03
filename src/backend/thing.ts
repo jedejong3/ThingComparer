@@ -9,6 +9,7 @@ export class Thing {
   private _datamuseRelated;
   private _datemuseModified;
   private _datemuseModifies;
+  private _datamuseKindOf;
 
 
   constructor(name:string) {
@@ -86,6 +87,12 @@ export class Thing {
   }
   set datamuseModifies(value){
     this._datemuseModifies=value;
+  }
+  get datamuseKindOf(){
+    return this._datamuseKindOf;
+  }
+  set datamuseKindOf(value) {
+    this._datamuseKindOf = value;
   }
   iterateCount(): void{
     this._count ++;
