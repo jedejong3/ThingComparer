@@ -7,6 +7,9 @@ export class Utilities {
   }
 
   static sanitize(s: string): string {
+    while (s.charAt(s.length-1)==' '){
+      s=s.substring(0,s.length-2);
+    }
     return s.replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
   }
