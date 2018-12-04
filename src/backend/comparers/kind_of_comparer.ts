@@ -21,11 +21,15 @@ export class KindOfComparer extends AbstractComparer {
     if (winner.datamuseKindOf[0] == null) {
       return null;
     }
+    let responses=[`${plural(winner.name)} are my favorite kind of ${plural(winner.datamuseKindOf[i].word)}. `,
+    `When considering ${plural(winner.datamuseKindOf[i])}, I always think of ${plural(winner.name)}`,
+    `I love ${plural(winner.datamuseKindOf[i])} and my favorite of all is ${plural(winner.name)}`
+    ];
 
     if (winner.datamuseKindOf.length > 0) {
       for (var i = 0; i < winner.datamuseKindOf.length; i++) {
         if (winner.datamuseKindOf[i].score >= 0) {
-          response = plural(winner.name) + " are my favorite kind of " + plural(winner.datamuseKindOf[i].word) + '. ';
+          response = responses[Utilities.getRandomInt(responses.length)];
           break;
         }
       }
