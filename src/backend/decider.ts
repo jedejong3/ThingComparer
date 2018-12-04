@@ -20,6 +20,7 @@ export class Decider {
     let result: string;
     let comparers = Utilities.shuffle([new QuantityComparer(),new ModifierComparer(),
       new AdjectiveComparer(), new SimilarMeaningComparer(), new KindOfComparer() ]);
+    console.log(comparers);
 
     let easterEgg = new EasterEggComparer();
     result = easterEgg.compare (thing1, thing2);
