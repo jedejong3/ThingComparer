@@ -24,7 +24,7 @@ export class KindOfComparer extends AbstractComparer {
 
     if (winner.datamuseKindOf.length > 0) {
       for (var i = 0; i < winner.datamuseKindOf.length; i++) {
-        if (winner.datamuseKindOf[i].score >= 15000) {
+        if (winner.datamuseKindOf[i].score >= 0) {
           response = plural(winner.name) + " are my favorite kind of " + plural(winner.datamuseKindOf[i].word) + '. ';
           break;
         }
