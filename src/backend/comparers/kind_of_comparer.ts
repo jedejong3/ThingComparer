@@ -18,18 +18,19 @@ export class KindOfComparer extends AbstractComparer {
     }
     let response: string;
     response = null;
-    if (winner.datamuseKindOf[0] == null) {
+    if (winner.datamuseKindOf == null) {
       return null;
     }
-    let responses=[`${plural(winner.name)} are my favorite kind of ${plural(winner.datamuseKindOf[i].word)}. `,
-    `When considering ${plural(winner.datamuseKindOf[i])}, I always think of ${plural(winner.name)}`,
-    `I love ${plural(winner.datamuseKindOf[i])} and my favorite of all is ${plural(winner.name)}`
-    ];
+    let responses;
+    let thisKindOf;
 
     if (winner.datamuseKindOf.length > 0) {
       for (var i = 0; i < winner.datamuseKindOf.length; i++) {
         if (winner.datamuseKindOf[i].score >= 0) {
-          response = responses[Utilities.getRandomInt(responses.length)];
+          thisKindOf=winner.datamuseKindOf[i].word;
+          responses = [`${plural(winner.name)} are my favorite kind of ${plural(thisKindOf)}. `,
+          `When considering "${plural(thisKindOf)}", I always think of "${plural(winner.name)}"`];
+          response=responses[Utilities.getRandomInt(responses.length)];
           break;
         }
       }

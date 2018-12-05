@@ -18,10 +18,11 @@ export class Decider {
   // Gather info about the Things and choose an appropriate comparison method
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
-    let comparers = Utilities.shuffle([new QuantityComparer(),new ModifierComparer(),
-      new AdjectiveComparer(), new SimilarMeaningComparer(), new KindOfComparer() ]);
-    console.log(comparers);
-
+    // let comparers = Utilities.shuffle(
+    //   [new QuantityComparer(),new ModifierComparer(),
+    //   new AdjectiveComparer(), new SimilarMeaningComparer(), new KindOfComparer() ]);
+    // console.log(comparers);
+     let comparers = [new KindOfComparer()];
     let easterEgg = new EasterEggComparer();
     result = easterEgg.compare (thing1, thing2);
     if (result != null) {
