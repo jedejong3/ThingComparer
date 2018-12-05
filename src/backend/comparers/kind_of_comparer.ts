@@ -18,14 +18,20 @@ export class KindOfComparer extends AbstractComparer {
     }
     let response: string;
     response = null;
-    if (winner.datamuseKindOf.lenth <= 0) {
+
+    if (winner.datamuseKindOf.length <= 0 || winner.datamuseKindOf == null) {
       return null;
     }
+    let responses;
+    let thisKindOf;
 
     if (winner.datamuseKindOf.length > 0) {
       for (var i = 0; i < winner.datamuseKindOf.length; i++) {
-        if (winner.datamuseKindOf[i].score >= 15000) {
-          response = plural(winner.name) + " are my favorite kind of " + plural(winner.datamuseKindOf[i].word) + '. ';
+        if (winner.datamuseKindOf[i].score >= 0) {
+          thisKindOf=winner.datamuseKindOf[i].word;
+          responses = [`${plural(winner.name)} are my favorite kind of ${plural(thisKindOf)}. `,
+          `When considering "${plural(thisKindOf)}", I always think of "${plural(winner.name)}"`];
+          response=responses[Utilities.getRandomInt(responses.length)];
           break;
         }
       }

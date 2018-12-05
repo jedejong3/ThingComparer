@@ -87,15 +87,15 @@ export class HomePage {
     console.log('winner', winner);
 
     // TODO change this, it's kind of a hack to test the datamuse api
-    if (winner.datamuseKindOf.length > 0) {
-      for(var i =0 ; i<winner.datamuseModified.length; i++){
-        if((winner.datamuseModified[i].tags=="n")){
-          response =  winner.name +" is my favorite kind of "+winner.datamuseKindOf[i].word+'. ' + response;
-          break;
-        }
-      }
-
-    }
+      // if (winner.datamuseKindOf.length > 0) {
+      //   for(var i =0 ; i<winner.datamuseModified.length; i++){
+      //     if((winner.datamuseModified[i].tags=="n")){
+      //       response =  winner.name +" is my favorite kind of "+winner.datamuseKindOf[i].word+'. ' + response;
+      //       break;
+      //     }
+      //   }
+      //
+      // }
 
     this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
       win:applewins ? this.ThingOne : this.ThingTwo,

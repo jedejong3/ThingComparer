@@ -8,6 +8,7 @@ import {SimilarMeaningComparer} from "./comparers/similar_meaning_comparer";
 import {AdjectiveComparer} from "./comparers/adjective_comparer";
 import {ModifierComparer} from "./comparers/modifier_comparer";
 import {Utilities} from "./utilities";
+import {KindOfComparer} from "./comparers/kind_of_comparer";
 
 export class Decider {
   constructor() {
@@ -32,12 +33,21 @@ export class Decider {
       return result;
     }
 
+    // combines two datamuse responses together.
+    let response:string;
+    let count = 0;
+    result = "";
     for (let i = comparers.length-1;i>=0;i--) {
-      result = comparers[i].compare(thing1,thing2);
-      if (result != null) {
-        return result;
+      if (count == 2) {
+        break;
+      }
+      response = comparers[i].compare(thing1,thing2);
+      if (response != null) {
+        result += " " + response;
+        count++;
       }
     }
+    if (result != null) return result;
 
     let randomComparer = new RandomComparer();
     return randomComparer.compare(thing1, thing2).toString();
