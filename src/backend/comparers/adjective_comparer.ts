@@ -5,11 +5,10 @@ import { plural } from 'pluralize'
 
 export class AdjectiveComparer extends AbstractComparer {
 
-  private lastResponseIndex;
+  private lastResponseIndex = -1;
 
   constructor() {
     super();
-    this.lastResponseIndex = -1;
   }
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
@@ -31,9 +30,12 @@ export class AdjectiveComparer extends AbstractComparer {
           var combined = `${winner.name} ${plural(winner.datamuseModified[i].word)}`;
           var responses = [
             `I like ${combined}.`,
+            `${winner.name}... as in `+combined+`? I like the sound of that.`,
+            `I choose ${winner.name} because I like `+combined+`.`,
+            `What could be ${winner.name}? How about... `+combined+`? Yeah, that sounds pretty good to me.`,
+            `I'll take `+combined+` any day of the week. I pick ${winner.name}!`,
             `Doesn't "${winner.name}" just make you think of ` + combined + `?`,
             `I can't hear "${winner.name}" without thinking "`+combined+`".`,
-            combined+` are my favorite!`
           ]
           //Picks a response from the array of responses, so long as the response isn't the same as the last random response.
           let responseIndex = Utilities.getRandomInt(responses.length);

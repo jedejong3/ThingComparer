@@ -5,10 +5,11 @@ import { plural } from 'pluralize'
 
 export class ModifierComparer extends AbstractComparer {
 
+  private lastResponseIndex = -1;
+
   constructor() {
     super();
   }
-
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
     let winner;
@@ -18,14 +19,27 @@ export class ModifierComparer extends AbstractComparer {
       winner = ThingTwo;
     }
     let response: string;
-    if (winner.datamuseModifies[0] == null) {
+    if (winner.datamuseModifies.length <= 0) {
       return null;
     }
 
     if (winner.datamuseModifies.length > 0) {
       for (var i = 0; i < winner.datamuseModifies.length; i++) {
         if (winner.datamuseModifies[i].score >= 0) {
-          response = 'I like ' + winner.datamuseModifies[i].word + " " + plural(winner.name) + '. ';
+          var combined = `${winner.datamuseModifies[i].word} ${plural(winner.name)}`;
+          var responses = [
+            `I like `+combined+`. `,
+            `Doesn't "${winner.name}" just make you think of ` + combined + `?`,
+            `I can't hear "${winner.name}" without thinking "`+combined+`".`,
+            combined+` are my favorite!`
+          ];
+          //Picks a response from the array of responses, so long as the response isn't the same as the last random response.
+          let responseIndex = Utilities.getRandomInt(responses.length);
+          while (responseIndex == this.lastResponseIndex) {
+            responseIndex = Utilities.getRandomInt(responses.length);
+          }
+          this.lastResponseIndex = responseIndex;
+          response = responses[responseIndex];
           break;
         }
       }

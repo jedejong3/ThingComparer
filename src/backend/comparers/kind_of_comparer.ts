@@ -18,7 +18,7 @@ export class KindOfComparer extends AbstractComparer {
     }
     let response: string;
     response = null;
-    if (winner.datamuseKindOf[0] == null) {
+    if (winner.datamuseKindOf.lenth <= 0) {
       return null;
     }
 
