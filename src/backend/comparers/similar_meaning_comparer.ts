@@ -33,7 +33,7 @@ export class SimilarMeaningComparer extends AbstractComparer {
     var wordsFound = 0;
     for (var i = 0; i < data.length; i++) {
       if (data[i].score >= 0) {
-        response += data[i].word + " ... ";
+        response += data[i].word + ", ";
         wordsFound++;
       }
       if (wordsFound > 4) {
