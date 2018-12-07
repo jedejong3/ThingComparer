@@ -9,6 +9,8 @@ import {ModifierComparer} from "./comparers/modifier_comparer";
 import {Utilities} from "./utilities";
 import {KindOfComparer} from "./comparers/kind_of_comparer";
 
+// if tag contains "prop"
+
 export class Decider {
   constructor() {
 
