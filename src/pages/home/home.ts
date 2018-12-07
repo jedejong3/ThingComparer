@@ -57,9 +57,9 @@ export class HomePage {
       this.ThingOne = new Thing(this.ThingOneName);
       this.ThingOne.datamuseRelated = await datamuse.request(this.ThingOne.name, null, null);
       this.ThingOne.datamuseModified = await datamuse.requestWithOptions(null, null, null,
-        null, null, this.ThingOne.name,null,30,true,null);
+        null, null, this.ThingOne.name, null, 30, true, null);
       this.ThingOne.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
-        null, null,null,this.ThingOne.name,30,true,null);
+        null, null, null, this.ThingOne.name, 30, true, null);
       this.ThingOne.datamuseKindOf= await datamuse.request(null, 'spc', this.ThingOne.name);
 
       this.manager.add(this.ThingOne);
@@ -72,7 +72,7 @@ export class HomePage {
       this.ThingTwo.datamuseModified =await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingTwo.name,null,30,true,null);
       this.ThingTwo.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
-        null, null,null,this.ThingTwo.name,30,true,null);
+        null, null, null,this.ThingTwo.name,30,true,null);
       this.ThingTwo.datamuseKindOf= await datamuse.request(null, 'spc', this.ThingTwo.name);
       this.manager.add(this.ThingTwo);
     }

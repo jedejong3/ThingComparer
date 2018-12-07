@@ -42,7 +42,7 @@ export class RandomComparer extends AbstractComparer {
       `I'd rather be chopped up and put in fruit salad than allow you to believe that ${this.loser}
       ${this.conjugate('is', 'are')} of higher quality than ${this.winner}.`,
       `Can I ask you something? Are you mad questioning the superiority of ${this.winner}?`,
-      `${this.winner} ${this.conjugate('eats', 'eat')} ${this.loser} for breakfast.`,
+      `${Utilities.capitalize(this.winner)} ${this.conjugate('eats', 'eat')} ${this.loser} for breakfast.`,
       `So long as tomatoes are a fake fruit, ${this.loser} too will be subordinate to ${this.winner}.`
 
     ];
