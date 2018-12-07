@@ -30,7 +30,7 @@ export class AdjectiveComparer extends AbstractComparer {
           var combined = `${winner.name} ${plural(winner.datamuseModified[i].word)}`;
           var responses = [
             `I like ${combined}.`,
-            `${winner.name}... as in `+combined+`? I like the sound of that.`,
+            `${Utilities.capitalize(winner.name)}... as in `+combined+`? I like the sound of that.`,
             `I choose ${winner.name} because I like `+combined+`.`,
             `What could be ${winner.name}? How about... `+combined+`? Yeah, that sounds pretty good to me.`,
             `I'll take `+combined+` any day of the week. I pick ${winner.name}!`,
