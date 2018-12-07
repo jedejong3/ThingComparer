@@ -2,13 +2,13 @@
 
 export class Utilities {
 
-  static getRandomInt(max) {
+  static getRandomInt(max): number {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
   static sanitize(s: string): string {
-    while (s.charAt(s.length-1)==' '){
-      s=s.substring(0,s.length-2);
+    while (s.charAt(s.length - 1) == ' ') {
+      s = s.substring(0, s.length - 2);
     }
     return s.replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
@@ -25,7 +25,7 @@ export class Utilities {
     'might', 'mill', 'mine', 'more', 'moreover', 'most', 'mostly', 'move', 'much', 'must', 'my', 'myse', 'name', 'namely', 'neither', 'never', 'nevertheless', 'next', 'nine', 'no',
     'nobody', 'none', 'noone', 'nor', 'not', 'nothing', 'now', 'nowhere', 'of', 'off', 'often', 'on', 'once', 'one', 'only', 'onto', 'or', 'other', 'others', 'otherwise',
     'our', 'ours', 'ourselves', 'out', 'over', 'own', 'part', 'per', 'perhaps', 'please', 'put', 'rather', 're', 'same', 'see', 'seem', 'seemed', 'seeming', 'seems', 'serious',
-    'several', 'shall','said', 'says', 'she', 'should', 'show', 'side', 'since', 'sincere', 'six', 'sixty', 'so', 'some', 'somehow', 'someone', 'something', 'sometime', 'sometimes', 'somewhere', 'still', 'such', 'system',
+    'several', 'shall', 'said', 'says', 'she', 'should', 'show', 'side', 'since', 'sincere', 'six', 'sixty', 'so', 'some', 'somehow', 'someone', 'something', 'sometime', 'sometimes', 'somewhere', 'still', 'such', 'system',
     'take', 'ten', 'than', 'that', 'the', 'their', 'them', 'themselves', 'then', 'thence', 'there', 'thereafter', 'thereby', 'therefore', 'therein', 'thereupon', 'these', 'they', 'thick', 'thin',
     'third', 'this', 'those', 'though', 'three', 'through', 'throughout', 'thru', 'thus', 'to', 'together', 'too', 'top', 'toward', 'towards', 'twelve', 'twenty', 'two', 'un', 'under',
     'until', 'up', 'upon', 'us', 'very', 'via', 'was', 'we', 'well', 'were', 'what', 'whatever', 'when', 'whence', 'whenever', 'where', 'whereafter', 'whereas', 'whereby', 'wherein',
@@ -50,5 +50,17 @@ export class Utilities {
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
+  }
+
+  static capitalize(str: string) {
+    if (str.length < 1) {
+      return str;
+    }
+    else if (str.length == 1) {
+      return str.toUpperCase();
+    }
+    else {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
   }
 }
