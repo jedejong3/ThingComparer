@@ -63,6 +63,10 @@ export class Thing {
   get name(): string {
     return this._name;
   }
+
+  set name(name:string) {
+    this.name = name;
+  }
   get count(): number{
     return this._count;
   }
