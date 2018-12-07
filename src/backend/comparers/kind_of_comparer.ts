@@ -18,7 +18,7 @@ export class KindOfComparer extends AbstractComparer {
     }
     let response: string;
     response = null;
-    if (winner.datamuseKindOf == null) {
+    if (winner.datamuseKindOf.length==0) {
       return null;
     }
     let responses;
@@ -29,7 +29,9 @@ export class KindOfComparer extends AbstractComparer {
         if (winner.datamuseKindOf[i].score >= 0) {
           thisKindOf=winner.datamuseKindOf[i].word;
           responses = [`${plural(winner.name)} are my favorite kind of ${plural(thisKindOf)}. `,
-          `When considering "${plural(thisKindOf)}", I always think of "${plural(winner.name)}"`];
+          `When considering ${plural(thisKindOf)}, I always think of ${plural(winner.name)}`],
+          `I really like ${plural(thisKindOf)}, and ${plural(winner.name)} are the best of those!`;
+          `${plural(thisKindOf)}`
           response=responses[Utilities.getRandomInt(responses.length)];
           break;
         }
