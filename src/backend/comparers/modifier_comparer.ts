@@ -18,7 +18,7 @@ export class ModifierComparer extends AbstractComparer {
     } else {
       winner = ThingTwo;
     }
-    if (winner.datamuseModifies.length <= 0) {
+    if (winner.datamuseModifies != null && winner.datamuseModifies.length <= 0) {
       return null;
     }
 
