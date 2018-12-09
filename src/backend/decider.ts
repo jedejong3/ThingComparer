@@ -9,6 +9,7 @@ import {AdjectiveComparer} from "./comparers/adjective_comparer";
 import {ModifierComparer} from "./comparers/modifier_comparer";
 import {Utilities} from "./utilities";
 import {KindOfComparer} from "./comparers/kind_of_comparer";
+import {StatsComparer} from "./comparers/stats_comparer";
 
 export class Decider {
   constructor() {
@@ -19,7 +20,7 @@ export class Decider {
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
     let comparers = Utilities.shuffle([new ModifierComparer(),
-    new AdjectiveComparer(), new SimilarMeaningComparer()]);
+    new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer()]);
 
     let easterEgg = new EasterEggComparer();
     result = easterEgg.compare (thing1, thing2);

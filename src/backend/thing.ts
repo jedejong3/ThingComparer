@@ -10,7 +10,7 @@ export class Thing {
   private _datemuseModified;
   private _datemuseModifies;
   private _datamuseKindOf;
-
+  private _datamuseStats;
 
   constructor(name:string) {
     this._name = name;
@@ -97,6 +97,12 @@ export class Thing {
   }
   set datamuseKindOf(value) {
     this._datamuseKindOf = value;
+  }
+  get datamuseStats(){
+    return this._datamuseStats;
+  }
+  set datamuseStats(value){
+    this._datamuseStats = value;
   }
   iterateCount(): void{
     this._count ++;
