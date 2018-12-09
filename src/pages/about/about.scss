@@ -1,11 +1,17 @@
 page-about{
 
 .about {
-  background: #5515FE none;
+  background: src="src/assets/imgs/background.png";
 }
   h3{
+    background:#5515FE;
     font-size: 14px;
     color: white;
+    width:60%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
   button {
     font-size: 20px;

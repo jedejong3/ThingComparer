@@ -13,10 +13,15 @@
 
   <img class="banana" src="assets/imgs/celestialBanana.png">
 
+<form (ngSubmit)="compareClick()">
   <ion-input maxlength="20" type="text" class="banner apple" placeholder="Enter apples' word here"
-             [(ngModel)]="ThingOneName"></ion-input>
+             [(ngModel)]="ThingOneName" name="thing1"></ion-input>
   <ion-input maxlength="20" type="text" class="banner orange" placeholder="Enter oranges' word here"
-             [(ngModel)]="ThingTwoName"></ion-input>
+             [(ngModel)]="ThingTwoName" name="thing2"></ion-input>
+  <div class="button_container">
+    <button [disabled]="buttonDisabled()" (click)="compareClick()">Petition the Celestial Banana</button>
+  </div>
+</form>
 
   <div class="flagpole right"></div>
   <div class="flagpole left"></div>
@@ -24,9 +29,7 @@
   <img class="apple_land" src="assets/imgs/green_cliff.png">
   <img class="orange_land" src="assets/imgs/orange_cliff.png">
 
-  <div class="button_container">
-    <button [disabled]="buttonDisabled()" (click)="compareClick()">Petition the Celestial Banana</button>
-  </div>
+
 
 
 </ion-content>
