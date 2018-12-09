@@ -38,9 +38,10 @@ export class Decider {
     // combines two datamuse responses together.
     let response:string;
     let count = 0;
+    let numResponses = Math.random()<.33 ? 2 : 1;
     result = "";
-    for (let i = comparers.length-1;i>=0;i--) {
-      if (count == 2) {
+    for (let i = 0;i<comparers.length;i++) {
+      if (count == numResponses) {
         break;
       }
       response = comparers[i].compare(thing1,thing2);
