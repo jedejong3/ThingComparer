@@ -50,7 +50,7 @@ export class Decider {
         count++;
       }
     }
-    if (result != null) return result;
+    if (result != "") return result;
 
     let randomComparer = new RandomComparer();
     return randomComparer.compare(thing1, thing2).toString();

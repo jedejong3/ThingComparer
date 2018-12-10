@@ -107,29 +107,27 @@ page-home {
   }
 
   .logo {
-    width: 80%;
     max-width: 400px;
-    position: static;
-    display: inline-block;
-    margin-bottom: 0;
-    float: left;
+    width: 100%;
+    height:100%;
   }
   .info {
     font-size: 25px;
-    width: 15%;
+    height: 35%;
     max-width: 50px;
-    margin-left: 6px;
-    position: static;
-    display: inline-block;
-    float: right;
+    align-self:flex-end;
+    top: 100%;
   }
   .logo_about {
-    display: inline;
+    display: flex;
+    flex-direction: column;
     position: absolute;
+    align-items: center;
     left: 0;
     right: 0;
     margin: 0 auto;
     width: 100%;
+    height: 15%;
 
   }
   .scroll-bar-indicator {
