@@ -5,6 +5,13 @@ export class EasterEggComparer extends AbstractComparer {
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
 
+    if (this.hasEasterEgg("****",ThingOne,ThingTwo)) {
+      return "Chill with the words, homie."
+    }
+
+    if (ThingOne.name.toLowerCase() == ThingTwo.name.toLowerCase()) {
+      return "Y'know, I'm feeling conflicted on this one...it's almost like they're the same thing."
+    }
 
     if (this.hasEasterEgg("me", ThingOne, ThingTwo)) {
       return 'Stop trying to compare yourself: you are valuable just as you are!!'
@@ -13,15 +20,9 @@ export class EasterEggComparer extends AbstractComparer {
     if (this.hasEasterEgg("shilad", ThingOne, ThingTwo)) {
       return "Shilad is the best!"
     }
-    if (ThingOne.name.toLowerCase() == ThingTwo.name.toLowerCase()) {
-      return "Y'know, I'm feeling conflicted on this one...it's almost like they're the same thing."
-    }
 
-    if (this.hasEasterEgg("****",ThingOne,ThingTwo)) {
-      return "Chill with the words, homie."
-    }
 
-    if ((this.hasEasterEgg("apple", ThingOne, ThingTwo) || this.hasEasterEgg("apple", ThingOne, ThingTwo))
+    if ((this.hasEasterEgg("apple", ThingOne, ThingTwo) || this.hasEasterEgg("apples", ThingOne, ThingTwo))
       && (this.hasEasterEgg("oranges", ThingOne, ThingTwo) || this.hasEasterEgg("orange", ThingOne, ThingTwo))
   )
     {
