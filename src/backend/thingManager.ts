@@ -1,46 +1,52 @@
 import {Thing} from "./thing";
 
+/*
+The thingManager class stores all of the Thing objects and provides functions to search for Things of a given name
+within the array.
+ */
 export class thingManager {
 
-  private _things:Array<Thing>;
-  private _count:number;
+  private _things: Array<Thing>;
+  private _count: number;
 
   constructor() {
-    this._things=new Array<Thing>();
+    this._things = new Array<Thing>();
   }
 
-
-  add(thing:Thing) {
+//adds a Thing object to the array of Things
+  add(thing: Thing) {
     this._things.push(thing);
-    this._count ++;
+    this._count++;
   }
 
-
-   inThings(name:String): Thing {
-    var found =null;
-    this._things.forEach(function(Thing, index, array){
-      if(Thing.name.toLowerCase()===name.toLowerCase()){
-        found=Thing;
+//searches the array for a Thing by its name, and returns the Thing if it exists, else returns null
+  inThings(name: String): Thing {
+    var found = null;
+    this._things.forEach(function (Thing, index, array) {
+      if (Thing.name.toLowerCase() === name.toLowerCase()) {
+        found = Thing;
         return (found);
 
       }
 
-     });
-    console.log("no item found!")
-      return found;
+    });
+    return found;
 
   }
 
-  iterateCount(): void{
-    this._count ++;
+  //iterates the count of how many Things are in the array
+  iterateCount(): void {
+    this._count++;
   }
-  get count(): number{
+
+  //returns how many Things are in the array
+  get count(): number {
     return this._count;
   }
 
-  printall():void{
-    this._things.forEach(function(Thing){
-      //console.log(Thing.name);
+//prints all Things in the array for debugging purposes
+  printall(): void {
+    this._things.forEach(function (Thing) {
     });
   }
 }
