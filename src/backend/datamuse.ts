@@ -42,6 +42,10 @@ export class Datamuse {
           }
           resolve(data);
         };
+        request.onerror = function(error) {
+          console.log(error);
+          resolve([]);
+        }
         request.send();
       });
   }

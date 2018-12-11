@@ -2,8 +2,12 @@ import {AbstractComparer} from "../abstract_comparer"
 import {Thing} from "../thing";
 import {Utilities} from '../utilities';
 
-let lastResponseIndex;
+let lastResponseIndex; //Keeps track of the index of the last response.
 
+/**
+ * This is the class our program defaults to if Datamuse does not return a viable response. From this class,
+ * a response is randomly chosen from the 'responses' array and formatted to include the specific 'thing' that won.
+ */
 export class RandomComparer extends AbstractComparer {
   constructor() {
     super()
@@ -11,6 +15,7 @@ export class RandomComparer extends AbstractComparer {
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
 
+    //Whichever thing has a higher calculated 'quality index' wins.
     if (ThingOne.qualIndex > ThingTwo.qualIndex) {
       this.winner = ThingOne.name;
       this.loser = ThingTwo.name;
@@ -19,6 +24,7 @@ export class RandomComparer extends AbstractComparer {
       this.loser = ThingOne.name;
     }
 
+    //Array of responses.
     let responses = [
       `Obviously ${this.winner} ${this.conjugate('is', 'are')} better than ${this.loser}, everyone knows that.`,
       `I like ${this.winner} better. Because I said so.`,
