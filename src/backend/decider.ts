@@ -15,14 +15,16 @@ export class Decider {
 
   }
 
-  // Gather info about the Things and choose an appropriate comparison method
+  // Runs down the list of comparers until a result is returned
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
+
+    // Datamuse comparers are iterated in a random order to increase variety of responses
     let comparers = Utilities.shuffle([new ModifierComparer(),
-    new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer()]);
+      new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer(), new KindOfComparer()]);
 
     let easterEgg = new EasterEggComparer();
-    result = easterEgg.compare (thing1, thing2);
+    result = easterEgg.compare(thing1, thing2);
     if (result != null) {
       return result;
     }
@@ -33,16 +35,16 @@ export class Decider {
       return result;
     }
 
-    // combines two datamuse responses together.
-    let response:string;
+    // Choose either one or two datamuse responses to string together as a result
+    let response: string;
     let count = 0;
-    let numResponses = Math.random()<.33 ? 2 : 1;
+    let numResponses = Math.random() < .33 ? 2 : 1;
     result = "";
-    for (let i = 0;i<comparers.length;i++) {
+    for (let i = 0; i < comparers.length; i++) {
       if (count == numResponses) {
         break;
       }
-      response = comparers[i].compare(thing1,thing2);
+      response = comparers[i].compare(thing1, thing2);
       if (response != null) {
         result += " " + response;
         count++;
