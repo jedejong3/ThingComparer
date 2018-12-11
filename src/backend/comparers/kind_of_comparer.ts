@@ -30,7 +30,7 @@ export class KindOfComparer extends AbstractComparer {
         thisKindOf=winner.datamuseKindOf[i].word;
         responses = [
           `${Utilities.capitalize(plural(winner.name))} are my favorite kind of ${plural(thisKindOf)}. `,
-          `When considering ${plural(thisKindOf)}, I always think of ${plural(winner.name)}`,
+          `When considering ${plural(thisKindOf)}, I always think of ${plural(winner.name)}.`,
           `I really like ${plural(thisKindOf)} and ${plural(winner.name)} are my favorite!`];
         response = responses[Utilities.getRandomInt(responses.length)];
         break;

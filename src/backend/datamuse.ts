@@ -38,9 +38,14 @@ export class Datamuse {
           // filter removes anything that returns FALSE, so this removes stopwords
           if (data.length > 0) {
             data = data.filter(context.entryIsNotStopWord);
+            data = data.filter(context.entryIsNotBadWord);
           }
           resolve(data);
         };
+        request.onerror = function(error) {
+          console.log(error);
+          resolve([]);
+        }
         request.send();
       });
   }
@@ -96,6 +101,9 @@ export class Datamuse {
 
   entryIsNotStopWord(element, index, array) {
     return Utilities.notStopWord(element.word);
+  }
+  entryIsNotBadWord (element, index, array){
+    return Utilities.notBadWord(element.word);
   }
 
 }
