@@ -1,8 +1,5 @@
-import {getLocaleDateFormat} from "@angular/common";
-
 export class Thing {
 
-  private _attributes:Map<String,any>;
   private _name:string;
   private _count:number;
   private _qualIndex;
@@ -15,15 +12,15 @@ export class Thing {
   constructor(name:string) {
     this._name = name;
     this._count = 0;
-
     this.setQualIndex();
   }
 
+  //goes through a series of mostly random calculations to ensure a unique qualIndex for each word that will be consistent
+  //for any given day, such that decisions are consistent.
   setQualIndex():void{
     var day= new Date().getDay();
 
     this._qualIndex=this._name.charCodeAt(0)+this._name.length%10;
-    console.log(day);
     if(day%2==0){
       this._qualIndex -= 3*this._name.charCodeAt(0)/2;
     }
@@ -43,22 +40,16 @@ export class Thing {
       this._qualIndex+=this._name.indexOf('s')-4;
     }
 
-    //allows for testing against guarantted wins and losses
+    //allows for testing against guaranteed wins and losses
     if(this._name=="plzwin"){
-      this._qualIndex=562;
+      this._qualIndex=10000;
     }
     if(this._name=="plzlose"){
       this._qualIndex=-10000;
     }
   }
 
-  get attributes(): Map<String, any> {
-    return this._attributes;
-  }
-
-  set attributes(value: Map<String, any>) {
-    this._attributes = value;
-  }
+//getters and setters for the various attributes of the Thing
 
   get name(): string {
     return this._name;
@@ -67,9 +58,11 @@ export class Thing {
   set name(name:string) {
     this.name = name;
   }
+
   get count(): number{
     return this._count;
   }
+  
   get qualIndex():number{
     return this._qualIndex;
   }
@@ -101,9 +94,11 @@ export class Thing {
   get datamuseStats(){
     return this._datamuseStats;
   }
-  set datamuseStats(value){
+  set datamuseStats(value) {
     this._datamuseStats = value;
   }
+
+  // Iterates the count, noting that the Thing has been compared again
   iterateCount(): void{
     this._count ++;
   }

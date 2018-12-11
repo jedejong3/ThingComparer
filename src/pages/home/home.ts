@@ -92,7 +92,7 @@ export class HomePage {
     //note the winner for the sake of graphics display
     var applewins = this.ThingOne.qualIndex > this.ThingTwo.qualIndex;
 
-    // pushes the results screen and passes it parameters for the winner
+    // pushes the results screen and passes it parameters for the response, winner, and if the graphics should display an apple
     this.navCtrl.push(ResultsComponent, {
       respond: response, aw: applewins,
       win: applewins ? this.ThingOne : this.ThingTwo
