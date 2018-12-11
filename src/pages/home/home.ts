@@ -7,7 +7,7 @@ import {thingManager} from "../../backend/thingManager";
 import {Utilities} from "../../backend/utilities";
 import {Code, Datamuse} from "../../backend/datamuse";
 import {AboutPage} from "../about/about";
-import{SplashScreen} from "@ionic-native/splash-screen";
+import {SplashScreen} from "@ionic-native/splash-screen";
 import {BackStory} from "../backstory/backstory";
 
 
@@ -44,68 +44,61 @@ export class HomePage {
     // disable button while processing current click so user can't double compareClick
     this.alreadyClicked = true;
 
-    // sanitize
+    // make sure the name is properly formatted
     this.ThingOneName = Utilities.sanitize(this.ThingOneName);
     this.ThingTwoName = Utilities.sanitize(this.ThingTwoName);
 
-    // add objects to list of previous objects, or update count if exists
+    // check to see if there already exists a Thing object of the same name, and if so, set the ThingOne or ThingTwo to that object
     this.ThingOne = this.manager.inThings(this.ThingOneName);
     this.ThingTwo = this.manager.inThings(this.ThingTwoName);
 
+    //connect to the datamuse API
     var datamuse = new Datamuse();
-    if(this.ThingOne === null){
+
+    //If no already existing object was found, create and populate the Thing object with information from datamuse
+    if (this.ThingOne === null) {
       this.ThingOne = new Thing(this.ThingOneName);
       this.ThingOne.datamuseRelated = await datamuse.request(this.ThingOne.name, null, null);
       this.ThingOne.datamuseModified = await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingOne.name, null, 30, true, null);
       this.ThingOne.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
         null, null, null, this.ThingOne.name, 30, true, null);
-      this.ThingOne.datamuseKindOf= await datamuse.request(null, 'spc', this.ThingOne.name);
-      this.ThingOne.datamuseStats=await datamuse.request(null, 'trg', this.ThingOne.name);
+      this.ThingOne.datamuseKindOf = await datamuse.request(null, 'spc', this.ThingOne.name);
+      this.ThingOne.datamuseStats = await datamuse.request(null, 'trg', this.ThingOne.name);
+
 
       this.manager.add(this.ThingOne);
     }
+    //note how many times this Thing has been compared
     this.ThingOne.iterateCount();
 
-    if(this.ThingTwo === null){
+    if (this.ThingTwo === null) {
       this.ThingTwo = new Thing(this.ThingTwoName);
       this.ThingTwo.datamuseRelated = await datamuse.request(this.ThingTwo.name, null, null);
-      this.ThingTwo.datamuseModified =await datamuse.requestWithOptions(null, null, null,
-        null, null, this.ThingTwo.name,null,30,true,null);
+      this.ThingTwo.datamuseModified = await datamuse.requestWithOptions(null, null, null,
+        null, null, this.ThingTwo.name, null, 30, true, null);
       this.ThingTwo.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
-        null, null, null,this.ThingTwo.name,30,true,null);
-      this.ThingTwo.datamuseKindOf= await datamuse.request(null, 'spc', this.ThingTwo.name);
-      this.ThingTwo.datamuseStats=await datamuse.request(null, 'trg', this.ThingTwo.name);
+        null, null, null, this.ThingTwo.name, 30, true, null);
+      this.ThingTwo.datamuseKindOf = await datamuse.request(null, 'spc', this.ThingTwo.name);
+      this.ThingTwo.datamuseStats = await datamuse.request(null, 'trg', this.ThingTwo.name);
 
       this.manager.add(this.ThingTwo);
     }
     this.ThingTwo.iterateCount();
 
 
-
-    // create and give response
+    // create and give response through a call to comparer
     let response = this.decider.chooseComparer(this.ThingOne, this.ThingTwo);
-    var applewins = this.ThingOne.qualIndex>this.ThingTwo.qualIndex;
-    var winner = applewins ? this.ThingOne : this.ThingTwo;
-    console.log('winner', winner);
+    //note the winner for the sake of graphics display
+    var applewins = this.ThingOne.qualIndex > this.ThingTwo.qualIndex;
 
-    // TODO change this, it's kind of a hack to test the datamuse api
-      // if (winner.datamuseKindOf.length > 0) {
-      //   for(var i =0 ; i<winner.datamuseModified.length; i++){
-      //     if((winner.datamuseModified[i].tags=="n")){
-      //       response =  winner.name +" is my favorite kind of "+winner.datamuseKindOf[i].word+'. ' + response;
-      //       break;
-      //     }
-      //   }
-      //
-      // }
-
-    this.navCtrl.push(ResultsComponent, {respond: response, aw: applewins,
-      win:applewins ? this.ThingOne : this.ThingTwo,
-      loss: applewins ? this.ThingTwo : this.ThingOne
+    // pushes the results screen and passes it parameters for the winner
+    this.navCtrl.push(ResultsComponent, {
+      respond: response, aw: applewins,
+      win: applewins ? this.ThingOne : this.ThingTwo
     });
 
-    // reset Thing text and reenable button
+    // reset Thing text and re-enable button
     this.ThingOneName = "";
     this.ThingTwoName = "";
     this.alreadyClicked = false;
@@ -113,8 +106,8 @@ export class HomePage {
 
   buttonDisabled(): boolean {
     if (typeof this.ThingOneName == "undefined"
-        || typeof this.ThingTwoName == "undefined"
-        || this.alreadyClicked) {
+      || typeof this.ThingTwoName == "undefined"
+      || this.alreadyClicked) {
       return true;
     } else if (this.ThingTwoName.length == 0 || this.ThingOneName.length == 0) {
       return true;
