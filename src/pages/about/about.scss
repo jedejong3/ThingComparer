@@ -7,14 +7,16 @@ page-about{
     background:#5515FE;
     font-size: 14px;
     color: white;
-    width:60%;
+    width:90%;
+    max-height: 50%;
     position: absolute;
     left: 0;
     right: 0;
     margin: 0 auto;
+    overflow: scroll;
   }
   button {
-    font-size: 20px;
+    font-size: 16px;
     width: 100%;
     height: 14%;
     background-color: #4f05bd;
@@ -30,7 +32,6 @@ page-about{
   }
   .BS{
     bottom: 16%;
-    width: 25%;
   }
 
 }
