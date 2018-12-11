@@ -11,17 +11,7 @@
     <button class="info" (click)="aboutPage()">?</button>
   </div>
 
-  <img class="banana" src="assets/imgs/celestialBanana.png">
-
-<form (ngSubmit)="compareClick()">
-  <ion-input maxlength="20" type="text" class="banner apple" placeholder="Enter apples' word here"
-             [(ngModel)]="ThingOneName" name="thing1"></ion-input>
-  <ion-input maxlength="20" type="text" class="banner orange" placeholder="Enter oranges' word here"
-             [(ngModel)]="ThingTwoName" name="thing2"></ion-input>
-  <div class="button_container">
-    <button [disabled]="buttonDisabled()" (click)="compareClick()">Petition the Celestial Banana</button>
-  </div>
-</form>
+  <img class="banana" src="assets/imgs/celestial_banana.png">
 
   <div class="flagpole right"></div>
   <div class="flagpole left"></div>
@@ -29,7 +19,14 @@
   <img class="apple_land" src="assets/imgs/green_cliff.png">
   <img class="orange_land" src="assets/imgs/orange_cliff.png">
 
-
-
+  <form (ngSubmit)="compareClick()">
+    <ion-input maxlength="20" type="text" class="banner apple" placeholder="Enter apples' word here"
+               [(ngModel)]="ThingOneName" name="thing1"></ion-input>
+    <ion-input maxlength="20" type="text" class="banner orange" placeholder="Enter oranges' word here"
+               [(ngModel)]="ThingTwoName" name="thing2"></ion-input>
+    <div class="button_container">
+      <button [disabled]="buttonDisabled()" type="submit">Petition the Celestial Banana</button>
+    </div>
+  </form>
 
 </ion-content>

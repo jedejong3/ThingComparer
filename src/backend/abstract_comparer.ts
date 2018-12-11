@@ -5,16 +5,16 @@ export abstract class AbstractComparer {
   private _winner: string;
   private _loser: string;
 
-  // TODO should all return Promises
   compare(one: Thing, two: Thing): string {
-    return "You should never see this";
+    return "";
   }
 
-  conjugate(singular: string, plural: string, word:string = this.winner): string {
+  // A helper method for improving the grammar of a comparer's response strings
+  conjugate(singular: string, plural: string, word: string = this.winner): string {
     if (isPlural(word)) {
       return plural;
     }
-    return  singular;
+    return singular;
   }
 
   get winner(): string {

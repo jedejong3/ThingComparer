@@ -1,4 +1,3 @@
-import {AbstractComparer} from "./abstract_comparer";
 import {RandomComparer} from "./comparers/random_comparer";
 import {Thing} from "./thing";
 import {EasterEggComparer} from "./comparers/easter_egg_comparer";
@@ -10,21 +9,22 @@ import {Utilities} from "./utilities";
 import {KindOfComparer} from "./comparers/kind_of_comparer";
 import {StatsComparer} from "./comparers/stats_comparer";
 
-// if tag contains "prop"
 
 export class Decider {
   constructor() {
 
   }
 
-  // Gather info about the Things and choose an appropriate comparison method
+  // Runs down the list of comparers until a result is returned
   chooseComparer(thing1: Thing, thing2: Thing) {
     let result: string;
+
+    // Datamuse comparers are iterated in a random order to increase variety of responses
     let comparers = Utilities.shuffle([new ModifierComparer(),
-    new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer()]);
+      new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer(), new KindOfComparer()]);
 
     let easterEgg = new EasterEggComparer();
-    result = easterEgg.compare (thing1, thing2);
+    result = easterEgg.compare(thing1, thing2);
     if (result != null) {
       return result;
     }
@@ -35,21 +35,22 @@ export class Decider {
       return result;
     }
 
-    // combines two datamuse responses together.
-    let response:string;
+    // Choose either one or two datamuse responses to string together as a result
+    let response: string;
     let count = 0;
+    let numResponses = Math.random() < .33 ? 2 : 1;
     result = "";
-    for (let i = comparers.length-1;i>=0;i--) {
-      if (count == 2) {
+    for (let i = 0; i < comparers.length; i++) {
+      if (count == numResponses) {
         break;
       }
-      response = comparers[i].compare(thing1,thing2);
+      response = comparers[i].compare(thing1, thing2);
       if (response != null) {
         result += " " + response;
         count++;
       }
     }
-    if (result != null) return result;
+    if (result != "") return result;
 
     let randomComparer = new RandomComparer();
     return randomComparer.compare(thing1, thing2).toString();
