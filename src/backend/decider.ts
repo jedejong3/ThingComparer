@@ -21,7 +21,8 @@ export class Decider {
 
     // Datamuse comparers are iterated in a random order to increase variety of responses
     let comparers = Utilities.shuffle([new ModifierComparer(),
-      new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer(), new KindOfComparer()]);
+      new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer(),
+      new KindOfComparer(), new RandomComparer()]);
 
     let easterEgg = new EasterEggComparer();
     result = easterEgg.compare(thing1, thing2);
@@ -51,9 +52,6 @@ export class Decider {
       }
     }
     if (result != "") return result;
-
-    let randomComparer = new RandomComparer();
-    return randomComparer.compare(thing1, thing2).toString();
   }
 
 }

@@ -28,12 +28,12 @@ export class Datamuse {
         includeFrequency: includeFrequency
       };
 
-      var endpoint = "https://api.datamuse.com/words?" + context.createSuffix(params);
+      var context = this;
+      var endpoint = "https://api.datamuse.com/words?" + this.createSuffix(params);
 
       var request = new XMLHttpRequest();
       request.open('GET', endpoint, true);
 
-      var context = this;
       request.onload = function() {
         var data = JSON.parse(this.response);
         // filter removes anything that returns FALSE, so this removes stopwords
