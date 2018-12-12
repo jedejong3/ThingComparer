@@ -1,6 +1,4 @@
-# ThingComparer
-
-Apples and Oranges: A Thing Comparer
+# Apples and Oranges: A Thing Comparer
 
 This mobile app compares two things by using data from the Datamuse API (https://www.datamuse.com/api/) to make semi-informed comments.
 
@@ -8,7 +6,7 @@ This mobile app compares two things by using data from the Datamuse API (https:/
 
 ### Dependencies
 
-Apples to Oranges relies on the [Ionic Framework](https://ionicframework.com/).
+Apples and Oranges relies on the [Ionic Framework](https://ionicframework.com/).
  Refer to their website for installation instructions and tutorials.
  
  Other dependencies: installation instructions
@@ -29,8 +27,8 @@ and [iOS](https://developer.apple.com/library/archive/documentation/ToolsLanguag
 for emulator installation instructions.
 
 #### Mobile Device
-To run the app on an Android phone, first add the android platform to cordova: `cordova platform add android`
-Then connect the mobile device to your computer and run `ionic cordova run android`
+To run the app on an Android phone, first add the android platform to cordova: `cordova platform add android`.
+Then connect the mobile device to your computer and run `ionic cordova run android`.
 
 ## About
 
