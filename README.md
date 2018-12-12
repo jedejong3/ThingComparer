@@ -11,11 +11,11 @@ This mobile app compares two things by using data from the Datamuse API (https:/
 Apples to Oranges relies on the [Ionic Framework](https://ionicframework.com/).
  Refer to their website for installation instructions and tutorials.
  
- Other dependencies: installation instructions
+ Other dependencies:
 
-`pluralize`: `npm i pluralize` and `npm i @types/pluralize`.
+To install `pluralize`, run `npm i pluralize` and `npm i @types/pluralize`.
 
-`mocha`: `npm i mocha` and `npm i --save-dev mocha`
+To install `mocha`, run `npm i mocha` and `npm i --save-dev mocha`
 
 ### Running the app
 
