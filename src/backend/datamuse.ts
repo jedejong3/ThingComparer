@@ -14,6 +14,9 @@ export class Datamuse {
     vocab: string, topics: string[], leftContext: string, rightContext: string,
     maxResults: number, includePartsOfSpeech: boolean, includeFrequency: boolean) {
 
+    // store context to be used inside Promise
+    var context = this;
+
     return new Promise(function(resolve, reject) {
       var params = {
         means: means,
@@ -28,8 +31,7 @@ export class Datamuse {
         includeFrequency: includeFrequency
       };
 
-      var context = this;
-      var endpoint = "https://api.datamuse.com/words?" + this.createSuffix(params);
+      var endpoint = "https://api.datamuse.com/words?" + context.createSuffix(params);
 
       var request = new XMLHttpRequest();
       request.open('GET', endpoint, true);
