@@ -59,7 +59,7 @@ export class HomePage {
     if (this.ThingOne === null) {
       this.ThingOne = new Thing(this.ThingOneName);
       this.ThingOne.datamuseRelated = await datamuse.request(this.ThingOne.name, null, null);
-      this.ThingOne.datamuseModified = await datamuse.requestWithOptions(null, null, null,
+      this.ThingOne.datamuseLeftContext = await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingOne.name, null, 30, true, null);
       this.ThingOne.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
         null, null, null, this.ThingOne.name, 30, true, null);
@@ -75,7 +75,7 @@ export class HomePage {
     if (this.ThingTwo === null) {
       this.ThingTwo = new Thing(this.ThingTwoName);
       this.ThingTwo.datamuseRelated = await datamuse.request(this.ThingTwo.name, null, null);
-      this.ThingTwo.datamuseModified = await datamuse.requestWithOptions(null, null, null,
+      this.ThingTwo.datamuseLeftContext = await datamuse.requestWithOptions(null, null, null,
         null, null, this.ThingTwo.name, null, 30, true, null);
       this.ThingTwo.datamuseModifies = await datamuse.requestWithOptions(null, null, null,
         null, null, null, this.ThingTwo.name, 30, true, null);

@@ -9,8 +9,8 @@ export class Thing {
   private _count: number;
   private _qualIndex;
   private _datamuseRelated;
-  private _datemuseModified;
-  private _datemuseModifies;
+  private _datemuseLeftContext;
+  private _datemuseRightContext;
   private _datamuseKindOf;
   private _datamuseStats;
 
@@ -80,20 +80,20 @@ export class Thing {
     this._datamuseRelated = value;
   }
 
-  get datamuseModified() {
-    return this._datemuseModified
+  get datamuseLeftContext() {
+    return this._datemuseLeftContext
   }
 
-  set datamuseModified(value) {
-    this._datemuseModified = value;
+  set datamuseLeftContext(value) {
+    this._datemuseLeftContext = value;
   }
 
-  get datamuseModifies() {
-    return this._datemuseModifies
+  get datamuseRightContext() {
+    return this._datemuseRightContext
   }
 
-  set datamuseModifies(value) {
-    this._datemuseModifies = value;
+  set datamuseRightContext(value) {
+    this._datemuseRightContext = value;
   }
 
   get datamuseKindOf() {

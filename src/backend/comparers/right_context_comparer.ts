@@ -3,7 +3,7 @@ import { Thing } from "../thing";
 import { Utilities } from "../utilities";
 import { plural } from 'pluralize'
 
-export class ModifierComparer extends AbstractComparer {
+export class RightContextComparer extends AbstractComparer {
 
   private lastResponseIndex = -1;
 

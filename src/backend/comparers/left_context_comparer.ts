@@ -3,7 +3,7 @@ import { Thing } from "../thing";
 import { Utilities } from "../utilities";
 import { plural } from 'pluralize'
 
-export class AdjectiveComparer extends AbstractComparer {
+export class leftContextComparer extends AbstractComparer {
 
   private lastResponseIndex = -1;
 
@@ -20,14 +20,14 @@ export class AdjectiveComparer extends AbstractComparer {
     }
     let response: string;
     response = null;
-    if (winner.datamuseModified.length == 0) {
+    if (winner.datamuseLeftContext.length == 0) {
       return null;
     }
 
-    if (winner.datamuseModified.length > 0) {
-      for (var i = 0; i < winner.datamuseModified.length; i++) {
-        if (winner.datamuseModified[i].score >= 15000 && winner.datamuseModified[i].tags.indexOf("n") !=-1) {
-          var combined = `${winner.name} ${plural(winner.datamuseModified[i].word)}`;
+    if (winner.datamuseLeftContext.length > 0) {
+      for (var i = 0; i < winner.datamuseLeftContext.length; i++) {
+        if (winner.datamuseLeftContext[i].score >= 15000 && winner.datamuseLeftContext[i].tags.indexOf("n") !=-1) {
+          var combined = `${winner.name} ${plural(winner.datamuseLeftContext[i].word)}`;
           var responses = [
             `I like ${combined}.`,
             `${Utilities.capitalize(winner.name)}... as in `+combined+`? I like the sound of that.`,

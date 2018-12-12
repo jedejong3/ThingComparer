@@ -3,8 +3,8 @@ import {Thing} from "./thing";
 import {EasterEggComparer} from "./comparers/easter_egg_comparer";
 import {QuantityComparer} from "./comparers/quantity_comparer";
 import {SimilarMeaningComparer} from "./comparers/similar_meaning_comparer";
-import {AdjectiveComparer} from "./comparers/adjective_comparer";
-import {ModifierComparer} from "./comparers/modifier_comparer";
+import {leftContextComparer} from "./comparers/left_context_comparer";
+import {RightContextComparer} from "./comparers/right_context_comparer";
 import {Utilities} from "./utilities";
 import {KindOfComparer} from "./comparers/kind_of_comparer";
 import {StatsComparer} from "./comparers/stats_comparer";
@@ -20,8 +20,8 @@ export class Decider {
     let result: string;
 
     // Datamuse comparers are iterated in a random order to increase variety of responses
-    let comparers = Utilities.shuffle([new ModifierComparer(),
-      new AdjectiveComparer(), new SimilarMeaningComparer(), new StatsComparer(), new KindOfComparer()]);
+    let comparers = Utilities.shuffle([new RightContextComparer(),
+      new leftContextComparer(), new SimilarMeaningComparer(), new StatsComparer(), new KindOfComparer()]);
 
     let easterEgg = new EasterEggComparer();
     result = easterEgg.compare(thing1, thing2);
