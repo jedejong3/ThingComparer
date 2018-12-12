@@ -29,9 +29,20 @@ export class EasterEggComparer extends AbstractComparer {
     ) {
       return "Wow, aren't you original--who would ever have thought of comparing apples and oranges?";
     }
+    if ((this.hasEasterEgg("cats", ThingOne, ThingTwo) || this.hasEasterEgg("cat", ThingOne, ThingTwo))
+      && (this.hasEasterEgg("dogs", ThingOne, ThingTwo) || this.hasEasterEgg("dog", ThingOne, ThingTwo))
+    ) {
+      return "Ah yes, the ancient feud of cats and dogs. This could have been easily settled eons ago if only I had" +
+        "been consulted--cats are far superior. Their purrs and warm snuggles bring me so much joy";
+    }
 
+    if (this.hasEasterEgg("Macalester", ThingOne, ThingTwo)) {
+      return "MA-CA-LE-STER! IS WON-DER-FUL!";
+    }
     return null;
+
   }
+
 
   private hasEasterEgg(name, ThingOne: Thing, ThingTwo: Thing): boolean {
     if (ThingOne.name.toLowerCase() == name || ThingTwo.name.toLowerCase() == name) {
