@@ -33,11 +33,11 @@ export class StatsComparer extends AbstractComparer {
       for (var i = 0; i < winner.datamuseStats.length; i++) {
         if (winner.datamuseStats[i].score >= 0) {
           var responses = [
-            `You know, when I think of "${plural(winner.name)}", I think of "${plural(winner.datamuseStats[i].word)}". And I really like thinking of 
+            `You know, when I think of ${plural(winner.name)}, I think of ${plural(winner.datamuseStats[i].word)}. And I really like thinking of 
             ${plural(winner.datamuseStats[i].word)}.`,
-            `I just ran the numbers and apparently, "${plural(winner.name)}" is a trigger word for "${plural(winner.datamuseStats[i].word)}". LOVE it.`,
-            `I can't hear "${winner.name}" without thinking "${plural(winner.datamuseStats[i].word)}". 
-            "${plural(winner.datamuseStats[i].word).charAt(0).toUpperCase()}` + `${plural(winner.datamuseStats[i].word).slice(1)}"` + ` are my favorite!`
+            `I just ran the numbers and apparently, ${plural(winner.name)} is a trigger word for "${plural(winner.datamuseStats[i].word)}. LOVE it.`,
+            `I can't hear ${winner.name} without thinking ${plural(winner.datamuseStats[i].word)}. 
+            "${plural(winner.datamuseStats[i].word).charAt(0).toUpperCase()} ${plural(winner.datamuseStats[i].word).slice(1)} are my favorite!`
           ];
 
           //Picks a response from the array of responses, so long as the response isn't the same as the last random response.

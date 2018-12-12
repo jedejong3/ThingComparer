@@ -15,13 +15,23 @@ export class QuantityComparer extends AbstractComparer {
     console.log(ThingOne.count);
 
     //If the user types the same 'thing' thrice.
-    if (ThingOne.count % 3 == 0 || ThingTwo.count % 3 == 0) {
-      return (`I tire of ${ThingOne.name}.`)
+    if (ThingOne.count % 3 == 0){
+      return (`I'm getting kind of tired of ${ThingOne.name}.`)
     }
 
+    if (ThingTwo.count % 3 == 0) {
+      return (`I'm getting kind of tired of ${ThingTwo.name}.`)
+
+    }
+
+
     //If the user types the same 'thing' five times.
-    if (ThingOne.count % 5 == 0 || ThingTwo.count % 5 == 0) {
+    if (ThingOne.count % 5 == 0) {
       return (`Don't you think you've tried ${ThingOne.name} enough for now?`);
+    }
+    if( ThingTwo.count % 5 == 0){
+      return (`Don't you think you've tried ${ThingTwo.name} enough for now?`);
+
     }
 
     //If the user types the same 'thing' eight times.
