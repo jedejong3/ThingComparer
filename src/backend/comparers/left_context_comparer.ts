@@ -26,17 +26,17 @@ export class leftContextComparer extends AbstractComparer {
 
     if (winner.datamuseLeftContext.length > 0) {
       for (var i = 0; i < winner.datamuseLeftContext.length; i++) {
-        if (winner.datamuseLeftContext[i].score >= 15000 && winner.datamuseLeftContext[i].tags.indexOf("n") !=-1) {
+        if (winner.datamuseLeftContext[i].score >= 15000 && winner.datamuseLeftContext[i].tags.length != 0 && winner.datamuseLeftContext[i].tags.indexOf("n") !=-1) {
           var combined = `${winner.name} ${plural(winner.datamuseLeftContext[i].word)}`;
           var responses = [
             `I like ${combined}.`,
-            `${Utilities.capitalize(winner.name)}... as in `+combined+`? I like the sound of that.`,
-            `I choose ${winner.name} because I like `+combined+`.`,
-            `What could be ${winner.name}? How about... `+combined+`? Yeah, that sounds pretty good to me.`,
-            `I'll take `+combined+` any day of the week. I pick ${winner.name}!`,
-            `Doesn't "${winner.name}" just make you think of ` + combined + `?`,
-            `I can't hear "${winner.name}" without thinking "`+combined+`".`,
-          ]
+            `${Utilities.capitalize(winner.name)}... as in ${combined}? I like the sound of that.`,
+            `I choose ${winner.name} because I like ${combined}.`,
+            `What could be ${winner.name}? How about... ${combined} ? Yeah, that sounds pretty good to me.`,
+            `I'll take ${combined} any day of the week. I pick ${winner.name}!`,
+            `Doesn't ${winner.name} just make you think of ${combined}?`,
+            `I can't hear ${winner.name} without thinking ${combined}.`,
+          ];
           //Picks a response from the array of responses, so long as the response isn't the same as the last random response.
           let responseIndex = Utilities.getRandomInt(responses.length);
           while (responseIndex == this.lastResponseIndex) {

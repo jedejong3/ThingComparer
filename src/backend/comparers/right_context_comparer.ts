@@ -27,9 +27,9 @@ export class RightContextComparer extends AbstractComparer {
       if (winner.datamuseModifies[i].score >= 0) {
         var combined = `${winner.datamuseModifies[i].word} ${plural(winner.name)}`;
         var responses = [
-          `I like ${combined}`,
+          `I like ${combined}.`,
           `Doesn't ${winner.name} just make you think of ${combined}?`,
-          `I can't hear ${winner.name} without thinking ${combined}`
+          `I can't hear ${winner.name} without thinking ${combined}.`
         ];
         //Picks a response from the array of responses, so long as the response isn't the same as the last random response.
         let responseIndex = Utilities.getRandomInt(responses.length);
