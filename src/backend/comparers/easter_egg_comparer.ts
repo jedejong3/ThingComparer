@@ -14,6 +14,12 @@ export class EasterEggComparer extends AbstractComparer {
     }
 
     if (this.hasEasterEgg("shilad", ThingOne, ThingTwo)) {
+      if(ThingOne.name.toLowerCase()=="shilad"){
+        ThingOne.qualIndex=1000;
+      }
+      if(ThingTwo.name.toLowerCase()=="shilad"){
+        ThingTwo.qualIndex=1000;
+      }
       return "Shilad is the best!"
     }
     if (ThingOne.name.toLowerCase() == ThingTwo.name.toLowerCase()) {
@@ -21,7 +27,14 @@ export class EasterEggComparer extends AbstractComparer {
     }
 
     if (this.hasEasterEgg("****", ThingOne, ThingTwo)) {
+      if(ThingOne.name.toLowerCase()=="****"){
+        ThingOne.qualIndex=-1000;
+      }
+      if(ThingTwo.name.toLowerCase()=="****"){
+        ThingTwo.qualIndex=-1000;
+      }
       return "Chill with the words, homie."
+
     }
 
     if ((this.hasEasterEgg("apple", ThingOne, ThingTwo) || this.hasEasterEgg("apple", ThingOne, ThingTwo))
@@ -32,11 +45,26 @@ export class EasterEggComparer extends AbstractComparer {
     if ((this.hasEasterEgg("cats", ThingOne, ThingTwo) || this.hasEasterEgg("cat", ThingOne, ThingTwo))
       && (this.hasEasterEgg("dogs", ThingOne, ThingTwo) || this.hasEasterEgg("dog", ThingOne, ThingTwo))
     ) {
-      return "Ah yes, the ancient feud of cats and dogs. This could have been easily settled eons ago if only I had" +
-        "been consulted--cats are far superior. Their purrs and warm snuggles bring me so much joy";
+      return "Ah yes, the ancient feud of cats and dogs. This could have been easily settled eons ago if only I had " +
+        "been consulted--cats are far superior. Their purrs and warm snuggles bring me so much joy.";
+    }
+    if ((this.hasEasterEgg("cat", ThingOne, ThingTwo))){
+      if(ThingOne.name.toLowerCase()=="cat"){
+        ThingOne.qualIndex=1000;
+      }
+      if(ThingTwo.name.toLowerCase()=="cat"){
+        ThingTwo.qualIndex=1000;
+      }
+      return("I love cats!");
     }
 
-    if (this.hasEasterEgg("Macalester", ThingOne, ThingTwo)) {
+    if (this.hasEasterEgg("macalester", ThingOne, ThingTwo)) {
+      if(ThingOne.name.toLowerCase()=="macalester"){
+        ThingOne.qualIndex=1000;
+      }
+      if(ThingTwo.name.toLowerCase()=="macalester") {
+        ThingTwo.qualIndex = 1000;
+      }
       return "MA-CA-LE-STER! IS WON-DER-FUL!";
     }
     return null;

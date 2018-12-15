@@ -56,6 +56,9 @@ export class Thing {
 
 //getters and setters for the various attributes of the Thing
 
+  set qualIndex(number:number){
+    this._qualIndex=number;
+  }
   get name(): string {
     return this._name;
   }
@@ -112,8 +115,12 @@ export class Thing {
     this._datamuseStats = value;
   }
 
+
   // Iterates the count, noting that the Thing has been compared again
   iterateCount(): void {
+    if(this._name=="plzlose"||this.name=="plzwin"){
+      this._count--;
+    }
     this._count++;
   }
 }
