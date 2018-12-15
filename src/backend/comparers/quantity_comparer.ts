@@ -12,9 +12,8 @@ export class QuantityComparer extends AbstractComparer {
   }
 
   compare(ThingOne: Thing, ThingTwo: Thing): string {
-    console.log(ThingOne.count);
 
-    //If the user types the same 'thing' thrice.
+    //If the user types the same 'thing' five times.
     if (ThingOne.count % 5 == 0){
       return (`I'm getting kind of tired of ${ThingOne.name}.`)
     }
@@ -25,7 +24,7 @@ export class QuantityComparer extends AbstractComparer {
     }
 
 
-    //If the user types the same 'thing' five times.
+    //If the user types the same 'thing' nine times.
     if (ThingOne.count % 9 == 0) {
       return (`Don't you think you've tried ${ThingOne.name} enough for now?`);
     }
@@ -34,7 +33,7 @@ export class QuantityComparer extends AbstractComparer {
 
     }
 
-    //If the user types the same 'thing' eight times.
+    //If the user types the same 'thing' fourteen times.
     if (ThingOne.count % 14 == 0 || ThingTwo.count % 14 == 0) {
       return (`Seriously, be more original.`)
     }
