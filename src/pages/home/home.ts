@@ -109,7 +109,11 @@ export class HomePage {
       || typeof this.ThingTwoName == "undefined"
       || this.alreadyClicked) {
       return true;
-    } else if (this.ThingTwoName.length == 0 || this.ThingOneName.length == 0) {
+    }
+    if (this.ThingTwoName.length == 0 || this.ThingOneName.length == 0) {
+      return true;
+    }
+    if (/^\s+$/.test(this.ThingOneName) || /^\s+$/.test(this.ThingTwoName)) {
       return true;
     }
     return false;
