@@ -118,6 +118,9 @@ export class Thing {
 
   // Iterates the count, noting that the Thing has been compared again
   iterateCount(): void {
+    if(this._name=="plzlose"||this.name=="plzwin"){
+      this._count--;
+    }
     this._count++;
   }
 }
