@@ -37,7 +37,7 @@ export class StatsComparer extends AbstractComparer {
             ${plural(winner.datamuseStats[i].word)}.`,
             `I just ran the numbers and apparently, ${plural(winner.name)} is a trigger word for ${plural(winner.datamuseStats[i].word)}. LOVE it.`,
             `I can't hear ${winner.name} without thinking ${plural(winner.datamuseStats[i].word)}. 
-            "${plural(winner.datamuseStats[i].word).charAt(0).toUpperCase()} ${plural(winner.datamuseStats[i].word).slice(1)} are my favorite!`
+            ${plural(winner.datamuseStats[i].word).charAt(0).toUpperCase()} ${plural(winner.datamuseStats[i].word).slice(1)} are my favorite!`
           ];
 
           //Picks a response from the array of responses, so long as the response isn't the same as the last random response.

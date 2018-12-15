@@ -29,8 +29,7 @@ export class SimilarMeaningComparer extends AbstractComparer {
     }
 
     //Creates the first half of response with the winning 'thing'.
-    var response = `What ${this.conjugate('does', 'do', winnerName)}
-      ${winnerName}make me think of?`;
+    var response = `What ${this.conjugate('does', 'do', winnerName)} ${winnerName} make me think of? `;
 
     //The second half of the response includes a list of related words that are pulled directly
     //from the list of words returned by Datamuse.
