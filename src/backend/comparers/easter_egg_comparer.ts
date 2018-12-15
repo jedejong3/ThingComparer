@@ -58,7 +58,13 @@ export class EasterEggComparer extends AbstractComparer {
       return("I love cats!");
     }
 
-    if (this.hasEasterEgg("Macalester", ThingOne, ThingTwo)) {
+    if (this.hasEasterEgg("macalester", ThingOne, ThingTwo)) {
+      if(ThingOne.name.toLowerCase()=="macalester"){
+        ThingOne.qualIndex=1000;
+      }
+      if(ThingTwo.name.toLowerCase()=="macalester") {
+        ThingTwo.qualIndex = 1000;
+      }
       return "MA-CA-LE-STER! IS WON-DER-FUL!";
     }
     return null;
