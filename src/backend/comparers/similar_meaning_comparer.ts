@@ -36,7 +36,12 @@ export class SimilarMeaningComparer extends AbstractComparer {
     var wordsFound = 0;
     for (var i = 0; i < data.length; i++) {
       if (data[i].score >= 0) {
-        response += data[i].word + ", ";
+        var word = data[i].word;
+        // capitalize only the first word.
+        if (wordsFound == 0) {
+          word = Utilities.capitalize(word);
+        }
+        response += word + ", ";
         wordsFound++;
       }
       if (wordsFound > 4) {
